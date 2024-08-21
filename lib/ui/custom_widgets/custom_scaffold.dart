@@ -88,7 +88,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
               }
             } ,
             child: Scaffold(
-              backgroundColor: kPrimaryColor,
+              backgroundColor: kPrimaryDarkColor,
               extendBody: true,
               resizeToAvoidBottomInset: false,
               key: widget.scaffoldKey,
@@ -97,7 +97,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                 height: Get.height,
                 width: Get.width,
                 decoration: const BoxDecoration(
-                  color: kWhiteColor,
+                  color: kPrimaryDarkColor,
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
                 ),
                 child: Stack(

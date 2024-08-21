@@ -1,4 +1,5 @@
 
+import 'package:excise_e_auction/utils/custom_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -58,7 +59,18 @@ class MyApp extends StatelessWidget {
       initialRoute: kSplashScreenRoute,
       initialBinding: ScreensBindings(),
       getPages: RouteManagement.getPages(),
-      theme: ThemeData(primarySwatch: Colors.blueGrey),
+      themeMode: ThemeMode.dark,
+      theme: ThemeData(
+        applyElevationOverlayColor:false,
+        primaryColorLight: kPrimaryColor,
+        primaryColorDark: kPrimaryDarkColor,
+        fontFamily: 'Roboto',
+        scaffoldBackgroundColor: kPrimaryDarkColor,
+        dialogBackgroundColor: kPrimaryDarkColor,
+        shadowColor: kPrimaryDarkColor,
+        appBarTheme: CustomTheme.appBarTheme,
+        textTheme: CustomTheme.darkTextTheme,
+      ),
       debugShowCheckedModeBanner: false,
     );
   }

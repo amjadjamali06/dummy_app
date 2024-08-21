@@ -22,22 +22,28 @@ class AuctionsListScreen extends GetView<AuctionsListScreenController> {
       className: runtimeType.toString(),
       screenName: "View Auctions",
       scaffoldKey: controller.scaffoldKey,
-      horizontalPadding: 12,
+      // horizontalPadding: 12,
+      horizontalPadding: 0,
       body: Obx(
-        () => ListView.builder(
-          padding: const EdgeInsets.symmetric(vertical: 16),
-          shrinkWrap: true,
-          itemCount: controller.auctionsList.length,
-          itemBuilder: (context, index) {
-            final auction = controller.auctionsList[index];
-            return AuctionCard(
-                numberPlat: auction.numberPlat,
-                bidType: auction.bidType,
-                startDate: auction.startDate,
-                endDate: auction.endDate,
-                bidStartAmount: auction.bidStartAmount,
-                bidEndAmount: auction.bidEndAmount);
-          },
+        () => Container(
+          height: Get.height,
+          width: Get.width,
+          color: Color(0xff112120),
+          child: ListView.builder(
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+            shrinkWrap: true,
+            itemCount: controller.auctionsList.length,
+            itemBuilder: (context, index) {
+              final auction = controller.auctionsList[index];
+              return AuctionCard(
+                  numberPlat: auction.numberPlat,
+                  bidType: auction.bidType,
+                  startDate: auction.startDate,
+                  endDate: auction.endDate,
+                  bidStartAmount: auction.bidStartAmount,
+                  bidEndAmount: auction.bidEndAmount);
+            },
+          ),
         ),
       ),
     );
@@ -78,11 +84,12 @@ class AuctionCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 8),
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
       decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(imageUrl),
-          fit: BoxFit.fill,
-          opacity: 0.7,
-        ),
+        // image: DecorationImage(
+        //   image: AssetImage(imageUrl),
+        //   fit: BoxFit.fill,
+        //   opacity: 0.7,
+        // ),
+        color: kCardColor,
         // color: Colors.black87,
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(24),
@@ -91,10 +98,10 @@ class AuctionCard extends StatelessWidget {
         // borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.shade300,
-            offset: const Offset(0, 2),
-            spreadRadius: 2,
-            blurRadius: 3,
+            color: Colors.grey.shade500,
+            offset: const Offset(0, 1),
+            spreadRadius: 1,
+            blurRadius: 2,
           )
         ],
       ),
@@ -120,9 +127,7 @@ class AuctionCard extends StatelessWidget {
                   ),
                   child: Text(
                     numberPlat,
-                    style: TextStyle(
-                      fontFamily: CustomFontFamily.Roboto.name,
-                      color: Colors.white,
+                    style: const TextStyle(
                       fontSize: 16,
                     ),
                   ),
@@ -143,11 +148,10 @@ class AuctionCard extends StatelessWidget {
                   child: Center(
                     child: Text(
                       bidType.toUpperCase(),
-                      style: TextStyle(
-                        fontFamily: CustomFontFamily.Roboto.name,
+                      style: const TextStyle(
                         letterSpacing: 0.01,
+                        color: kBlackColor,
                         fontSize: 14,
-                        color: Colors.black87,
                       ),
                     ),
                   ),
@@ -168,11 +172,9 @@ class AuctionCard extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             'Bid Start Time',
                             style: TextStyle(
-                              fontFamily: CustomFontFamily.Roboto.name,
-                              color: kPrimaryColor,
                               letterSpacing: 0,
                               fontSize: 10,
                             ),
@@ -180,12 +182,11 @@ class AuctionCard extends StatelessWidget {
                           const SizedBox(height: 4),
                           Text(
                             startDate,
-                            style: TextStyle(
-                              fontFamily: CustomFontFamily.Roboto.name,
+                            style: const TextStyle(
                               fontSize: 12.0,
                               letterSpacing: 0,
                               fontWeight: FontWeight.w600,
-                              color: kTextColor,
+                              color: kWhiteColor,
                             ),
                           ),
                         ],
@@ -195,11 +196,9 @@ class AuctionCard extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             'Bid End Time',
                             style: TextStyle(
-                              fontFamily: CustomFontFamily.Roboto.name,
-                              color: kRejectedColor,
                               letterSpacing: 0,
                               fontSize: 10,
                             ),
@@ -207,11 +206,9 @@ class AuctionCard extends StatelessWidget {
                           const SizedBox(height: 4),
                           Text(
                             endDate,
-                            style: TextStyle(
-                              fontFamily: CustomFontFamily.Roboto.name,
+                            style: const TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 12.0,
-                              color: kTextColor,
                             ),
                           ),
                         ],
@@ -230,16 +227,13 @@ class AuctionCard extends StatelessWidget {
                           const Text(
                             'Starting Bid Amount',
                             style: TextStyle(
-                              fontFamily: 'Roboto',
                               letterSpacing: 0,
                               fontSize: 10,
-                              color: kTextColor,
                             ),
                           ),
                           Text(
                             "Rs.$bidStartAmount",
                             style: const TextStyle(
-                              fontFamily: 'Roboto',
                               fontSize: 18,
                               letterSpacing: 0,
                               fontWeight: FontWeight.bold,
@@ -255,16 +249,13 @@ class AuctionCard extends StatelessWidget {
                           const Text(
                             'Current Highest Bid',
                             style: TextStyle(
-                              fontFamily: 'Roboto',
                               letterSpacing: 0,
                               fontSize: 10,
-                              color: kTextColor,
                             ),
                           ),
                           Text(
                             "Rs.$bidEndAmount",
                             style: const TextStyle(
-                              fontFamily: 'Roboto',
                               fontSize: 18,
                               letterSpacing: 0,
                               fontWeight: FontWeight.bold,
@@ -283,220 +274,3 @@ class AuctionCard extends StatelessWidget {
     );
   }
 }
-
-// class AuctionCard extends StatelessWidget {
-//   final String numberPlat;
-//   final String bidType;
-//   final String startDate;
-//   final String endDate;
-//   final String bidStartAmount;
-//   final String bidEndAmount;
-//   const AuctionCard({
-//     super.key,
-//     required this.numberPlat,
-//     required this.bidType,
-//     required this.startDate,
-//     required this.endDate,
-//     required this.bidStartAmount,
-//     required this.bidEndAmount,
-//   });
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       height: Get.height * 0.18,
-//       margin: const EdgeInsets.symmetric(vertical: 8),
-//       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-//       decoration: BoxDecoration(
-//         color: Colors.white,
-//         borderRadius: BorderRadius.circular(16),
-//         boxShadow: [
-//           BoxShadow(
-//               color: Colors.grey.shade300,
-//               offset: const Offset(0, 2),
-//               spreadRadius: 2,
-//               blurRadius: 3)
-//         ],
-//       ),
-//       child: Row(
-//         crossAxisAlignment: CrossAxisAlignment.center,
-//         children: [
-//           SizedBox(
-//             width: Get.width * 0.2,
-//             height: Get.height * 0.2,
-//             child: Column(
-//               crossAxisAlignment: CrossAxisAlignment.stretch,
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 Container(
-//                   height: Get.height * 0.05,
-//                   alignment: Alignment.center,
-//                   decoration: BoxDecoration(
-//                     color: bidType == "gold"
-//                         ? const Color(0xff653d00)
-//                         : bidType == "silver"
-//                         ? const Color(0xff3b3b3b)
-//                         : const Color(0xff478321),
-//                     borderRadius: const BorderRadius.only(
-//                       topLeft: Radius.circular(8),
-//                       topRight: Radius.circular(8),
-//                     ),
-//                   ),
-//                   child: Text(
-//                     numberPlat,
-//                     style: TextStyle(
-//                       fontFamily: CustomFontFamily.Roboto.name,
-//                       color: Colors.white,
-//                       fontSize: 16,
-//                     ),
-//                   ),
-//                 ),
-//                 Container(
-//                   height: Get.height * 0.05,
-//                   alignment: Alignment.center,
-//                   decoration: BoxDecoration(
-//                     image: DecorationImage(
-//                       image: AssetImage(bidType == "gold"
-//                           ? "assets/images/gold.png"
-//                           : bidType == "silver"
-//                           ? "assets/images/silver.png"
-//                           : "assets/images/platinum.png"),
-//                       fit: BoxFit.fitHeight,
-//                     ),
-//                     borderRadius: const BorderRadius.only(
-//                       bottomLeft: Radius.circular(8),
-//                       bottomRight: Radius.circular(8),
-//                     ),
-//                   ),
-//                   child: Center(
-//                     child: Text(
-//                       bidType.toUpperCase(),
-//                       style: const TextStyle(
-//                         fontFamily: 'Roboto',
-//                         letterSpacing: 0.01,
-//                         fontSize: 14,
-//                         color: Colors.black87,
-//                       ),
-//                     ),
-//                   ),
-//                 ),
-//               ],
-//             ),
-//           ),
-//           const SizedBox(width: 8),
-//           Expanded(
-//             child: Column(
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 Row(
-//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                   children: [
-//                     Text(
-//                       startDate,
-//                       style: const TextStyle(
-//                         fontFamily: 'Roboto',
-//                         fontSize: 12.0,
-//                         color: Colors.black87,
-//                       ),
-//                     ),
-//                     Text(
-//                       endDate,
-//                       style: const TextStyle(
-//                         fontFamily: 'Roboto',
-//                         fontSize: 12.0,
-//                         color: Colors.black87,
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//                 Row(
-//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                   children: [
-//                     Container(
-//                       margin:
-//                       const EdgeInsets.only(top: 4, bottom: 4, right: 4),
-//                       padding: const EdgeInsets.all(4),
-//                       decoration: BoxDecoration(
-//                         color: Colors.green[100],
-//                         borderRadius: BorderRadius.circular(8.0),
-//                       ),
-//                       child: const Text(
-//                         'Bid Start Date and Time',
-//                         style: TextStyle(
-//                           fontFamily: 'Roboto',
-//                           color: Color(0xff478321),
-//                           fontSize: 9,
-//                         ),
-//                       ),
-//                     ),
-//                     Container(
-//                       alignment: Alignment.center,
-//                       margin: const EdgeInsets.only(top: 4, bottom: 4),
-//                       padding: const EdgeInsets.all(4),
-//                       decoration: BoxDecoration(
-//                         color: Colors.red.shade100,
-//                         borderRadius: BorderRadius.circular(8.0),
-//                       ),
-//                       child: const Text(
-//                         'Bid End Date and Time',
-//                         style: TextStyle(
-//                           fontFamily: 'Roboto',
-//                           color: Color(0xffff0202),
-//                           fontSize: 9,
-//                         ),
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//                 Row(
-//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                   children: [
-//                     Text(
-//                       bidStartAmount,
-//                       style: const TextStyle(
-//                         fontFamily: 'Roboto',
-//                         fontSize: 20.0,
-//                         fontWeight: FontWeight.bold,
-//                       ),
-//                     ),
-//                     Text(
-//                       bidEndAmount,
-//                       style: const TextStyle(
-//                         fontFamily: 'Roboto',
-//                         fontSize: 20.0,
-//                         fontWeight: FontWeight.bold,
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//                 const Row(
-//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                   children: [
-//                     Text(
-//                       'Current Highest Bid',
-//                       style: TextStyle(
-//                         fontFamily: 'Roboto',
-//                         fontSize: 11,
-//                         color: Colors.black54,
-//                       ),
-//                     ),
-//                     Text(
-//                       'Starting Bid Amount',
-//                       style: TextStyle(
-//                         fontFamily: 'Roboto',
-//                         fontSize: 11,
-//                         color: Colors.black54,
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//               ],
-//             ),
-//           ),
-//           SizedBox(width: 4)
-//         ],
-//       ),
-//     );
-//   }
-// }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/platform/platform_io.dart';
 
@@ -22,9 +23,9 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      elevation: 0,
+      // elevation: 3,
       toolbarHeight: 65,
-      backgroundColor: kPrimaryColor,
+      // backgroundColor: Theme.of(context).primaryColorDark,
       automaticallyImplyLeading: GeneralPlatform.isWeb,
       leading: (screenName.isNotEmpty)?
          IconButton(onPressed:() {
