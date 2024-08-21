@@ -1,3 +1,4 @@
+import 'package:excise_e_auction/ui/screens/e_auction_screen.dart';
 import 'package:excise_e_auction/ui/screens/setting_screen.dart';
 import 'package:excise_e_auction/ui/screens/splash_screen.dart';
 import 'package:excise_e_auction/ui/screens/tag_winning_nbr_screen.dart';
@@ -36,6 +37,10 @@ class RouteManagement {
       ),
       GetPage(name: kSignInScreenRoute,
           page: ()=> const LoginScreen(),
+          binding: ScreensBindings()
+      ),
+      GetPage(name: kEAuctionScreenRoute,
+          page: ()=> const EAuctionScreen(),
           binding: ScreensBindings()
       ),
       GetPage(name: kTagWinningNbrScreenRoute,

@@ -1,11 +1,10 @@
 import 'dart:io';
-
+import 'package:excise_e_auction/ui/custom_widgets/custom_dashboard_card_widget.dart';
+import 'package:excise_e_auction/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:excise_e_auction/controllers/dashboard_screen_controller.dart';
 import 'package:excise_e_auction/utils/app_colors.dart';
-import 'package:excise_e_auction/utils/user_session.dart';
-
 import '../custom_widgets/custom_dialogs.dart';
 
 class DashboardScreen extends GetView<DashboardScreenController> {
@@ -23,56 +22,38 @@ class DashboardScreen extends GetView<DashboardScreenController> {
         key: controller.scaffoldKey,
         appBar: AppBar(
           elevation: 0,
-          toolbarHeight: 90,
+          toolbarHeight: 120,
           backgroundColor: kPrimaryColor,
           automaticallyImplyLeading: false,
           actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    decoration:  BoxDecoration(color: Colors.white,shape: BoxShape.circle,border: Border.all(color: const Color(0xff4A9F70),width: 1.5) ),
-                    child: Center(
-                      child: Stack(
-                        children: [
-                          Image.asset('assets/icons/profile-pic.png', height: 40, width: 40),
-                           Positioned(
-                            right: 0,top: 0,
-                            child: Container(
-                            height: 10,
-                            width: 10,
-                            decoration: const BoxDecoration(color: Color(0xff7FFF3B),shape: BoxShape.circle),
-                              ),)
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(UserSession.userModel.value.name,style: const TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.white))
-                ],
-              ),
-            )
-          ],
-           leading: GestureDetector(
+            GestureDetector(
               child:  Padding(
-                padding: const EdgeInsets.only(left: 10,top: 30),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Image.asset('assets/icons/menu_icon.png', height: 26, width: 34),
-                    const SizedBox(height: 2),
-                    const Text('Menu',style: TextStyle(fontSize: 11,fontWeight: FontWeight.w400,color: kWhiteColor))
-                  ],
-                ),
+                padding: const EdgeInsets.only(right: 10,top: 30),
+                child: Image.asset('assets/icons/toggle-white-icon.png', height: 35, width: 34),
               ),
               onTap: () {
                 controller.scaffoldKey.currentState!.openDrawer();
                 FocusScope.of(context).requestFocus(FocusNode());
               },
             ),
+
+          ],
+           title: Container(
+             padding: const EdgeInsets.all(5.0),
+             decoration:  BoxDecoration(color: Colors.white,shape: BoxShape.circle,border: Border.all(color: const Color(0xff4A9F70),width: 1.5) ),
+             child: Stack(
+               children: [
+                 Image.asset('assets/icons/user-icon.png', height: 55, width: 55),
+                 Positioned(
+                   right: 0,top: -5,
+                   child: Container(
+                     height: 20,
+                     width: 11,
+                     decoration: const BoxDecoration(color: Color(0xff7FFF3B),shape: BoxShape.circle),
+                   ),)
+               ],
+             ),
+           ),
         ),
         body: _buildBody(),
       ),
@@ -83,36 +64,33 @@ Widget  _buildBody() {
       clipBehavior: Clip.none,
       children: [
         Padding(
-          padding: EdgeInsets.only(top: Get.height*0.1,left: 20,right: 20),
+          padding: EdgeInsets.only(top: Get.height*0.1),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text("Main Menu",style: TextStyle(color: Color(0xff231F20),fontSize: 24,fontWeight: FontWeight.w400)),
+                const Text("Home",style: TextStyle(color: Color(0xff231F20),fontSize: 24,fontWeight: FontWeight.w400)),
                 const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    _dashboardCard(title: "Dashboard",iconPath: 'assets/icons/dashboard_icon.png'),
-                    const SizedBox(width: 10),
-                    _dashboardCard(title: "Intake Registration",iconPath: 'assets/icons/Intake_Registration.png'),
+                    CustomDashboardCardWidget(title: "Online\n Tax Payment", iconPath: 'assets/icons/online-tax-payment.png', onTap: () {},),
+                    CustomDashboardCardWidget(title: "Vehicle\n Verification",iconPath: 'assets/icons/vehicle-verification.png', onTap: (){},),
                   ]
                 ),
                 const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    _dashboardCard(title: "Reports",iconPath: 'assets/icons/Reports.png'),
-                    const SizedBox(width: 10),
-                    _dashboardCard(title: "GRM",iconPath: 'assets/icons/GRM.png'),],
+                    CustomDashboardCardWidget(title: "Tax\n Calculator",iconPath: 'assets/icons/tax-calculator.png', onTap: (){}),
+                    CustomDashboardCardWidget(title: "Search\n History",iconPath: 'assets/icons/search-history.png', onTap: (){}),],
                 ),
                 const SizedBox(height: 10),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    _dashboardCard(title: "E-Memo",iconPath: 'assets/icons/e-memo.png'),
                     const SizedBox(width: 10),
-                    _dashboardCard(title: "Task Management",iconPath: 'assets/icons/task_management.png'),],
+                    CustomDashboardCardWidget(title: "E-Auction",iconPath: 'assets/icons/online-payment 2.png', onTap: (){Get.toNamed(kEAuctionScreenRoute);}),
+                  ],
                 ),
                 SizedBox(height: Get.height*0.1),
               ],
@@ -130,44 +108,28 @@ Widget  _buildBody() {
               color: kPrimaryColor,
               borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
             ),
-            child: const Text(
-            "Dashboard",
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500,  color: kWhiteColor),
-          ),
+            child: RichText(
+              text: const TextSpan(
+                text: 'Welcome, ',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w300
+                ),
+                children: [
+                  TextSpan(
+                    text: 'Abdul Salam',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold
+                    )
+                  )
+                ]
+              ),
+            )
           ),
         )
       ],
     );
   }
 
-   Expanded _dashboardCard({String title="Title",Color shadowColor=const Color(0xff0F663E), String iconPath='assets/icons/programs.png'}) {
-    return Expanded(
-      child: GestureDetector(
-        onTap:()=> controller.onDashboardCardTap(title),
-        child: Container(
-          height: 160,
-          decoration: BoxDecoration(color: const Color(0xffF4F3FF),borderRadius: BorderRadius.circular(20),
-            boxShadow: [BoxShadow(color: shadowColor,blurRadius: 0,offset: const Offset(8, 6)),BoxShadow(color: shadowColor,blurRadius: 0,offset: const Offset(8, 0))]),
-          margin: const EdgeInsets.only(right: 8,top: 20),
-          padding: const EdgeInsets.all(10),
-          child: Container(
-            decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(20),
-            boxShadow:  const [BoxShadow(color: Colors.black12,blurRadius: 10,offset: Offset(0, 10))]),
-            padding: const EdgeInsets.all(5),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(height: 60,width: 60,padding: const EdgeInsets.only(left: 7),child: Image.asset(iconPath)),
-                const SizedBox(height: 5),
-                Text(title,textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,maxLines: 2,
-                  style:  const TextStyle(fontSize: 13,fontWeight: FontWeight.w500,color: Color(0xff000000)))
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 
 }
