@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/platform/platform_io.dart';
 
@@ -25,14 +24,32 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       toolbarHeight: 65,
       automaticallyImplyLeading: GeneralPlatform.isWeb,
-      leading: (screenName.isNotEmpty)?
+      leadingWidth: 65,
+      leading: (screenName == "Dashboard Screen")?
+      Container(
+        margin: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(5),
+        decoration: BoxDecoration(
+            border: Border.all(color: kPrimaryColor),
+            borderRadius: BorderRadius.circular(50)
+        ),
+        child: Image.asset('assets/icons/user-icon.png', color: kPrimaryColor, width: 18, height: 18,),
+      ) : screenName.isNotEmpty ?
          IconButton(onPressed:() {
            if (onBackButtonPress != null) {
              onBackButtonPress!();
            }else{
              Get.back();
            }
-         },icon: const Icon(Icons.arrow_back, color: kWhiteColor, size: 25)):null,
+         },icon: const Icon(Icons.arrow_back, color: kPrimaryColor, size: 25)):null,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(14),
+            child: GestureDetector(
+              child: Image.asset('assets/icons/menu-icon.png',color: kPrimaryColor, width: 32,),
+            ),
+          )
+        ],
         // GestureDetector(
         //   child:  Padding(
         //     padding: const EdgeInsets.only(left: 12,top: 12),
@@ -51,8 +68,8 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
         //   },
         // ):null,
       title: Text(
-        screenName,
-        style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w500,  color: kWhiteColor),
+        screenName == "Dashboard Screen"? "Excise App" : screenName,
+        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500,  color: kWhiteColor),
       ),
       centerTitle: true,
       actionsIconTheme: const IconThemeData(),

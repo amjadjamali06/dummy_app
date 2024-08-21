@@ -17,6 +17,8 @@ import 'package:excise_e_auction/controllers/login_screen_controller.dart';
 import 'package:excise_e_auction/controllers/setting_screen_controller.dart';
 import 'package:excise_e_auction/controllers/splash_screen_controller.dart';
 
+import '../controllers/e_auction_screen_controller.dart';
+
 
 ///Created by Amjad Jamali 03-Aug-2023
 class ScreensBindings extends Bindings {
@@ -34,10 +36,9 @@ class ScreensBindings extends Bindings {
     Get.lazyPut(() => TagWinningNbrScreenController());
     Get.lazyPut(() => AuctionRequestScreenController());
     Get.lazyPut(() => PlaceBidScreenController());
-    // Get.lazyPut(() => EAuctionScreenController());
+    Get.lazyPut(() => EAuctionScreenController());
     Get.lazyPut(() => AuctionsListScreenController());
     Get.lazyPut(() => PremiumNumberListScreenController());
-    // Get.lazyPut(() => EAuctionScreenController());
     Get.lazyPut(()=>AuctionCategoryScreenController());
     Get.lazyPut(()=>AuctionRequestCategoryScreenController());
   }

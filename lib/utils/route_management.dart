@@ -18,6 +18,7 @@ import 'package:excise_e_auction/ui/screens/home_screen.dart';
 import 'package:excise_e_auction/ui/screens/login_screen.dart';
 import 'package:excise_e_auction/utils/constants.dart';
 import 'package:excise_e_auction/utils/screen_bindings.dart';
+import '../ui/screens/e_auction_screen.dart';
 
 /*Created By: Amjad Jamali on 03-Aug-2023
 * Last Modified by Afaque Ali on 21-Aug-2024*/
@@ -61,10 +62,6 @@ class RouteManagement {
           page: ()=> const PremiumNumberListScreen(),
           binding: ScreensBindings()
       ),
-      // GetPage(name: kEAuctionScreenRoute,
-      //     page: ()=> const EAuctionScreen(),
-      //     binding: ScreensBindings()
-      // ),
       GetPage(
           name: kAuctionCategoryScreenRoute,
           page: ()=> const AuctionCategoryScreen(),
@@ -75,10 +72,10 @@ class RouteManagement {
           page: ()=> const AuctionRequestCategoryScreen(),
           binding: ScreensBindings()
       ),
-      /*GetPage(name: kEAuctionScreenRoute,
+      GetPage(name: kEAuctionScreenRoute,
           page: ()=> const EAuctionScreen(),
           binding: ScreensBindings()
-      ),*/
+      ),
       GetPage(name: kTagWinningNbrScreenRoute,
           page: ()=> const TagWinningNbrScreen(),
           binding: ScreensBindings()
