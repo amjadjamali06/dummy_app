@@ -1,4 +1,5 @@
 import 'package:excise_e_auction/models/item_model.dart';
+import 'package:excise_e_auction/models/placeBidModel.dart';
 import 'package:excise_e_auction/models/user_model.dart';
 
 class DummyData {
@@ -108,5 +109,9 @@ class DummyData {
       },
 
     ];
+  }
+
+  static PlaceBidModel getPlaceBidData(){
+    return PlaceBidModel(id: "1", plateCategory: 'Platinum', nbrPlate: 'Ahmed 07', bidStartDate: '22/3/2024 | 11:59', bidEndDate: '26/3/2024 | 11:59', startingBidAmount: '100,000', currentHighestBid: '120,000', bidAmount: '');
   }
 }

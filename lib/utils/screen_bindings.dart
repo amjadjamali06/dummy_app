@@ -1,4 +1,10 @@
+import 'package:excise_e_auction/controllers/login_t_screen_controller.dart';
+import 'package:excise_e_auction/controllers/registration_screen_controller.dart';
+import 'package:excise_e_auction/controllers/auction_request_screen_controller.dart';
+import 'package:excise_e_auction/controllers/place_bid_screen_controller.dart';
 import 'package:excise_e_auction/controllers/tag_winning_nbr_screen_controller.dart';
+// import 'package:excise_e_auction/controllers/e_auction_screen_controller.dart';
+import 'package:excise_e_auction/controllers/auctions_list_screen_controller.dart';
 // import 'package:excise_e_auction/controllers/e_auction_screen_controller.dart';
 import 'package:excise_e_auction/controllers/auction_category_screen_controller.dart';
 import 'package:excise_e_auction/controllers/auction_request_category_screen_controller.dart';
@@ -22,7 +28,13 @@ class ScreensBindings extends Bindings {
     Get.lazyPut(() => LoginScreenController());
     Get.lazyPut(() => SettingScreenController());
     Get.lazyPut(() => CustomEndDrawerController());
+    Get.lazyPut(() => RegistrationScreenController());
+    Get.lazyPut(() => LoginTScreenController());
     Get.lazyPut(() => TagWinningNbrScreenController());
+    Get.lazyPut(() => AuctionRequestScreenController());
+    Get.lazyPut(() => PlaceBidScreenController());
+    // Get.lazyPut(() => EAuctionScreenController());
+    Get.lazyPut(() => AuctionsListScreenController());
     // Get.lazyPut(() => EAuctionScreenController());
     Get.lazyPut(()=>AuctionCategoryScreenController());
     Get.lazyPut(()=>AuctionRequestCategoryScreenController());

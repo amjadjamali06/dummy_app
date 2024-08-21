@@ -1,16 +1,22 @@
-/*Created By: Amjad Jamali on 05-Aug-2023*/
+/*Created By: Amjad Jamali on 05-Aug-2023
+* Last Modified by Afaque Ali on 21-Aug-2024*/
 
 const String kAppName = "PSPA Beta"; //PUNJAB SOCIAL PROTECTION AUTHORITY
 ///*********************  Route Names   *********************/
 const String kSplashScreenRoute = "/";
 const String kLoginScreenRoute = "/LOGIN_SCREEN";
+const String kLoginTScreenRoute = "/LOGIN_T_SCREEN";
+const String kRegistrationScreenController = "/REGISTRATION_SCREEN_CONTROLLER";
 const String kHomeScreenRoute = "/HOME_SCREEN";
 const String kDashboardScreenRoute = "/DASHBOARD_SCREEN";
 const String kSettingScreenRoute = "/SETTING_SCREEN";
 const String kRegistrationScreenRoute = "/REGISTRATION_SCREEN";
 const String kSignInScreenRoute = "/SIGN_IN_SCREEN";
+const String kAuctionsListScreenRoute = "/AUCTION_LIST_SCREEN";
 const String kTagWinningNbrScreenRoute = "/TAG_WINNING_NBR_SCREEN";
 const String kEAuctionScreenRoute = "/E_AUCTION_SCREEN";
+const String kAuctionRequestScreenRoute = "/AUCTION_REQUEST_SCREEN";
+const String kPlaceBidScreenRoute = "/PLACE_BID_SCREEN";
 const String kAuctionCategoryScreenRoute = "/AUCTION_CATEGORY_SCREEN";
 const String kAuctionRequestCategoryScreenRoute = "/AUCTION_REQUEST_CATEGORY_SCREEN";
 
