@@ -3,6 +3,8 @@ import 'package:excise_e_auction/controllers/login_t_screen_controller.dart';
 import 'package:excise_e_auction/ui/screens/login_t_screen.dart';
 import 'package:excise_e_auction/ui/screens/registration_screen.dart';
 import 'package:excise_e_auction/ui/screens/auctions_list_screen.dart';
+import 'package:excise_e_auction/ui/screens/auction_request_screen.dart';
+import 'package:excise_e_auction/ui/screens/place_bid_screen.dart';
 import 'package:excise_e_auction/ui/screens/setting_screen.dart';
 import 'package:excise_e_auction/ui/screens/splash_screen.dart';
 import 'package:excise_e_auction/ui/screens/tag_winning_nbr_screen.dart';
@@ -56,6 +58,14 @@ class RouteManagement {
       // ),
       GetPage(name: kTagWinningNbrScreenRoute,
           page: ()=> const TagWinningNbrScreen(),
+          binding: ScreensBindings()
+      ),
+      GetPage(name: kAuctionRequestScreenRoute,
+          page: ()=> const AuctionRequestScreen(),
+          binding: ScreensBindings()
+      ),
+      GetPage(name: kPlaceBidScreenRoute,
+          page: ()=> const PlaceBidScreen(),
           binding: ScreensBindings()
       ),
       GetPage(

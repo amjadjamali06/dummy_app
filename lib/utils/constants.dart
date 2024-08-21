@@ -15,6 +15,8 @@ const String kSignInScreenRoute = "/SIGN_IN_SCREEN";
 const String kAuctionsListScreenRoute = "/AUCTION_LIST_SCREEN";
 const String kTagWinningNbrScreenRoute = "/TAG_WINNING_NBR_SCREEN";
 const String kEAuctionScreenRoute = "/E_AUCTION_SCREEN";
+const String kAuctionRequestScreenRoute = "/AUCTION_REQUEST_SCREEN";
+const String kPlaceBidScreenRoute = "/PLACE_BID_SCREEN";
 
 ///*********************  User Messages   *********************///
 const String kPermissionPermanentlyDenied =  "Permission is Permanently Denied\nPlease allow permission from settings and try again.";
