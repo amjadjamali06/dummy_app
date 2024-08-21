@@ -3,10 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:excise_e_auction/utils/constants.dart';
-import 'package:excise_e_auction/utils/user_session.dart';
 
-/*Created By: Amjad Jamali on 15-Aug-2023
-* Last Modified by Afaque Ali on 21-Aug-2024*/
+/*Created By: Amjad Jamali on 15-Aug-2023*/
 
 class SplashScreenController extends GetxController {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -28,7 +26,7 @@ class SplashScreenController extends GetxController {
   }
 
   void _screenNavigation() async {
-    Get.offAllNamed(kLoginTScreenRoute);
+    Get.offAllNamed(kLoginScreenRoute);
   }
 
   void onScreenTap() {

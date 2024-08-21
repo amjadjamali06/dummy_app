@@ -52,7 +52,7 @@ class GeneralDropdown extends StatelessWidget {
                       const TextSpan(
                           text: '*',
                           style: TextStyle(
-                              color: kRequiredRedColor,
+                              color: kRejectedColor,
                               fontWeight: FontWeight.bold))
                     ]
                   : null,
@@ -70,7 +70,7 @@ class GeneralDropdown extends StatelessWidget {
                   ? null
                   : Border.all(color: kFieldBorderColor),
               color: readOnly
-                  ? kFieldGreyColor
+                  ? kFieldBGColor
                   : _withShadow.value
                       ? kWhiteColor
                       : kWhiteColor,
@@ -122,7 +122,7 @@ class GeneralDropdown extends StatelessWidget {
                                 alignment: Alignment.centerLeft,
                                 decoration: BoxDecoration(
                                   color: isSelected ? kPrimaryColor : kWhiteColor,
-                                  border: const Border(bottom: BorderSide(color: kFieldGreyColor)),
+                                  border: const Border(bottom: BorderSide(color: kFieldBGColor)),
                                   boxShadow: const [BoxShadow(spreadRadius: 0,blurRadius: 2, color: kFieldShadowColor,offset: Offset(0, 1))]
                                 ),
                                 child: Text(item.toString(), style: TextStyle(color: isSelected ? kWhiteColor : kTextColor),),
@@ -225,7 +225,7 @@ class GeneralDropdown extends StatelessWidget {
                 child: Text(
                   controller.errorMessage.value,
                   style:
-                      const TextStyle(color: kRequiredRedColor, fontSize: 12),
+                      const TextStyle(color: kRejectedColor, fontSize: 12),
                 ),
               )),
         ],

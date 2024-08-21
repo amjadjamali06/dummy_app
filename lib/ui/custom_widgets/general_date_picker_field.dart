@@ -38,7 +38,7 @@ class GeneralDatePickerField extends StatelessWidget {
           RichText(text: TextSpan(text: dateManager.fieldName,
             style: const TextStyle(color: kTextColor),
             children: const [
-              TextSpan(text: '*', style: TextStyle(color: kRequiredRedColor, fontWeight: FontWeight.bold))
+              TextSpan(text: '*', style: TextStyle(color: kRejectedColor, fontWeight: FontWeight.bold))
             ],
           )),
 
@@ -49,7 +49,7 @@ class GeneralDatePickerField extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(_withShadow ? 4 : kFieldRadius),
                 border:  _withShadow ? null : Border.all(color: kFieldBorderColor),
-                color: readOnly ? kFieldGreyColor : _withShadow ? kWhiteColor : kWhiteColor,
+                color: readOnly ? kFieldBGColor : _withShadow ? kWhiteColor : kWhiteColor,
                 boxShadow: _withShadow ? [
                   const BoxShadow(blurRadius: 3,spreadRadius: 1, color: kFieldShadowColor)
                 ] : null,
@@ -68,7 +68,7 @@ class GeneralDatePickerField extends StatelessWidget {
           const SizedBox(height: 4),
           Obx(() => Visibility(
             visible: dateManager.errorMessage.value.isNotEmpty,
-            child: Text(dateManager.errorMessage.value, style: const TextStyle(color: kRequiredRedColor, fontSize: 12),),
+            child: Text(dateManager.errorMessage.value, style: const TextStyle(color: kRejectedColor, fontSize: 12),),
           )),
 
         ],

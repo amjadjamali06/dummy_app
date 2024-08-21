@@ -32,7 +32,7 @@ class UserSession {
     const FlutterSecureStorage storage =  FlutterSecureStorage();
     final value = await storage.read(key: 'USER_DATA');
     userModel.value = UserModel.fromOfflineJson(jsonDecode(value ?? "{}"));
-    return !userModel.value.isEmpty && userModel.value.isRembembered;
+    return !userModel.value.isEmpty && userModel.value.isRemembered;
   }
 
   Future<bool> logout() async {

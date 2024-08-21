@@ -11,8 +11,9 @@ class UserModel extends BaseModel{
   String status = "";
   String phoneNumber = "";
   String file = "";
-  bool isRembembered = false;
+  bool isRemembered = false;
   String role = "";
+  String password = "";
 
   UserModel.empty();
 
@@ -26,11 +27,12 @@ class UserModel extends BaseModel{
     status = json["status"]??"";    
     phoneNumber = json["phone_number"]??"";
     file = json["file"]??"";
+    password = json["password"]??"";
   }
 
   UserModel.fromOfflineJson(Map<String, dynamic> json) {
     id = '${json['id'] ?? ''}';
-    name = '${json["name"] ?? "Admin"}';
+    name = '${json["name"] ?? ""}';
     fatherName = '${json["father_name"] ?? ""}';
     cnic = '${json["cnic"] ?? ""}';
     age = '${json["age"] ?? ""}';
@@ -38,7 +40,8 @@ class UserModel extends BaseModel{
     status = '${json["status"] ?? ""}';
     phoneNumber = '${json["phone_number"] ?? ""}';
     file = '${json["file"] ?? ""}';
-    isRembembered = json['is_remembered'] ?? false;
+    isRemembered = json['is_remembered'] ?? false;
+    password = json['password'] ?? '';
   }
 
   Map<String,dynamic> toJson(){
@@ -52,6 +55,7 @@ class UserModel extends BaseModel{
       "status": status,
       "phone_number": phoneNumber,
       "file": file,
+      "password": password,
     };
   }
 
@@ -66,7 +70,8 @@ class UserModel extends BaseModel{
       "status": status,
       "phone_number": phoneNumber,
       "file": file,
-      "is_remembered": isRembembered,
+      "is_remembered": isRemembered,
+      "password": password,
     };
   }
 

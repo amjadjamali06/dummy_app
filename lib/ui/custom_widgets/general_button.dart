@@ -1,3 +1,4 @@
+import 'package:excise_e_auction/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:excise_e_auction/utils/app_colors.dart';
 
@@ -15,10 +16,14 @@ class GeneralButton extends StatelessWidget {
   final double height;
   final BorderSide borderSide;
 
-  const GeneralButton({Key? key,this.borderSide=BorderSide.none, required this.onPressed, this.text='Submit',this.textColor=Colors.white, this.margin=0, this.color=kButtonGreenColor, this.fontSize = 18.0, this.radius = 10, this.width = 500, this.height = 44}) : super(key: key);
+  const GeneralButton({super.key,this.borderSide=BorderSide.none, required this.onPressed, this.text='Submit',this.textColor=kPrimaryDarkColor, this.margin=0, this.color=kButtonColor, this.fontSize = 18.0, this.radius = kFieldRadius, this.width = 500, this.height = 60});
 
   @override
   Widget build(BuildContext context) {
+    return _buildBodyGreen();
+  }
+
+  Widget _buildBodyGreen(){
     return Container(
       width: width,
       height: height,
@@ -26,11 +31,40 @@ class GeneralButton extends StatelessWidget {
       child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
-            backgroundColor: color,
-            shape: RoundedRectangleBorder(
-              side:borderSide,
-              borderRadius: BorderRadius.circular(radius)
-            )
+              backgroundColor: kPrimaryColor,
+              shape: RoundedRectangleBorder(
+                  side:borderSide,
+                  borderRadius: BorderRadius.circular(radius)
+              )
+          ),
+          child: Text(text,
+            style: TextStyle(
+                fontSize: fontSize,
+                color:textColor,
+                fontWeight: FontWeight.w400
+            ),
+          )
+      ),
+    );
+  }
+
+  Widget _buildBodyGradient(){
+    return Container(
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+          gradient: LinearGradient(colors: [kPrimaryColor,kPrimaryLightColor.withAlpha(220)]),
+          borderRadius: BorderRadius.circular(radius)
+      ),
+      margin: EdgeInsets.symmetric(horizontal: margin, vertical: 10),
+      child: ElevatedButton(
+          onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.transparent,
+              shape: RoundedRectangleBorder(
+                  side:borderSide,
+                  borderRadius: BorderRadius.circular(radius)
+              )
           ),
           child: Text(text,
             style: TextStyle(

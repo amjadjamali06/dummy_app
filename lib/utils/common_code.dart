@@ -31,17 +31,6 @@ class CommonCode {
         fontSize: 13.0);
   }
 
-  void showSuccessToast({required String message}) {
-    Fluttertoast.showToast(
-      msg: message,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 1,
-      backgroundColor: kGreenColor,
-      textColor: Colors.white,
-      fontSize: 13.0,
-    );
-  }
 
 
   Future<bool> checkInternetConnection() async {

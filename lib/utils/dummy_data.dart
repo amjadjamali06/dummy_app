@@ -5,31 +5,24 @@ import 'package:excise_e_auction/models/user_model.dart';
 class DummyData {
   static bool debugMode = true;
 
+  static List<UserModel> users = [UserModel.fromJson({"id":'1', "name":'Amjad Jamali', "email":'amjad@gmail.com', "password":'123456'})];
+
   static List<String> genderList() => ["Male", "Female", "Transgender"];
 
-  static UserModel loginUser() {
-    return UserModel.fromJson({
-      "id":'1',
-      "name":'Amjad',
-      "email":'amjadjamali@gmail.com',
-      "group_id":'1',
-      "district_id":'235sdgb-egy45yhy-34y4g34y',
-    });
+  static UserModel loginUser(String username, String password) {
+    for (UserModel user in users) {
+      if(username==user.email && password == user.password){
+        return user;
+      }
+    }
+    return UserModel.empty()..responseMessage = "Invalid Username or Password !";
  }
 
  static List<ItemModel> getDropDownDummyLocation(){
   return [
-    ItemModel("0", "item1"),
-    ItemModel("1", "item2"),
-    ItemModel("2", "item3"),
-    ItemModel("3", "item4"),
-    ItemModel("4", "item5"),
-    ItemModel("5", "item6"),
-    ItemModel("6", "item7"),
-    ItemModel("7", "item8"),
-    ItemModel("8", "item9"),
-    ItemModel("9", "item10"),
-    
+    for(int i=0; i<10;i++)
+      ItemModel("$i", "Item-${i+1}"),
+
   ];
  }
 

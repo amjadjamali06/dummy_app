@@ -41,6 +41,6 @@ const String kSessionExpireMsg = 'Session Expired\nPlease login Again.';
 
 
 
-const double kFieldRadius = 16;
+const double kFieldRadius = 8;
 const double kFieldVerticalMargin = 4;
 

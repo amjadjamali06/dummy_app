@@ -9,7 +9,6 @@ import 'package:excise_e_auction/utils/constants.dart';
 import 'package:excise_e_auction/utils/text_field_manager.dart';
 import 'package:excise_e_auction/utils/text_filter.dart';
 import 'package:excise_e_auction/utils/user_session.dart';
-import '../utils/common_code.dart';
 
 class LoginScreenController extends GetxController{
 
@@ -33,9 +32,9 @@ class LoginScreenController extends GetxController{
 
       if(user.responseMessage == 'Success'){
         if(rememberMe.value){
-          user.isRembembered = true;await UserSession().createSession(user: user);
+          user.isRemembered = true;await UserSession().createSession(user: user);
         }else{
-          user.isRembembered = false;
+          user.isRemembered = false;
           await UserSession().createSession(user: user);
         }
         Get.offAllNamed(kDashboardScreenRoute);

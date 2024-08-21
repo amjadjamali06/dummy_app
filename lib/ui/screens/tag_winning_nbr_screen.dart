@@ -1,5 +1,4 @@
 import 'package:excise_e_auction/controllers/tag_winning_nbr_screen_controller.dart';
-import 'package:excise_e_auction/ui/custom_widgets/custom_heading_text.dart';
 import 'package:excise_e_auction/ui/custom_widgets/general_button.dart';
 import 'package:excise_e_auction/ui/custom_widgets/general_text_field.dart';
 import 'package:excise_e_auction/utils/app_colors.dart';
@@ -16,14 +15,22 @@ class TagWinningNbrScreen extends GetView<TagWinningNbrScreenController> {
     return CustomScaffold(
       scaffoldKey: controller.scaffoldKey,
       className: runtimeType.toString(),
-      screenName: ' ',
+      screenName: '',
       gestureDetectorOnTap: controller.removeFocus,
       body: getBody(),
     );
   }
   Widget getBody(){
     return Column(children: [
-      const CustomHeadingText(text: 'Tag Winning Number',headingColor: Colors.black,),
+       Container(
+        margin: const EdgeInsets.only(top: 20,bottom: 20),
+        child: const Text("Tag Winning Number", style: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+          color:kTextColor ,
+        ),
+        ),
+      ),
       GeneralTextField.withBorder(tfManager: controller.winningAuctionIdTfManager,readOnly: true,),
       GeneralTextField.withBorder(tfManager: controller.winningNbrPlateDetailsTfManager,readOnly: true,),
       GeneralTextField.withBorder(tfManager: controller.vehicleRegistrationNbrTfManager),

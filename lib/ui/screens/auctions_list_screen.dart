@@ -172,7 +172,7 @@ class AuctionCard extends StatelessWidget {
                             'Bid Start Time',
                             style: TextStyle(
                               fontFamily: CustomFontFamily.Roboto.name,
-                              color: kGreenColor,
+                              color: kPrimaryColor,
                               letterSpacing: 0,
                               fontSize: 10,
                             ),
@@ -199,7 +199,7 @@ class AuctionCard extends StatelessWidget {
                             'Bid End Time',
                             style: TextStyle(
                               fontFamily: CustomFontFamily.Roboto.name,
-                              color: kRequiredRedColor,
+                              color: kRejectedColor,
                               letterSpacing: 0,
                               fontSize: 10,
                             ),

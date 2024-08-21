@@ -126,7 +126,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
               ),
               floatingActionButton: widget.onAddPressed == null ? null : FloatingActionButton(
                 onPressed:()=> widget.onAddPressed!(),
-                backgroundColor: kButtonBlackColor,
+                backgroundColor: kButtonColor,
                 shape: const CircleBorder(),
                 child: const Icon(Icons.add,color: kWhiteColor, size: 32),
               ),

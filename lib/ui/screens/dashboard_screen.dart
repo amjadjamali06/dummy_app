@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:excise_e_auction/ui/custom_widgets/custom_dashboard_card_widget.dart';
 import 'package:excise_e_auction/utils/constants.dart';
+import 'package:excise_e_auction/utils/user_session.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:excise_e_auction/controllers/dashboard_screen_controller.dart';
@@ -109,16 +110,16 @@ Widget  _buildBody() {
               borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
             ),
             child: RichText(
-              text: const TextSpan(
+              text: TextSpan(
                 text: 'Welcome, ',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w300
                 ),
                 children: [
                   TextSpan(
-                    text: 'Abdul Salam',
-                    style: TextStyle(
+                    text: UserSession.userModel.value.name,
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold
                     )
                   )

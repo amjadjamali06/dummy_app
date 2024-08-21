@@ -99,7 +99,7 @@ class HomeScreen extends GetView<HomeScreenController> {
 
   GestureDetector homeButton() {
     return GestureDetector(
-      onTap: ()=>Get.toNamed(kSignInScreenRoute),
+      onTap: ()=>Get.toNamed(kLoginScreenRoute),
       child: Container(width: double.infinity, height: 54, padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
             color: Colors.white,

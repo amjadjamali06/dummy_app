@@ -3,7 +3,6 @@ import 'package:excise_e_auction/ui/custom_widgets/general_date_picker_field.dar
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../utils/app_colors.dart';
-import '../custom_widgets/custom_heading_text.dart';
 import '../custom_widgets/custom_scaffold.dart';
 import '../custom_widgets/general_button.dart';
 import '../custom_widgets/general_text_field.dart';
@@ -29,7 +28,15 @@ class PlaceBidScreen extends GetView<PlaceBidScreenController> {
 
   Widget getBody(BuildContext context){
     return Column(children: [
-      const CustomHeadingText(text: 'Place a Bid',headingColor: Colors.black,),
+      Container(
+        margin: const EdgeInsets.only(top: 20,bottom: 20),
+        child: const Text('Place a Bid', style: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+          color:kTextColor,
+        ),
+        ),
+      ),
       GeneralTextField.withBorder(tfManager: controller.plateCategoryTfManager,readOnly: true,),
       GeneralTextField.withBorder(tfManager: controller.desiredNbrPlateTfManager,readOnly: true,),
       GeneralDatePickerField.withBorder(dateManager: controller.bidStartDateManager,readOnly: true,),

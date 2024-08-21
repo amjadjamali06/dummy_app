@@ -142,7 +142,7 @@ class CustomDialogs {
       dialogType: DialogType.success,
       headerAnimationLoop: false,
       animType: AnimType.scale,
-      btnOkColor: kGreenColor,
+      btnOkColor: kPrimaryColor,
       customHeader: ClipRRect(
         borderRadius: const BorderRadius.only(topLeft: Radius.circular(100),topRight: Radius.circular(100)),
         child: Padding(
@@ -165,7 +165,7 @@ class CustomDialogs {
           const Text("What's New",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
           const SizedBox(height: 8),
             Container(
-              decoration: BoxDecoration(color: kFieldGreyColor,borderRadius: BorderRadius.circular(5)),
+              decoration: BoxDecoration(color: kFieldBGColor,borderRadius: BorderRadius.circular(5)),
               padding: const EdgeInsets.symmetric(vertical: 4),
               child: Column(
                 children: [
@@ -212,7 +212,7 @@ class CustomDialogs {
       headerAnimationLoop: false,
       animType: AnimType.scale,
       btnOkColor: type == DialogType.success ? null /*kPrimaryColor*/ :
-      type == DialogType.error ? kRequiredRedColor : kYellowColor,
+      type == DialogType.error ? kRejectedColor : kPendingColor,
       title: title,
       dismissOnTouchOutside: false || DummyData.debugMode,
       desc: description,
@@ -234,7 +234,7 @@ class CustomDialogs {
       dialogType: DialogType.warning,
       headerAnimationLoop: false,
       animType: AnimType.bottomSlide,
-      btnOkColor: kGreenColor,
+      btnOkColor: kPrimaryColor,
       dismissOnTouchOutside: false,
       body: Align(
         alignment: Alignment.center,
@@ -259,7 +259,7 @@ class CustomDialogs {
           onOkBtnPressed();
         }
       },
-      btnCancelColor: kRequiredRedColor,
+      btnCancelColor: kRejectedColor,
       btnCancelOnPress: () {
         // Get.back();
       },
@@ -318,76 +318,6 @@ class CustomDialogs {
     ).show();
   }
 
-   void customInformationDialog({
-    required String title,
-    required String description,
-    required VoidCallback okBtnPressed,
-  }) {
-    Get.dialog(
-      Dialog(
-        backgroundColor: Colors.transparent,
-        insetPadding: const EdgeInsets.symmetric(horizontal: 20),
-        elevation: 0,
-        child: Stack(
-          children: [
-            Container(
-              margin: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: kWhiteColor,
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(top: 35, bottom: 20),
-                      child: Column(
-                        children: [
-                          Text(title, style: GoogleFonts.notoNastaliqUrdu(fontWeight: FontWeight.w400, fontSize: 36, color: kHeadingGreenColor)),
-                          Container(
-                            margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                            child: Text(
-                              description,
-                              style: GoogleFonts.notoNastaliqUrdu(fontWeight: FontWeight.w400, fontSize: 16),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                          GeneralButton(text: "Ok", fontSize: 20, radius: 10, margin: 10, onPressed: okBtnPressed, color: kBlackColor),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Positioned(
-              top: 0,
-              right: 0,
-              child: Container(
-                height: 40,
-                width: 40,
-                decoration: BoxDecoration(
-                  color: kWhiteColor,
-                  borderRadius: BorderRadius.circular(35),
-                  boxShadow: const [BoxShadow(blurRadius: 2,color: kBlack45Color)],
-                ),
-                child: IconButton(
-                  icon: const Icon(Icons.close, size: 25,),
-                  padding: EdgeInsets.zero,
-                  splashRadius: 1,
-                  onPressed: () {
-                   Get.back();
-                  },
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
 
 }

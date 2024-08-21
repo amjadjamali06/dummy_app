@@ -1,11 +1,8 @@
-import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:excise_e_auction/controllers/login_screen_controller.dart';
-import 'package:excise_e_auction/ui/custom_widgets/custom_heading_text.dart';
-import 'package:excise_e_auction/ui/custom_widgets/custom_scaffold.dart';
 import 'package:excise_e_auction/ui/custom_widgets/general_button.dart';
 import 'package:excise_e_auction/utils/app_colors.dart';
 import '../../utils/constants.dart';
@@ -16,53 +13,77 @@ class LoginScreen extends GetView<LoginScreenController> {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScaffold(className: runtimeType.toString(),
-      screenName: '',
-      scaffoldKey: controller.scaffoldKey,
-      gestureDetectorOnTap: controller.removeFocus,
-      onNotificationListener: (detail) {
-        if(detail is UserScrollNotification) {
-          controller.removeFocus();
-        }
-        return true;
-      },
-      body: _getBody());
+    return Scaffold(key: controller.scaffoldKey,
+      backgroundColor: kPrimaryDarkColor,
+      body: _getBody(),
+    );
   }
 
   Widget _getBody(){
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        SizedBox(height: Get.height*0.1),
-        const CustomHeadingText(text: 'Sign In',headingColor: kBlackColor),
-        SizedBox(height: Get.height*0.04),
-        buildPasswordTextField(tfManager: controller.usernameTFMController,prefixIcon:'assets/icons/user_icon.png',suffixIcon: false ),
-        const SizedBox(height: 24),
-        buildPasswordTextField(tfManager: controller.passwordTFMController,prefixIcon:'assets/icons/pass_icon.png',suffixIcon: true, obscureText: controller.obscurePassword, ),
-        const SizedBox(height: 16),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text('Remember me next time',style: TextStyle(fontSize: 15,color: kBlackColor,fontWeight: FontWeight.w600),),
-            Obx(()=> Switch(
-              value: controller.rememberMe.value,
-              onChanged: (_) => controller.rememberMe.toggle(),
-            )),
-        ],
-      ),
-        const SizedBox(height: 24),
-        GeneralButton(onPressed: (){controller.onSignInPressed();},text: 'SIGN IN',color: kButtonGreenColor),
-        const SizedBox(height: 16),
-        const Text('Forgot your password?',style: TextStyle(fontSize: 16,color:  Color(0xff1560B7)),),
-        const SizedBox(height: 40),
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              boxShadow: [BoxShadow(blurRadius: 5,spreadRadius: 2, color: kFieldBorderColor)],
+              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(150), bottomRight: Radius.circular(150))
+            ),
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(150), bottomRight: Radius.circular(150)),
+              child: Image.asset('assets/images/login-header4.png',height: Get.height*0.3,width: Get.width, fit: BoxFit.cover,),
+            ),
+          ),
+
+          SizedBox(height: Get.height*0.05),
+
+          const Text('Welcome Back',
+            style: TextStyle(
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
+              color:kWhiteColor,
+            ),
+          ),
+          SizedBox(height: Get.height*0.02),
+          const Text('Login to your account',
+            style: TextStyle(
+              // fontSize: 32,
+              // fontWeight: FontWeight.bold,
+              color:kWhiteColor,
+            ),
+          ),
+          SizedBox(height: Get.height*0.04),
+          buildPasswordTextField(tfManager: controller.usernameTFMController,prefixIcon:Icons.person,suffixIcon: false ),
+          const SizedBox(height: 12),
+          buildPasswordTextField(tfManager: controller.passwordTFMController,prefixIcon:Icons.lock,suffixIcon: true, obscureText: controller.obscurePassword, ),
+          const SizedBox(height: 16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text('Remember me next time',style: TextStyle(fontSize: 15,color: kLightGreyColor,fontWeight: FontWeight.w600),),
+                Obx(()=> Switch(
+                  value: controller.rememberMe.value,
+                  onChanged: (_) => controller.rememberMe.toggle(),
+                )),
+            ],
+                  ),
+          ),
+          const SizedBox(height: 24),
+          GeneralButton(onPressed: (){controller.onSignInPressed();},text: 'SIGN IN',color: kButtonColor,margin: 32),
+          const SizedBox(height: 12),
+          const Text('Forgot Password?',style: TextStyle(fontSize: 16,color: kLightGreyColor,decoration: TextDecoration.underline,decorationColor: kLightGreyColor)),
+          const SizedBox(height: 40),
 
 
-       // if(Platform.isIOS) biometricButton(onTab:()=> controller.onFaceIDPressed(), iconImage: 'assets/icons/face_verification.png',isVisible: BiometricAuth.isDeviceSupported ),
-        // const SizedBox(height: 10),
-        // Obx(()=> BiometricAuth.isDeviceSupported.value ? const Text('OR',style: TextStyle(fontSize: 25)):const SizedBox()),
-        // const SizedBox(height: 10),
-       // if(Platform.isAndroid) biometricButton(onTab:()=> controller.onFingerPrintPressed(), iconImage: 'assets/icons/biometric.png',isVisible: BiometricAuth.isDeviceSupported)
-    ],);
+         // if(Platform.isIOS) biometricButton(onTab:()=> controller.onFaceIDPressed(), iconImage: 'assets/icons/face_verification.png',isVisible: BiometricAuth.isDeviceSupported ),
+          // const SizedBox(height: 10),
+          // Obx(()=> BiometricAuth.isDeviceSupported.value ? const Text('OR',style: TextStyle(fontSize: 25)):const SizedBox()),
+          // const SizedBox(height: 10),
+         // if(Platform.isAndroid) biometricButton(onTab:()=> controller.onFingerPrintPressed(), iconImage: 'assets/icons/biometric.png',isVisible: BiometricAuth.isDeviceSupported)
+      ],),
+    );
 }
 
   // Widget biometricButton({required String iconImage,required RxBool isVisible,Function()? onTab}) => Obx(()=>isVisible.value ? InkWell(onTap: onTab, child: Image.asset(iconImage,height: 70,width: 70)):const SizedBox());
@@ -70,7 +91,7 @@ class LoginScreen extends GetView<LoginScreenController> {
   Widget buildPasswordTextField({
     Key? key, RxBool? obscureText,
     required TextFieldManager tfManager,
-    required String prefixIcon,
+    required IconData prefixIcon,
     required bool suffixIcon
   }) {
     return Padding(
@@ -79,13 +100,14 @@ class LoginScreen extends GetView<LoginScreenController> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Obx(() => Container(
-              width: Get.width,
+              width: Get.width*0.82,
               margin: const EdgeInsets.only(top: 4),
               padding: const EdgeInsets.only(left: 8, right: 2),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(kFieldRadius),
                 border: Border.all(color: kFieldBorderColor),
-                color: kWhiteColor,
+                color: kFieldBGColor,
+                // gradient:  const LinearGradient(colors: [kPrimaryLightColor,kPrimaryColor])
               ),
               child: SizedBox(
                 width: Get.width,
@@ -93,8 +115,8 @@ class LoginScreen extends GetView<LoginScreenController> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                      child: Image.asset(prefixIcon,scale: 1.3,)
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+                      child: Icon(prefixIcon,color: kTextHintColor,size: 32),
                     ),
                     Expanded(
                       child: TextField(
@@ -116,7 +138,7 @@ class LoginScreen extends GetView<LoginScreenController> {
                           border: InputBorder.none,
                           hintStyle: const TextStyle(color: kTextHintColor),
                         ),
-                        style: const TextStyle(color: kBlackColor),
+                        style: const TextStyle(color: kTextColor,decorationColor: kPrimaryColor),
                       ),
                     ),
                     GestureDetector(
@@ -125,7 +147,7 @@ class LoginScreen extends GetView<LoginScreenController> {
                         visible: suffixIcon,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 11 ),
-                          child: controller.obscurePassword.value ? const Icon(CupertinoIcons.eye_fill, color: kGreyColor) : const Icon(CupertinoIcons.eye_slash_fill, color: kGreyColor),
+                          child: controller.obscurePassword.value ? const Icon(CupertinoIcons.eye_fill, color: kTextHintColor) : const Icon(CupertinoIcons.eye_slash_fill, color: kTextHintColor),
                         ),
                       ),
                     ),
@@ -139,7 +161,7 @@ class LoginScreen extends GetView<LoginScreenController> {
             visible: tfManager.errorMessage.value.isNotEmpty,
             child: Text(
               tfManager.errorMessage.value,
-              style: const TextStyle(color: kRequiredRedColor, fontSize: 12),
+              style: const TextStyle(color: kRejectedColor, fontSize: 12),
             ),
           )),
         ],

@@ -12,7 +12,7 @@ class SettingScreen extends GetView<SettingScreenController> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: controller.scaffoldKey,
-      backgroundColor: kFieldGreyColor,
+      backgroundColor: kFieldBGColor,
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(

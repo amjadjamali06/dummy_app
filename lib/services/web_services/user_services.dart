@@ -6,6 +6,7 @@ import 'package:excise_e_auction/models/token_model.dart';
 import 'package:excise_e_auction/models/user_model.dart';
 import 'package:excise_e_auction/services/service_urls.dart';
 import 'package:excise_e_auction/services/web_services/http_client.dart';
+import 'package:excise_e_auction/utils/dummy_data.dart';
 import 'package:excise_e_auction/utils/user_session.dart';
 
 class UserService{
@@ -31,6 +32,8 @@ class UserService{
       if(responseModel.statusCode == 200 && responseModel.data != null && responseModel.data['token'] != null ){
         user = UserModel.fromJson(responseModel.data['user']??{});
        await UserSession().saveToken(token: TokenModel.fromString(responseModel.data['token']??''));
+      }else if(DummyData.debugMode){
+        user = DummyData.loginUser(username, password);
       }else{
         user.responseMessage = responseModel.statusDescription;
       }

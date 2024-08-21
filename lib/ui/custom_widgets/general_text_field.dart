@@ -32,7 +32,7 @@ class GeneralTextField extends StatelessWidget {
           RichText(text: TextSpan(text: tfManager.fieldName,
             style: const TextStyle(color: kTextColor, fontSize: 12, fontWeight: FontWeight.w400),
             children: tfManager.mandatory ? [
-              const TextSpan(text: '*', style: TextStyle(color: kRequiredRedColor, fontWeight: FontWeight.bold))
+              const TextSpan(text: '*', style: TextStyle(color: kRejectedColor, fontWeight: FontWeight.bold))
             ] : null,
           ),),
           // Text(tfManager.fieldName, style: const TextStyle(color: kBlackColor, fontSize: 14),),
@@ -43,7 +43,7 @@ class GeneralTextField extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(_withShadow.isTrue ? 4 : kFieldRadius),
                   border: _withShadow.isTrue ? null : Border.all(color: /*tfManager.errorMessage.isNotEmpty ? kRequiredRedColor : */kFieldBorderColor ),
-                  color: readOnly ? kFieldGreyColor : _withShadow.isTrue ? kWhiteColor : kWhiteColor,
+                  color: readOnly ? kFieldBGColor : _withShadow.isTrue ? kWhiteColor : kWhiteColor,
                   boxShadow: _withShadow.isTrue ? [
                     const BoxShadow(blurRadius: 3,spreadRadius: 1, color: kFieldShadowColor)
                   ] : null
@@ -83,7 +83,8 @@ class GeneralTextField extends StatelessWidget {
                             hintStyle: const TextStyle(color: kTextHintColor),
                           ),
                           style: TextStyle(
-                              color: readOnly ? kGreyColor : kBlackColor
+                              color: readOnly ? kTextHintColor : kTextColor,
+                              decorationColor: kPrimaryColor
                           ),
                         ),
                     ),
@@ -103,7 +104,7 @@ class GeneralTextField extends StatelessWidget {
           const SizedBox(height: 4),
           Obx(() => Visibility(
             visible: tfManager.errorMessage.value.isNotEmpty,
-            child: Text(tfManager.errorMessage.value, style: const TextStyle(color: kRequiredRedColor, fontSize: 12),),
+            child: Text(tfManager.errorMessage.value, style: const TextStyle(color: kRejectedColor, fontSize: 12),),
           )),
         ],
       ),
