@@ -1,4 +1,7 @@
-import 'package:excise_e_auction/ui/screens/e_auction_screen.dart';
+import 'package:excise_e_auction/controllers/login_t_screen_controller.dart';
+// import 'package:excise_e_auction/ui/screens/e_auction_screen.dart';
+import 'package:excise_e_auction/ui/screens/login_t_screen.dart';
+import 'package:excise_e_auction/ui/screens/registration_screen.dart';
 import 'package:excise_e_auction/ui/screens/setting_screen.dart';
 import 'package:excise_e_auction/ui/screens/splash_screen.dart';
 import 'package:excise_e_auction/ui/screens/tag_winning_nbr_screen.dart';
@@ -9,7 +12,8 @@ import 'package:excise_e_auction/ui/screens/login_screen.dart';
 import 'package:excise_e_auction/utils/constants.dart';
 import 'package:excise_e_auction/utils/screen_bindings.dart';
 
-/*Created By: Amjad Jamali on 03-Aug-2023*/
+/*Created By: Amjad Jamali on 03-Aug-2023
+* Last Modified by Afaque Ali on 21-Aug-2024*/
 
 class RouteManagement {
   static List<GetPage> getPages() {
@@ -35,18 +39,26 @@ class RouteManagement {
         page: () => const HomeScreen(),
         binding: ScreensBindings(),
       ),
-      GetPage(name: kSignInScreenRoute,
+      GetPage(name: kLoginScreenRoute,
           page: ()=> const LoginScreen(),
           binding: ScreensBindings()
       ),
-      GetPage(name: kEAuctionScreenRoute,
-          page: ()=> const EAuctionScreen(),
-          binding: ScreensBindings()
-      ),
+      // GetPage(name: kEAuctionScreenRoute,
+      //     page: ()=> const EAuctionScreen(),
+      //     binding: ScreensBindings()
+      // ),
       GetPage(name: kTagWinningNbrScreenRoute,
           page: ()=> const TagWinningNbrScreen(),
           binding: ScreensBindings()
       ),
+      GetPage(
+          name: kRegistrationScreenRoute,
+          page: () => const RegistrationScreen(),
+          binding: ScreensBindings()),
+      GetPage(
+          name: kLoginTScreenRoute,
+          page: () => LoginTScreen(),
+          binding: ScreensBindings()),
     ];
   }
 }

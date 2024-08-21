@@ -1,9 +1,12 @@
-/*Created By: Amjad Jamali on 05-Aug-2023*/
+/*Created By: Amjad Jamali on 05-Aug-2023
+* Last Modified by Afaque Ali on 21-Aug-2024*/
 
 const String kAppName = "PSPA Beta"; //PUNJAB SOCIAL PROTECTION AUTHORITY
 ///*********************  Route Names   *********************/
 const String kSplashScreenRoute = "/";
 const String kLoginScreenRoute = "/LOGIN_SCREEN";
+const String kLoginTScreenRoute = "/LOGIN_T_SCREEN";
+const String kRegistrationScreenController = "/REGISTRATION_SCREEN_CONTROLLER";
 const String kHomeScreenRoute = "/HOME_SCREEN";
 const String kDashboardScreenRoute = "/DASHBOARD_SCREEN";
 const String kSettingScreenRoute = "/SETTING_SCREEN";

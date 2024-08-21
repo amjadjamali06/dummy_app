@@ -1,10 +1,16 @@
 import 'dart:ui';
 
 
-/* Created By: Amjad Jamali on 02-Aug-2023 */
+/* Created By: Amjad Jamali on 02-Aug-2023
+* Last Modified by Afaque Ali on 21-Aug-2024 */
 
 const Color kPrimaryColor = Color(0xFF352C7B);
 
+const Color kGradientColorBlue = Color(0xff2e5693);
+const Color kGradientColorOrange = Color(0xfffba2a2);
+const Color kGradientColorGrey = Color(0xff97847e);
+const Color kDarkBlueColor=Color(0xff00264d);
+const Color kTextFieldBlueColor=Color(0xff3c5473);
 const Color kWhiteColor = Color(0xFFFFFFFF);
 const Color kGreenColor=Color(0xFF045626);
 const Color kYellowColor=Color(0xFFefad4d);
