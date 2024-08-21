@@ -40,3 +40,9 @@ const Color kMustardColor=Color(0xFFc2b792);
 const Color kYellowishGreenColor=Color(0xFFCEE033);
 const Color kGreenNormalColor=Color(0xFF59981A);
 const Color kIOSBackButtonColor=Color(0xff134b59);
+
+//Category Box Colors
+const Color kCategoryOrangeBoxColor=Color(0xFFF3870B);
+const Color kCategoryDarkGreyBoxColor=Color(0xFF3f3f3f);
+
+
