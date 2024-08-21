@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: kAppName,
-      initialRoute: kSplashScreenRoute,
+      initialRoute: kPremiumNumberListScreenRoute,
       initialBinding: ScreensBindings(),
       getPages: RouteManagement.getPages(),
       themeMode: ThemeMode.dark,
@@ -70,6 +70,7 @@ class MyApp extends StatelessWidget {
         shadowColor: kPrimaryDarkColor,
         appBarTheme: CustomTheme.appBarTheme,
         textTheme: CustomTheme.darkTextTheme,
+        buttonTheme: CustomTheme.darkButtonTheme,
       ),
       debugShowCheckedModeBanner: false,
     );

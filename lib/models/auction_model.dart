@@ -36,8 +36,8 @@ class AuctionModel {
       'bidType': bidType,
       'startDate': startDate,
       'endDate': endDate,
-      'bidStartAmount': bidStartAmount.toString(),
-      'bidEndAmount': bidEndAmount.toString(),
+      'bidStartAmount': bidStartAmount,
+      'bidEndAmount': bidEndAmount,
     };
   }
 }

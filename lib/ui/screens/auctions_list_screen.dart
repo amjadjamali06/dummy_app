@@ -5,14 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-
-enum CustomFontFamily {
-  Roboto
-  // customFontFamily('Roboto');
-  // final String name;
-  // const CustomFontFamily(this.name);
-}
-
 class AuctionsListScreen extends GetView<AuctionsListScreenController> {
   const AuctionsListScreen({super.key});
 
@@ -25,25 +17,22 @@ class AuctionsListScreen extends GetView<AuctionsListScreenController> {
       // horizontalPadding: 12,
       horizontalPadding: 0,
       body: Obx(
-        () => Container(
-          height: Get.height,
-          width: Get.width,
-          color: Color(0xff112120),
-          child: ListView.builder(
-            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
-            shrinkWrap: true,
-            itemCount: controller.auctionsList.length,
-            itemBuilder: (context, index) {
-              final auction = controller.auctionsList[index];
-              return AuctionCard(
-                  numberPlat: auction.numberPlat,
-                  bidType: auction.bidType,
-                  startDate: auction.startDate,
-                  endDate: auction.endDate,
-                  bidStartAmount: auction.bidStartAmount,
-                  bidEndAmount: auction.bidEndAmount);
-            },
-          ),
+        () => ListView.builder(
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+          shrinkWrap: true,
+          itemCount: controller.auctionsList.length,
+          itemBuilder: (context, index) {
+            final auction = controller.auctionsList[index];
+            return AuctionCard(
+              onTap: (){},
+              numberPlat: auction.numberPlat,
+              bidType: auction.bidType,
+              startDate: auction.startDate,
+              endDate: auction.endDate,
+              bidStartAmount: auction.bidStartAmount,
+              bidEndAmount: auction.bidEndAmount,
+            );
+          },
         ),
       ),
     );
@@ -57,6 +46,7 @@ class AuctionCard extends StatelessWidget {
   final String endDate;
   final String bidStartAmount;
   final String bidEndAmount;
+  final void Function() onTap;
   const AuctionCard({
     super.key,
     required this.numberPlat,
@@ -65,6 +55,7 @@ class AuctionCard extends StatelessWidget {
     required this.endDate,
     required this.bidStartAmount,
     required this.bidEndAmount,
+    required this.onTap
   });
 
   @override
@@ -79,198 +70,194 @@ class AuctionCard extends StatelessWidget {
         : bidType == "silver"
             ? "assets/images/silver.png"
             : "assets/images/platinum.png";
-    return Container(
-      height: Get.height * 0.17,
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-      decoration: BoxDecoration(
-        // image: DecorationImage(
-        //   image: AssetImage(imageUrl),
-        //   fit: BoxFit.fill,
-        //   opacity: 0.7,
-        // ),
-        color: kCardColor,
-        // color: Colors.black87,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(24),
-          bottomRight: Radius.circular(24),
+    return GestureDetector(
+      onTap:onTap,
+      child: Container(
+        height: Get.height * 0.17,
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+        decoration: BoxDecoration(
+          color: kCardColor,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(24),
+            bottomRight: Radius.circular(24),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade500,
+              offset: const Offset(0, 1),
+              spreadRadius: 1,
+              blurRadius: 2,
+            )
+          ],
         ),
-        // borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.shade500,
-            offset: const Offset(0, 1),
-            spreadRadius: 1,
-            blurRadius: 2,
-          )
-        ],
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            width: Get.width * 0.22,
-            height: Get.height * 0.16,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: Get.height * 0.05,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: numberPlatColor,
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(8),
-                      topRight: Radius.circular(8),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: Get.width * 0.22,
+              height: Get.height * 0.16,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: Get.height * 0.05,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: numberPlatColor,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(8),
+                        topRight: Radius.circular(8),
+                      ),
                     ),
-                  ),
-                  child: Text(
-                    numberPlat,
-                    style: const TextStyle(
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-                Container(
-                  height: Get.height * 0.05,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(imageUrl),
-                      fit: BoxFit.fill,
-                    ),
-                    borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(8),
-                      bottomRight: Radius.circular(8),
-                    ),
-                  ),
-                  child: Center(
                     child: Text(
-                      bidType.toUpperCase(),
+                      numberPlat,
                       style: const TextStyle(
-                        letterSpacing: 0.01,
-                        color: kBlackColor,
-                        fontSize: 14,
+                        fontSize: 16,
                       ),
                     ),
                   ),
-                ),
-              ],
+                  Container(
+                    height: Get.height * 0.05,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(imageUrl),
+                        fit: BoxFit.fill,
+                      ),
+                      borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(8),
+                        bottomRight: Radius.circular(8),
+                      ),
+                    ),
+                    child: Center(
+                      child: Text(
+                        bidType.toUpperCase(),
+                        style: const TextStyle(
+                          letterSpacing: 0.01,
+                          color: kBlackColor,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Bid Start Time',
-                            style: TextStyle(
-                              letterSpacing: 0,
-                              fontSize: 10,
+            const SizedBox(width: 8),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Bid Start Time',
+                              style: TextStyle(
+                                letterSpacing: 0,
+                                fontSize: 10,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            startDate,
-                            style: const TextStyle(
-                              fontSize: 12.0,
-                              letterSpacing: 0,
-                              fontWeight: FontWeight.w600,
-                              color: kWhiteColor,
+                            const SizedBox(height: 4),
+                            Text(
+                              startDate,
+                              style: const TextStyle(
+                                fontSize: 12.0,
+                                letterSpacing: 0,
+                                fontWeight: FontWeight.w600,
+                                color: kWhiteColor,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Bid End Time',
-                            style: TextStyle(
-                              letterSpacing: 0,
-                              fontSize: 10,
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Bid End Time',
+                              style: TextStyle(
+                                letterSpacing: 0,
+                                fontSize: 10,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            endDate,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 12.0,
+                            const SizedBox(height: 4),
+                            Text(
+                              endDate,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 12.0,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                const Divider(thickness: 0.4),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Starting Bid Amount',
-                            style: TextStyle(
-                              letterSpacing: 0,
-                              fontSize: 10,
+                    ],
+                  ),
+                  const Divider(thickness: 0.4),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Starting Bid Amount',
+                              style: TextStyle(
+                                letterSpacing: 0,
+                                fontSize: 10,
+                              ),
                             ),
-                          ),
-                          Text(
-                            "Rs.$bidStartAmount",
-                            style: const TextStyle(
-                              fontSize: 18,
-                              letterSpacing: 0,
-                              fontWeight: FontWeight.bold,
+                            Text(
+                              "Rs.$bidStartAmount",
+                              style: const TextStyle(
+                                fontSize: 18,
+                                letterSpacing: 0,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Current Highest Bid',
-                            style: TextStyle(
-                              letterSpacing: 0,
-                              fontSize: 10,
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Current Highest Bid',
+                              style: TextStyle(
+                                letterSpacing: 0,
+                                fontSize: 10,
+                              ),
                             ),
-                          ),
-                          Text(
-                            "Rs.$bidEndAmount",
-                            style: const TextStyle(
-                              fontSize: 18,
-                              letterSpacing: 0,
-                              fontWeight: FontWeight.bold,
+                            Text(
+                              "Rs.$bidEndAmount",
+                              style: const TextStyle(
+                                fontSize: 18,
+                                letterSpacing: 0,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
+          ],
+        ),
+      )
     );
   }
 }

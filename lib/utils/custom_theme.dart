@@ -28,4 +28,11 @@ class CustomTheme {
     labelMedium: TextStyle(color: kTextColor, fontSize: 12, fontWeight: FontWeight.w500),
     labelSmall: TextStyle(color: kTextColor, fontSize: 11, fontWeight: FontWeight.w500),
   );
+
+  static const ButtonThemeData darkButtonTheme = ButtonThemeData(
+    buttonColor: kPrimaryDarkColor,
+    textTheme: ButtonTextTheme.primary,
+    disabledColor: Colors.grey,
+  );
+
 }

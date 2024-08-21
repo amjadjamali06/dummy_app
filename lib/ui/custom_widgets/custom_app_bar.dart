@@ -23,9 +23,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      // elevation: 3,
       toolbarHeight: 65,
-      // backgroundColor: Theme.of(context).primaryColorDark,
       automaticallyImplyLeading: GeneralPlatform.isWeb,
       leading: (screenName.isNotEmpty)?
          IconButton(onPressed:() {
