@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: kAppName,
-      initialRoute: kSplashScreenRoute,
+      initialRoute: kAuctionsListScreenRoute,
       initialBinding: ScreensBindings(),
       getPages: RouteManagement.getPages(),
       theme: ThemeData(primarySwatch: Colors.indigo),

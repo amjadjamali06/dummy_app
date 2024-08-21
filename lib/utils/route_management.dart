@@ -2,6 +2,7 @@ import 'package:excise_e_auction/controllers/login_t_screen_controller.dart';
 // import 'package:excise_e_auction/ui/screens/e_auction_screen.dart';
 import 'package:excise_e_auction/ui/screens/login_t_screen.dart';
 import 'package:excise_e_auction/ui/screens/registration_screen.dart';
+import 'package:excise_e_auction/ui/screens/auctions_list_screen.dart';
 import 'package:excise_e_auction/ui/screens/setting_screen.dart';
 import 'package:excise_e_auction/ui/screens/splash_screen.dart';
 import 'package:excise_e_auction/ui/screens/tag_winning_nbr_screen.dart';
@@ -39,9 +40,15 @@ class RouteManagement {
         page: () => const HomeScreen(),
         binding: ScreensBindings(),
       ),
-      GetPage(name: kLoginScreenRoute,
-          page: ()=> const LoginScreen(),
-          binding: ScreensBindings()
+      GetPage(
+        name: kLoginScreenRoute,
+        page: ()=> const LoginScreen(),
+        binding: ScreensBindings()
+      ),
+      GetPage(
+        name: kAuctionsListScreenRoute,
+        page: ()=> const AuctionsListScreen(),
+        binding: ScreensBindings()
       ),
       // GetPage(name: kEAuctionScreenRoute,
       //     page: ()=> const EAuctionScreen(),

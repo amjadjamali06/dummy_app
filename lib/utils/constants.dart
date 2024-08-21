@@ -12,6 +12,7 @@ const String kDashboardScreenRoute = "/DASHBOARD_SCREEN";
 const String kSettingScreenRoute = "/SETTING_SCREEN";
 const String kRegistrationScreenRoute = "/REGISTRATION_SCREEN";
 const String kSignInScreenRoute = "/SIGN_IN_SCREEN";
+const String kAuctionsListScreenRoute = "/AUCTION_LIST_SCREEN";
 const String kTagWinningNbrScreenRoute = "/TAG_WINNING_NBR_SCREEN";
 const String kEAuctionScreenRoute = "/E_AUCTION_SCREEN";
 
