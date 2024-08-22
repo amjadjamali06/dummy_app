@@ -43,7 +43,7 @@ class GeneralTextField extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(_withShadow.isTrue ? 4 : kFieldRadius),
                   border: _withShadow.isTrue ? null : Border.all(color: /*tfManager.errorMessage.isNotEmpty ? kRequiredRedColor : */kFieldBorderColor ),
-                  color: readOnly ? kFieldBGColor : _withShadow.isTrue ? kWhiteColor : kWhiteColor,
+                  color: /*readOnly ?*/ kFieldBGColor /*: _withShadow.isTrue ? kWhiteColor : kWhiteColor*/,
                   boxShadow: _withShadow.isTrue ? [
                     const BoxShadow(blurRadius: 3,spreadRadius: 1, color: kFieldShadowColor)
                   ] : null

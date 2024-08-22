@@ -36,9 +36,9 @@ class GeneralDatePickerField extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           RichText(text: TextSpan(text: dateManager.fieldName,
-            style: const TextStyle(color: kTextColor),
+            style: const TextStyle(color: kTextColor,fontSize: 12),
             children: const [
-              TextSpan(text: '*', style: TextStyle(color: kRejectedColor, fontWeight: FontWeight.bold))
+              TextSpan(text: '*', style: TextStyle(color: kRejectedColor))
             ],
           )),
 
@@ -59,7 +59,7 @@ class GeneralDatePickerField extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Obx(()=> Flexible(child: Text("${dateManager.formattedDateTime.isEmpty ? 'Select ${dateManager.fieldName}' : dateManager.formattedDateTime}", overflow :TextOverflow.ellipsis, style: TextStyle(fontSize: 16, color: readOnly ? kGreyColor : dateManager.formattedDateTime.isEmpty ? kTextHintColor: kTextColor),))),
+                  Obx(()=> Flexible(child: Text("${dateManager.formattedDateTime.isEmpty ? 'Select ${dateManager.fieldName}' : dateManager.formattedDateTime}", overflow :TextOverflow.ellipsis, style: TextStyle(fontSize: 16, color: readOnly ? kTextHintColor : dateManager.formattedDateTime.isEmpty ? kTextHintColor: kTextColor),))),
                   Image.asset('assets/icons/calander.png', color: kBlackColor, width: 24, height: 24),
                 ],
               ),

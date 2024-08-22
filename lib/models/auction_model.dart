@@ -1,11 +1,13 @@
 class AuctionModel {
-  final String id;
-  final String numberPlat;
-  final String bidType;
-  final String startDate;
-  final String endDate;
-  final String bidStartAmount;
-  final String bidEndAmount;
+   String id='';
+   String numberPlat='';
+   String bidType='';
+   String startDate='';
+   String endDate='';
+   String bidStartAmount='';
+   String bidEndAmount='';
+
+  AuctionModel.empty();
 
   AuctionModel({
     required this.id,

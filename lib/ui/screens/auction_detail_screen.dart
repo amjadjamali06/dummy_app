@@ -2,6 +2,7 @@
 /* Created By Bilawal Mehmood  on 25-JAN-2024*/
 import 'package:excise_e_auction/models/auction_model.dart';
 import 'package:excise_e_auction/ui/custom_widgets/general_button.dart';
+import 'package:excise_e_auction/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:excise_e_auction/controllers/auction_detail_screen_controller.dart';
@@ -118,7 +119,7 @@ class AuctionDetailScreen extends GetView<AuctionDetailScreenController> {
             ],
           ),
           SizedBox(height: Get.height * 0.05),
-          GeneralButton(onPressed: () {}, text: "Place a Bid")
+          GeneralButton(onPressed: () {Get.toNamed(kPlaceBidScreenRoute,arguments: auctionModel);}, text: "Place a Bid")
         ],
       ),
     );

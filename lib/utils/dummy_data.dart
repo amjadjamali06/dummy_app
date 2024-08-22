@@ -103,8 +103,4 @@ class DummyData {
 
     ];
   }
-
-  static PlaceBidModel getPlaceBidData(){
-    return PlaceBidModel(id: "1", plateCategory: 'Platinum', nbrPlate: 'Ahmed 07', bidStartDate: '22/3/2024 | 11:59', bidEndDate: '26/3/2024 | 11:59', startingBidAmount: '100,000', currentHighestBid: '120,000', bidAmount: '');
-  }
 }
