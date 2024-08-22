@@ -16,63 +16,69 @@ class RegistrationScreen extends GetView<RegistrationScreenController> {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScaffold(
-      scaffoldKey: controller.scaffoldKey,
-      className: runtimeType.toString(),
-      screenName: '',
-      gestureDetectorOnTap: controller.removeFocus,
-      onNotificationListener: (detail){
-        if(detail is UserScrollNotification) {
-          controller.removeFocus();
-        }
-        return true;
-      },
+    return Scaffold(
+      // scaffoldKey: controller.scaffoldKey,
+      // className: runtimeType.toString(),
+      // screenName: '',
+      // gestureDetectorOnTap: controller.removeFocus,
+      // onNotificationListener: (detail){
+      //   if(detail is UserScrollNotification) {
+      //     controller.removeFocus();
+      //   }
+      //   return true;
+      // },
+      // showBottomNavBar: false,
       body: getBody(context),
     );
   }
 
   Widget getBody(BuildContext context){
-    return Column(children: [
-      Container(
-        margin: const EdgeInsets.only(top: 20,bottom: 20),
-        child: const Text('Create Account', style: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-          color:kTextColor,
-        ),
-        ),
-      ),
-      GeneralTextField.withBorder(tfManager: controller.fullNameTfManager,),
-      GeneralTextField.withBorder(tfManager: controller.cnicTfManager,),
-      GeneralTextField.withBorder(tfManager: controller.emailTfManager,),
-      GeneralTextField.withBorder(tfManager: controller.mobileNoTfManager,),
-      GeneralTextField.withBorder(tfManager: controller.passwordTfManager,),
-      GeneralTextField.withBorder(tfManager: controller.confirmPasswordTfManager,),
-      GeneralButton(onPressed: (){controller.onRegister();},color: kBlackColor,text: 'Register',),
-      const SizedBox(height:30),
-      RichText(
-        textAlign: TextAlign.right,
-        text: TextSpan(
-          style: const TextStyle(
-            fontFamily: "PoppinsLight",
-            color: kTextLightColor,
+    return SingleChildScrollView(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+      child: Column(children: [
+        Container(
+          margin: const EdgeInsets.only(top: 30,bottom: 20),
+          child: const Text('Create Account', style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color:kTextColor,
           ),
-          children: <TextSpan>[
-            const TextSpan(text: "Already have an account? "),
-            TextSpan(
-              text: "Login",
-              style: const TextStyle(
-                  height: 1.2,
-                  fontSize: 16,
-                  letterSpacing: 0.08,
-                  fontFamily: "PoppinsLight",
-                  color: kPrimaryColor,decoration: TextDecoration.underline),
-              recognizer: TapGestureRecognizer()
-                ..onTap = () {Get.toNamed(kLoginScreenRoute);},
-            ),
-          ],
+          ),
         ),
-      ),
-    ],);
+        GeneralTextField.withBorder(tfManager: controller.fullNameTfManager,),
+        GeneralTextField.withBorder(tfManager: controller.cnicTfManager,),
+        GeneralTextField.withBorder(tfManager: controller.emailTfManager,),
+        GeneralTextField.withBorder(tfManager: controller.mobileNoTfManager,),
+        GeneralTextField.withBorder(tfManager: controller.passwordTfManager,),
+        GeneralTextField.withBorder(tfManager: controller.confirmPasswordTfManager,),
+        const SizedBox(height: 8),
+        GeneralButton(onPressed: (){controller.onRegister();},color: kBlackColor,text: 'Register',height: 54,),
+        const SizedBox(height:30),
+        RichText(
+          textAlign: TextAlign.right,
+          text: TextSpan(
+            style: const TextStyle(
+              fontFamily: "PoppinsLight",
+              color: kTextLightColor,
+            ),
+            children: <TextSpan>[
+              const TextSpan(text: "Already have an account? "),
+              TextSpan(
+                text: "Login",
+                style: const TextStyle(
+                    height: 1.2,
+                    fontSize: 16,
+                    letterSpacing: 0.08,
+                    fontFamily: "PoppinsLight",
+                    fontWeight: FontWeight.w600,
+                    color: kPrimaryColor,decoration: TextDecoration.underline),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {Get.toNamed(kLoginScreenRoute);},
+              ),
+            ],
+          ),
+        ),
+      ],),
+    );
   }
 }

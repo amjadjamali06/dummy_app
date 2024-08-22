@@ -1,5 +1,6 @@
 import 'package:excise_e_auction/controllers/place_bid_screen_controller.dart';
 import 'package:excise_e_auction/ui/custom_widgets/general_date_picker_field.dart';
+import 'package:excise_e_auction/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../utils/app_colors.dart';
@@ -44,7 +45,9 @@ class PlaceBidScreen extends GetView<PlaceBidScreenController> {
       GeneralTextField.withBorder(tfManager: controller.startingBidAmountTfManager,readOnly: true,),
       GeneralTextField.withBorder(tfManager: controller.currentHighestBidTfManager,readOnly: true,),
       GeneralTextField.withBorder(tfManager: controller.bidAmountTfManager),
-      GeneralButton(onPressed: (){},color: kBlackColor,text: 'Place a Bid',),
+      GeneralButton(onPressed: (){
+        controller.placeBid();
+      },color: kBlackColor,text: 'Place a Bid',),
       SizedBox(height:MediaQuery.of(context).viewInsets.bottom),
     ],);
   }

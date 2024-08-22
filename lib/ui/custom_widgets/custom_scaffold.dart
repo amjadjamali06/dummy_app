@@ -24,6 +24,7 @@ class CustomScaffold extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
   final double appBarHeight;
   final PreferredSize? bottomSheet;
+  final bool showBottomNavBar;
 
 
   const CustomScaffold({super.key,
@@ -42,6 +43,7 @@ class CustomScaffold extends StatefulWidget {
     this.horizontalPadding=20,
     this.appBarHeight = 80,
     this.bottomSheet,
+    this.showBottomNavBar = true,
   });
 
   @override
@@ -133,7 +135,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                 shape: const CircleBorder(),
                 child: const Icon(Icons.add,color: kWhiteColor, size: 32),
               ),
-              bottomNavigationBar: const CustomBottomNavBar(),
+              bottomNavigationBar: widget.showBottomNavBar? const CustomBottomNavBar():null,
               // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
             ) ,
           ),

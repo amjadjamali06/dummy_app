@@ -7,21 +7,23 @@ class CustomDashboardCardWidget extends StatelessWidget {
   final String title;
   final String iconPath;
   final void Function(String) onTap;
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final double marginHorizontal;
   final double marginVertical;
-  const CustomDashboardCardWidget({super.key, required this.title, required this.iconPath, required this.onTap, this.width = 150, this.height = 140, this.marginHorizontal = 0, this.marginVertical =0});
+  const CustomDashboardCardWidget({super.key, required this.title, required this.iconPath, required this.onTap, this.width, this.height, this.marginHorizontal = 0, this.marginVertical =0});
 
   @override
   Widget build(BuildContext context) {
+    final cardHeight = height ??Get.height * 0.18;
+    final cardWidth = width ??Get.height * 0.18;
     return GestureDetector(
       onTap: ()=>onTap(title),
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: marginHorizontal, vertical: marginVertical),
-        padding: const EdgeInsets.only(top: 25),
-        width: width,
-        height: height,
+        padding: const EdgeInsets.only(top: 20),
+        width: cardHeight,
+        height: cardWidth,
         decoration: BoxDecoration(
             color: kCardColor,
             borderRadius: BorderRadius.circular(15),
@@ -38,7 +40,7 @@ class CustomDashboardCardWidget extends StatelessWidget {
               // padding: const EdgeInsets.only(left: 8.0),
               child: Image.asset(
                 iconPath,
-                width: 60,
+                width: cardHeight * 0.5,
               ),
             ),
             const SizedBox(height: 5,),

@@ -15,7 +15,8 @@ class DashboardScreen extends GetView<DashboardScreenController> {
         className: runtimeType.toString(),
         screenName: "Dashboard Screen",
         scaffoldKey: controller.scaffoldKey,
-        body: _buildBodyNewTheme()
+        body: _buildBodyNewTheme(),
+      horizontalPadding: 24,
     );
   }
 Widget  _buildBodyNewTheme() {
@@ -50,31 +51,35 @@ Widget  _buildBodyNewTheme() {
                   ),
                   const SizedBox(height: 20),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CustomDashboardCardWidget(title: "Online\n Tax Payment", iconPath: 'assets/icons/online-tax-payment.png', onTap: controller.onTapItem, ),
-                      const SizedBox(width: 24),
+                      CustomDashboardCardWidget(title: "Online\n Tax Payment", iconPath: 'assets/icons/online-tax-payment.png', onTap: controller.onTapItem),
+                      // const SizedBox(width: 24),
                       CustomDashboardCardWidget(title: "Vehicle\n Verification",iconPath: 'assets/icons/vehicle-verification.png', onTap: controller.onTapItem,),
                     ],
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 18),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CustomDashboardCardWidget(title: "Tax\n Calculator",iconPath: 'assets/icons/tax-calculator.png', onTap: controller.onTapItem),
-                      const SizedBox(width: 24),
+                      // const SizedBox(width: 24),
                       CustomDashboardCardWidget(title: "Search\n History",iconPath: 'assets/icons/search-history.png', onTap: controller.onTapItem),
                     ],
                   ),
-                  const SizedBox(height: 24),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CustomDashboardCardWidget(title: "E-Auction",iconPath: 'assets/icons/online-payment 2.png', onTap: controller.onTapItem),
-                      const SizedBox(width: 24),
-                      const SizedBox(width: 150),
-                    ],
+                  const SizedBox(height: 18),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: CustomDashboardCardWidget(title: "E-Auction",iconPath: 'assets/icons/online-payment 2.png', onTap: controller.onTapItem),
                   ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: [
+                  //     ,
+                  //     const SizedBox(width: 24),
+                  //     const SizedBox(width: 150),
+                  //   ],
+                  // ),
                   SizedBox(height: Get.height*0.1),
                 ],
               ),

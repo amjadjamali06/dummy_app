@@ -74,9 +74,9 @@ class AuctionDetailScreen extends GetView<AuctionDetailScreenController> {
             physics: const NeverScrollableScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: 1.5,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20),
+                childAspectRatio: 1.4,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16),
             children: [
               auctionDetailCard(
                 onTap: () {},

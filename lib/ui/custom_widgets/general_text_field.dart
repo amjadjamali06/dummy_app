@@ -49,13 +49,14 @@ class GeneralTextField extends StatelessWidget {
               ),
               child: SizedBox(
                 width: Get.width,
+                height: 54,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
                       child: TextField(
                         scrollPadding: EdgeInsets.only(
-                            bottom: MediaQuery.of(context).viewInsets.bottom + 40),
+                            bottom: MediaQuery.of(context).viewInsets.bottom + 120),
                           keyboardType: tfManager.keyboardType,
                           maxLines: maxLines,
                           minLines: maxLines>2 ? 3 : null,

@@ -1,5 +1,7 @@
 import 'package:excise_e_auction/models/auction_model.dart';
 import 'package:excise_e_auction/models/bid_request_model.dart';
+import 'package:excise_e_auction/models/my_bid_model.dart';
+import 'package:excise_e_auction/utils/dummy_data.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:excise_e_auction/utils/constants.dart';
@@ -9,42 +11,22 @@ import '../models/premium_number_model.dart';
 class BidRequestHistoryScreenController extends GetxController {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
-  RxList<BidRequestModel> bidHistory = RxList([]);
+  RxList<MyBidModel> bidHistory = RxList([]);
+  RxList<BidRequestModel> myRequests = RxList([]);
+
+  RxInt selectedTabIndex = RxInt(1);
 
 
 
   @override
   void onInit() {
     super.onInit();
-    bidHistory.value = auctionCards;
+    bidHistory.value = DummyData().myPlacedBids;
+    myRequests.value = DummyData().myBidRequests;
   }
 
-
-  List<BidRequestModel> auctionCards = [
-    BidRequestModel(
-      id: "1",
-      bidderId: 'ALI-01',
-      bidderName: 'Suhail',
-      bidType: 'silver',
-      status: "pending",
-      date: '20/08/2024',
-    ),
-    BidRequestModel(
-      id: "1",
-      bidderId: 'ALI-01',
-      bidderName: 'Suhail',
-      bidType: 'platinum',
-      status: "rejected",
-      date: '20/08/2024',
-    ),
-    BidRequestModel(
-      id: "1",
-      bidderId: 'ALI-01',
-      bidderName: 'Suhail',
-      bidType: 'gold',
-      status: "approved",
-      date: '20/08/2024',
-    ),
-  ];
+  void onTabIndexChanged(int index) {
+    selectedTabIndex.value = index;
+  }
 
 }

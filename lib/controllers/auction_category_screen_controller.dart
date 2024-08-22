@@ -4,16 +4,24 @@ import 'package:get/get.dart';
 
 class AuctionCategoryScreenController extends GetxController{
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
+  List<String> categories = ["silver", "platinum", "gold"];
+
   RxInt selectedValue = 0.obs;
-  void updateSelectedValue(int? value){
-    if(value!=null){
-      selectedValue.value = value;
-    }
+
+
+  void onCategorySelected(int index) {
+    selectedValue.value = index;
+    notifyChildrens();
   }
+  // void updateSelectedValue(int? value){
+  //   if(value!=null){
+  //     selectedValue.value = value;
+  //   }
+  // }
 
 
-  void onTapItem(String category){
-
-    Get.toNamed(kAuctionsListScreenRoute, arguments: category);
+  void navigateToCategories() {
+    Get.toNamed(kAuctionsListScreenRoute, arguments: {"category":categories[selectedValue.value]});
   }
 }

@@ -162,10 +162,11 @@ class AuctionCard extends StatelessWidget {
                               'Bid Start Time',
                               style: TextStyle(
                                 letterSpacing: 0,
-                                fontSize: 10,
+                                color: kLightGreyColor,
+                                fontSize: 11,
                               ),
                             ),
-                            const SizedBox(height: 4),
+                            const SizedBox(height: 6),
                             Text(
                               startDate,
                               style: const TextStyle(
@@ -186,10 +187,11 @@ class AuctionCard extends StatelessWidget {
                               'Bid End Time',
                               style: TextStyle(
                                 letterSpacing: 0,
-                                fontSize: 10,
+                                color: kLightGreyColor,
+                                fontSize: 11,
                               ),
                             ),
-                            const SizedBox(height: 4),
+                            const SizedBox(height: 6),
                             Text(
                               endDate,
                               style: const TextStyle(
@@ -214,9 +216,11 @@ class AuctionCard extends StatelessWidget {
                               'Starting Bid Amount',
                               style: TextStyle(
                                 letterSpacing: 0,
-                                fontSize: 10,
+                                color: kLightGreyColor,
+                                fontSize: 11,
                               ),
                             ),
+                            const SizedBox(height: 6),
                             Text(
                               "Rs.$bidStartAmount",
                               style: const TextStyle(
@@ -236,9 +240,11 @@ class AuctionCard extends StatelessWidget {
                               'Current Highest Bid',
                               style: TextStyle(
                                 letterSpacing: 0,
-                                fontSize: 10,
+                                color: kLightGreyColor,
+                                fontSize: 11,
                               ),
                             ),
+                            const SizedBox(height: 6),
                             Text(
                               "Rs.$bidEndAmount",
                               style: const TextStyle(

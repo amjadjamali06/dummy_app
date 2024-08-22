@@ -1,10 +1,131 @@
+import 'package:excise_e_auction/models/auction_model.dart';
 import 'package:excise_e_auction/models/item_model.dart';
+import 'package:excise_e_auction/models/my_bid_model.dart';
 import 'package:excise_e_auction/models/placeBidModel.dart';
 import 'package:excise_e_auction/models/user_model.dart';
 import 'package:excise_e_auction/utils/user_session.dart';
 
+import '../models/bid_request_model.dart';
+
 class DummyData {
   static bool debugMode = true;
+
+  List<AuctionModel> auctionCards = [
+    AuctionModel(
+      id: "1",
+      numberPlat: 'ALI-01',
+      bidType: 'silver',
+      startDate: '20 Aug, 2024 08:00',
+      endDate: '22 Aug, 2024 08:00',
+      bidStartAmount: "100000",
+      bidEndAmount: "150000",
+    ),
+    AuctionModel(
+      id: "2",
+      numberPlat: 'ALI-02',
+      bidType: 'gold',
+      startDate: '20 Aug, 2024 08:00',
+      endDate: '22 Aug, 2024 08:00',
+      bidStartAmount: "300000",
+      bidEndAmount: "350000",
+    ),
+    AuctionModel(
+      id: "3",
+      numberPlat: 'ALI-03',
+      bidType: 'platinum',
+      startDate: '20 Aug, 2024 08:00',
+      endDate: '22 Aug, 2024 08:00',
+      bidStartAmount: "200000",
+      bidEndAmount: "250000",
+    ),
+    AuctionModel(
+      id: "4",
+      numberPlat: 'ALI-01',
+      bidType: 'silver',
+      startDate: '20 Aug, 2024 08:00',
+      endDate: '22 Aug, 2024 08:00',
+      bidStartAmount: "100000",
+      bidEndAmount: "150000",
+    ),
+    AuctionModel(
+      id: "5",
+      numberPlat: 'ALI-02',
+      bidType: 'gold',
+      startDate: '20 Aug, 2024 08:00',
+      endDate: '22 Aug, 2024 08:00',
+      bidStartAmount: "300000",
+      bidEndAmount: "350000",
+    ),
+    AuctionModel(
+      id: "6",
+      numberPlat: 'ALI-03',
+      bidType: 'platinum',
+      startDate: '20 Aug, 2024 08:00',
+      endDate: '22 Aug, 2024 08:00',
+      bidStartAmount: "200000",
+      bidEndAmount: "250000",
+    ),
+  ];
+  List<BidRequestModel> myBidRequests = [
+    BidRequestModel(
+      id: "1",
+      bidderId: 'ALI-01',
+      bidderName: 'Suhail',
+      bidType: 'silver',
+      status: "pending",
+      date: '20/08/2024',
+    ),
+    BidRequestModel(
+      id: "1",
+      bidderId: 'ALI-01',
+      bidderName: 'Sahil',
+      bidType: 'platinum',
+      status: "rejected",
+      date: '20/08/2024',
+    ),
+    BidRequestModel(
+      id: "1",
+      bidderId: 'ALI-01',
+      bidderName: 'Suhail',
+      bidType: 'gold',
+      status: "approved",
+      date: '20/08/2024',
+    ),
+  ];
+
+  List<MyBidModel> myPlacedBids = [
+    MyBidModel(
+      id: "1",
+      bidderId: 'ALI-01',
+      bidderName: 'Suhail',
+      bidType: 'silver',
+      amount: "200000",
+      date: '20/08/2024',
+    ),
+    MyBidModel(
+      id: "1",
+      bidderId: 'ALI-01',
+      bidderName: 'Sahil',
+      bidType: 'platinum',
+      amount: "200000",
+      date: '20/08/2024',
+    ),
+    MyBidModel(
+      id: "1",
+      bidderId: 'ALI-01',
+      bidderName: 'Suhail',
+      bidType: 'gold',
+      amount: "200000",
+      date: '20/08/2024',
+    ),
+  ];
+
+
+
+  List<AuctionModel> getAuctionCategoryWiseList(String category) {
+    if(category.isEmpty) return [];
+    return auctionCards.where((test)=>test.bidType == category).toList();
+  }
 
   static List<UserModel> users = [UserModel.fromJson({"id":'1', "name":'Amjad Jamali', "email":'amjad@gmail.com', "password":'123456'})];
 

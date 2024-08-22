@@ -16,7 +16,7 @@ class GeneralButton extends StatelessWidget {
   final double height;
   final BorderSide borderSide;
 
-  const GeneralButton({super.key,this.borderSide=BorderSide.none, required this.onPressed, this.text='Submit',this.textColor=kPrimaryDarkColor, this.margin=0, this.color=kButtonColor, this.fontSize = 18.0, this.radius = kFieldRadius, this.width = 500, this.height = 60});
+  const GeneralButton({super.key,this.borderSide=BorderSide.none, required this.onPressed, this.text='Submit',this.textColor=kPrimaryDarkColor, this.margin=0, this.color=kButtonColor, this.fontSize = 18.0, this.radius = kFieldRadius, this.width = 500, this.height = 54});
 
   @override
   Widget build(BuildContext context) {

@@ -6,6 +6,7 @@ import 'package:excise_e_auction/utils/string_utils.dart';
 import 'package:excise_e_auction/utils/text_filter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../utils/constants.dart';
 import '../utils/text_field_manager.dart';
 
 class PlaceBidScreenController extends GetxController{
@@ -46,5 +47,9 @@ class PlaceBidScreenController extends GetxController{
     if(bidAmountTfManager.focusNode.hasFocus){
       bidAmountTfManager.focusNode.unfocus();
     }
+  }
+
+  void placeBid() {
+    Get.toNamed(kBidHistoryListScreenRoute);
   }
 }

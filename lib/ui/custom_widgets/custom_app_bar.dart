@@ -45,9 +45,23 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
            }
          },icon: const Icon(Icons.arrow_back, color: kPrimaryColor, size: 25)):null,
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(14),
-            child: GestureDetector(
+          GestureDetector(
+            child: Container(
+              margin: const EdgeInsets.only(right: 12, top: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: kPrimaryDarkColor,
+                boxShadow: const [
+                  BoxShadow(
+                    blurStyle: BlurStyle.inner,
+                    color: Colors.black12,
+                    offset: Offset(0,1),
+                    blurRadius: 1,
+                    spreadRadius: 0.5
+                  )
+                ]
+              ),
               child: Image.asset('assets/icons/menu-icon.png',color: kPrimaryColor, width: 32,),
             ),
           )

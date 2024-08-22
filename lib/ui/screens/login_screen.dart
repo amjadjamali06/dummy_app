@@ -1,4 +1,6 @@
 
+import 'dart:developer';
+
 import 'package:excise_e_auction/ui/custom_widgets/general_text_field.dart';
 import 'package:excise_e_auction/utils/constants.dart';
 import 'package:flutter/gestures.dart';
@@ -23,6 +25,8 @@ class LoginScreen extends GetView<LoginScreenController> {
   }
 
   Widget _getBody(){
+    final height = Get.height;
+    final width = Get.width;
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -38,7 +42,7 @@ class LoginScreen extends GetView<LoginScreenController> {
             ),
           ),
 
-          SizedBox(height: Get.height*0.05),
+          SizedBox(height: height*0.05),
 
           const Text('Welcome Back',
             style: TextStyle(
@@ -47,36 +51,37 @@ class LoginScreen extends GetView<LoginScreenController> {
               color:kWhiteColor,
             ),
           ),
-          SizedBox(height: Get.height*0.02),
+          SizedBox(height: height*0.02),
           const Text('Login to your account',
             style: TextStyle(color:kWhiteColor),
           ),
-          SizedBox(height: Get.height*0.04),
+          SizedBox(height: height*0.04),
 
-          GeneralTextField.withBorder(tfManager: controller.usernameTFMController, paddingHorizontal: 36, prefixIcon: Icons.person),
+          GeneralTextField.withBorder(tfManager: controller.usernameTFMController, paddingHorizontal: width * 0.07, prefixIcon: Icons.person),
           const SizedBox(height: 12),
-          GeneralTextField.withBorder(tfManager: controller.passwordTFMController, paddingHorizontal: 36, prefixIcon: Icons.lock),
+          GeneralTextField.withBorder(tfManager: controller.passwordTFMController, paddingHorizontal: width * 0.07, prefixIcon: Icons.lock),
 
           const SizedBox(height: 16),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 32),
+            padding: EdgeInsets.symmetric(horizontal: width * 0.07),
             child: Row(
               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text('Remember Me',style: TextStyle(fontSize: 15,color: kLightGreyColor,fontWeight: FontWeight.w600),),
+                const Text('Remember Me',style: TextStyle(fontSize: 14,color: kLightGreyColor,fontWeight: FontWeight.w600),),
                 const SizedBox(width: 4),
                 Obx(()=> Switch(
                   activeColor: kPrimaryColor,
+                  inactiveThumbColor: kGreyColor,
                   value: controller.rememberMe.value,
                   onChanged: (_) => controller.rememberMe.toggle(),
                 )),
                 const Spacer(),
-                const Text('Forgot Password?',style: TextStyle(fontSize: 16,color: kLightGreyColor,decoration: TextDecoration.underline,decorationColor: kLightGreyColor)),
+                const Text('Forgot Password?',style: TextStyle(fontSize: 14,color: kLightGreyColor, letterSpacing:0, decoration: TextDecoration.underline,decorationColor: kLightGreyColor)),
               ],
             ),
           ),
           const SizedBox(height: 24),
-          GeneralButton(onPressed: (){controller.onSignInPressed();},text: 'SIGN IN',color: kButtonColor,margin: 32),
+          GeneralButton(onPressed: (){controller.onSignInPressed();},text: 'SIGN IN',color: kButtonColor,margin: width * 0.07, height: 54),
           const SizedBox(height: 12),
           const SizedBox(height: 40),
           RichText(
@@ -94,6 +99,7 @@ class LoginScreen extends GetView<LoginScreenController> {
                     height: 1.2,
                     fontSize: 16,
                     letterSpacing: 0.08,
+                    fontWeight: FontWeight.w600,
                     fontFamily: "PoppinsLight",
                     color: kPrimaryColor,decoration: TextDecoration.underline),
                 recognizer: TapGestureRecognizer()
