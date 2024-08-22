@@ -33,7 +33,7 @@ class UserService{
         user = UserModel.fromJson(responseModel.data['user']??{});
        await UserSession().saveToken(token: TokenModel.fromString(responseModel.data['token']??''));
       }else if(DummyData.debugMode){
-        user = DummyData.loginUser(username, password);
+        user = await DummyData.loginUser(username, password);
       }else{
         user.responseMessage = responseModel.statusDescription;
       }
@@ -41,5 +41,27 @@ class UserService{
       log("-===================$e");
     }
     return user;
+  }
+
+  Future<String> registerUser({required UserModel userModel})async{
+    String response = "";
+    Map<String, String> body = {
+      'name': userModel.name,
+      'email': userModel.email,
+      'cnic': userModel.cnic,
+      'mobile': userModel.phoneNumber,
+      'password':userModel.password
+    };
+    try {
+      ResponseModel responseModel = await _httpClient.postRequest(url: kLoginURL, requestBody: body, requireToken: false);
+      if(responseModel.statusCode == 200 && responseModel.data != null && responseModel.data['token'] != null ){
+        response = responseModel.statusDescription;
+      }else if(DummyData.debugMode){
+        response = await DummyData.registerUser(userModel);
+      }else{
+        response = responseModel.statusDescription;
+      }
+    } on Exception catch (e) {}
+    return response;
   }
 }

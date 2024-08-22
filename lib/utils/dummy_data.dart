@@ -1,6 +1,7 @@
 import 'package:excise_e_auction/models/item_model.dart';
 import 'package:excise_e_auction/models/placeBidModel.dart';
 import 'package:excise_e_auction/models/user_model.dart';
+import 'package:excise_e_auction/utils/user_session.dart';
 
 class DummyData {
   static bool debugMode = true;
@@ -9,7 +10,8 @@ class DummyData {
 
   static List<String> genderList() => ["Male", "Female", "Transgender"];
 
-  static UserModel loginUser(String username, String password) {
+  static Future<UserModel> loginUser(String username, String password) async{
+    DummyData.users = await UserSession().fetchUsersList();
     for (UserModel user in users) {
       if(username==user.email && password == user.password){
         return user;
@@ -17,6 +19,14 @@ class DummyData {
     }
     return UserModel.empty()..responseMessage = "Invalid Username or Password !";
  }
+
+  static Future<String> registerUser(UserModel user) async{
+    users.add(user);
+    UserSession().updateUsersList(usersList: DummyData.users);
+    DummyData.users = await UserSession().fetchUsersList();
+    return "Success";
+  }
+
 
  static List<ItemModel> getDropDownDummyLocation(){
   return [

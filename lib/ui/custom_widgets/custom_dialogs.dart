@@ -206,6 +206,7 @@ class CustomDialogs {
       String title, String description, DialogType type,
       {Function? onOkBtnPressed}) {
     AwesomeDialog(
+      dialogBackgroundColor: kCardColor,
       dismissOnBackKeyPress: false,
       context: Get.context!,
       dialogType: type,
@@ -270,6 +271,7 @@ class CustomDialogs {
   void showErrorDialog(String title, String description, DialogType type, Color btnOkColor, {Function? onOkBtnPressed,bool dismissible = true}) {
     AwesomeDialog(
       dismissOnBackKeyPress: false,
+      dialogBackgroundColor: kCardColor,
       context: Get.context!,
       dialogType: type,
       headerAnimationLoop: false,

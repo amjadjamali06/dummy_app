@@ -28,6 +28,31 @@ class UserSession {
     return true;
   }
 
+  Future<bool> updateUsersList({required List<UserModel> usersList}) async {
+    const FlutterSecureStorage storage =  FlutterSecureStorage();
+    List<Map<String, dynamic>> jsonList = usersList.map((user) => user.toOfflineJson()).toList();
+    String jsonString = jsonEncode(jsonList);
+    await storage.write(key: 'USERS_LIST', value: jsonString);
+
+    return true;
+  }
+
+  Future<List<UserModel>> fetchUsersList() async {
+    const FlutterSecureStorage storage =  FlutterSecureStorage();
+    List<UserModel> userModelList = [];
+    String? jsonString = await storage.read(key: 'USERS_LIST');
+
+    if (jsonString != null && jsonString.isNotEmpty) {
+      List<dynamic> jsonList = jsonDecode(jsonString);
+      for (var jsonUser in jsonList) {
+        userModelList.add(UserModel.fromOfflineJson(jsonUser));
+      }
+      return userModelList;
+    } else {
+      return [];
+    }
+  }
+
   Future<bool> isUserLoggedIn() async {
     const FlutterSecureStorage storage =  FlutterSecureStorage();
     final value = await storage.read(key: 'USER_DATA');

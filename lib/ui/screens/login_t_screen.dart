@@ -1,6 +1,7 @@
 /*Created by Afaque Ali on 21-Aug-2024*/
 
 import 'package:excise_e_auction/controllers/login_t_screen_controller.dart';
+import 'package:excise_e_auction/utils/constants.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -130,6 +131,27 @@ class LoginTScreen extends GetView<LoginTScreenController> {
                                     ),
                                   ),
                                 ],
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 12),
+                              child: RichText(
+                                textAlign: TextAlign.right,
+                                text: TextSpan(children: <TextSpan>[
+                                  const TextSpan(text: ""),
+                                  TextSpan(
+                                    text: "New User Click here to register",
+                                    style: const TextStyle(
+                                        fontSize: 10,
+                                        height: 1.2,
+                                        letterSpacing: 0.08,
+                                        fontFamily: "PoppinsLight",
+                                        color: kWhiteColor),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {Get.toNamed(kRegistrationScreenRoute);},
+                                  ),
+                                ],
+                                ),
                               ),
                             ),
                           ],

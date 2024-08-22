@@ -10,5 +10,6 @@ enum TextFilter{
   decimal,
   alphaNumeric,
   iban,
+  password,
   none;
 }

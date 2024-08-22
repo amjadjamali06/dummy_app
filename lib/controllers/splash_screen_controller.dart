@@ -26,8 +26,8 @@ class SplashScreenController extends GetxController {
   }
 
   void _screenNavigation() async {
-    // Get.offAllNamed(kLoginScreenRoute);
-    Get.offAllNamed(kAuctionsListScreenRoute);
+    Get.offAllNamed(kLoginScreenRoute);
+    // Get.offAllNamed(kAuctionsListScreenRoute);
   }
 
   void onScreenTap() {
