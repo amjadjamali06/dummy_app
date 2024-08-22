@@ -11,7 +11,7 @@ class CustomEndDrawerController extends GetxController{
     if(title == 'Logout'){
       CustomDialogs().confirmationDialog(message: "Are you sure want to Logout?", yesFunction: () async{
         await UserSession().logout();
-        Get.offAllNamed(kHomeScreenRoute);
+        Get.offAllNamed(kAuctionDetailScreenRoute);
       });
     } else if(title=='Settings' && Get.currentRoute != kSplashScreenRoute){
       Get.offAllNamed(kSettingScreenRoute, predicate: (r)=>r.isFirst);

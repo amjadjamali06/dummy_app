@@ -1,4 +1,4 @@
-import 'package:excise_e_auction/controllers/login_t_screen_controller.dart';
+import 'package:excise_e_auction/models/auction_model.dart';
 // import 'package:excise_e_auction/ui/screens/e_auction_screen.dart';
 import 'package:excise_e_auction/ui/screens/login_t_screen.dart';
 import 'package:excise_e_auction/ui/screens/premium_number_list_screen.dart';
@@ -14,7 +14,7 @@ import 'package:excise_e_auction/ui/screens/splash_screen.dart';
 import 'package:excise_e_auction/ui/screens/tag_winning_nbr_screen.dart';
 import 'package:get/get.dart';
 import 'package:excise_e_auction/ui/screens/dashboard_screen.dart';
-import 'package:excise_e_auction/ui/screens/home_screen.dart';
+import 'package:excise_e_auction/ui/screens/auction_detail_screen.dart';
 import 'package:excise_e_auction/ui/screens/login_screen.dart';
 import 'package:excise_e_auction/utils/constants.dart';
 import 'package:excise_e_auction/utils/screen_bindings.dart';
@@ -43,8 +43,11 @@ class RouteManagement {
         binding: ScreensBindings(),
       ),
       GetPage(
-        name: kHomeScreenRoute,
-        page: () => const HomeScreen(),
+        name: kAuctionDetailScreenRoute ,
+        page: () {
+          AuctionModel auctionModel = Get.arguments as AuctionModel;
+          return AuctionDetailScreen(auctionModel: auctionModel);
+        },
         binding: ScreensBindings(),
       ),
       GetPage(

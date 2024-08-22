@@ -1,7 +1,7 @@
 import 'package:excise_e_auction/controllers/auctions_list_screen_controller.dart';
 import 'package:excise_e_auction/ui/custom_widgets/custom_scaffold.dart';
 import 'package:excise_e_auction/utils/app_colors.dart';
-import 'package:flutter/foundation.dart';
+import 'package:excise_e_auction/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -24,7 +24,7 @@ class AuctionsListScreen extends GetView<AuctionsListScreenController> {
           itemBuilder: (context, index) {
             final auction = controller.auctionsList[index];
             return AuctionCard(
-              onTap: (){},
+              onTap: (){ Get.toNamed(kAuctionDetailScreenRoute, arguments:controller.auctionsList[index]);},
               numberPlat: auction.numberPlat,
               bidType: auction.bidType,
               startDate: auction.startDate,
