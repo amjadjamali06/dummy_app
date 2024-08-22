@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/platform/platform_io.dart';
 
+import '../../controllers/custom_widget_controllers/custom_bottom_nav_bar_controller.dart';
 import '../../utils/app_colors.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
@@ -36,6 +37,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
         child: Image.asset('assets/icons/user-icon.png', color: kPrimaryColor, width: 18, height: 18,),
       ) : screenName.isNotEmpty ?
          IconButton(onPressed:() {
+           CustomBottomNavBarController.selectedIndex.value = 0;
            if (onBackButtonPress != null) {
              onBackButtonPress!();
            }else{

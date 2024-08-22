@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:excise_e_auction/controllers/custom_widget_controllers/custom_bottom_nav_bar_controller.dart';
+import 'package:excise_e_auction/ui/custom_widgets/custom_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:excise_e_auction/ui/custom_widgets/custom_app_bar.dart';
@@ -53,6 +55,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
 
     return WillPopScope(
         onWillPop: (){
+          CustomBottomNavBarController.selectedIndex.value = 0;
           if(widget.className == "HomeScreen"|| widget.className == "SignInScreen"){
             if(widget.scaffoldKey.currentState!.isDrawerOpen){
               Get.back();
@@ -130,6 +133,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                 shape: const CircleBorder(),
                 child: const Icon(Icons.add,color: kWhiteColor, size: 32),
               ),
+              bottomNavigationBar: const CustomBottomNavBar(),
               // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
             ) ,
           ),
