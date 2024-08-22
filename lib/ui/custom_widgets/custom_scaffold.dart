@@ -58,7 +58,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
     return WillPopScope(
         onWillPop: (){
           CustomBottomNavBarController.selectedIndex.value = 0;
-          if(widget.className == "HomeScreen"|| widget.className == "SignInScreen"){
+          if(widget.className == "DashboardScreen"|| widget.className == "LoginScreen"){
             if(widget.scaffoldKey.currentState!.isDrawerOpen){
               Get.back();
             }else {

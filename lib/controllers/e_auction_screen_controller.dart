@@ -9,8 +9,8 @@ class EAuctionScreenController extends GetxController{
   void onTapItem(String title){
     switch(title){
       case "Place A Bid": Get.toNamed(kAuctionCategoryScreenRoute);break;
-      case "Request History": Get.toNamed(kAuctionCategoryScreenRoute);break;
-      case "Auction\nRequest": Get.toNamed(kAuctionCategoryScreenRoute);break;
+      case "Request History": Get.toNamed(kHistoryListScreenRoute);break;
+      case "Auction\nRequest": Get.toNamed(kAuctionCategoryScreenRoute, arguments: "Request");break;
       case "Tag Winning Number": Get.toNamed(kPremiumNumberListScreenRoute);break;
     }
   }

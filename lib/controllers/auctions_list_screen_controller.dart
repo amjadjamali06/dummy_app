@@ -2,7 +2,6 @@ import 'package:excise_e_auction/models/auction_model.dart';
 import 'package:excise_e_auction/utils/dummy_data.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:excise_e_auction/utils/constants.dart';
 
 class AuctionsListScreenController extends GetxController {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -14,8 +13,7 @@ class AuctionsListScreenController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    var args = Get.arguments??{};
-    String category = args["category"]??"";
+    String category = Get.arguments??"";
     auctionsList.value = DummyData().getAuctionCategoryWiseList(category);
 
   }

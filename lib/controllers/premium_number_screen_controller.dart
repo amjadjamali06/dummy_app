@@ -19,8 +19,7 @@ class PremiumNumberListScreenController extends GetxController {
   }
 
   void onTapItem(PremiumNumberModel number){
-
-    Get.toNamed(kAuctionsListScreenRoute, arguments: number);
+    Get.toNamed(kTagWinningNbrScreenRoute, arguments: number);
   }
 
 

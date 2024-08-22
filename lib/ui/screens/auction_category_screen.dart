@@ -15,30 +15,24 @@ class AuctionCategoryScreen extends GetView<AuctionCategoryScreenController> {
       className: runtimeType.toString(),
       screenName: "Auction Category",
       scaffoldKey: controller.scaffoldKey,
-      body: buildBody.marginZero,
       horizontalPadding: 24,
-    );
-  }
-
-  Widget get buildBody{
-    return Obx(
-      ()=> Column(
-
+      body: Column(
         children: [
           ListView.separated(
-            padding: EdgeInsets.only(top: Get.height * 0.16, bottom: Get.height * 0.1),
+            padding: EdgeInsets.only(top: Get.height * 0.16, bottom: Get.height * 0.1, left: 2, right: 2),
             shrinkWrap: true,
+            // physics: const NeverScrollableScrollPhysics(),
             itemCount: controller.categories.length,
             itemBuilder: (context, index) {
-              return auctionCategoryCardNew(
+              return Obx(()=> auctionCategoryCardNew(
                 cardName: controller.categories[index].capitalize.toString(),
-                text: "AAA",
+                text: controller.categories[index] == "platinum"? 'AAA':controller.categories[index] =="silver"?'AAAAAAA':'AAAAA',
                 iconPath:controller.categories[index] == "platinum"? 'assets/images/platinum.png':controller.categories[index] =="silver"?'assets/images/silver.png':'assets/images/gold.png',
                 onTap: (){
                   controller.onCategorySelected(index);
                 },
                 isSelected: controller.selectedValue.value == index,
-              );
+              ));
             }, separatorBuilder: (_, int index)=>const SizedBox(height: 24),
           ),
           GeneralButton(onPressed: ()=>controller.navigateToCategories(),color: kBlackColor, text: "Continue",)
@@ -52,31 +46,31 @@ class AuctionCategoryScreen extends GetView<AuctionCategoryScreenController> {
     required Function() onTap,
     required bool isSelected,
   }){
-    return Container(
-      width: Get.width,
-      height: 70,
-      decoration: BoxDecoration(
-        color: kCardColor,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(24),
-          bottomRight: Radius.circular(24),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: Get.width,
+        height: 70,
+        decoration: const BoxDecoration(
+          color: kCardColor,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(24),
+            bottomRight: Radius.circular(24),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: kTextLightColor,
+              offset: Offset(0, 1),
+              spreadRadius: 1,
+              blurRadius: 1,
+            )
+          ],
         ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.shade500,
-            offset: const Offset(0, 1),
-            spreadRadius: 1,
-            blurRadius: 1,
-          )
-        ],
-      ),
-      child:  Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-         const SizedBox(width: 10,),
-          GestureDetector(
-            onTap: onTap,
-            child: Container(
+        child:  Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+           const SizedBox(width: 10,),
+            Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
@@ -96,27 +90,27 @@ class AuctionCategoryScreen extends GetView<AuctionCategoryScreenController> {
                 ),
               ),
             ),
-          ),
 
-          Expanded(
-            flex: 2,
-            child: Container(padding: const EdgeInsets.only(left: 20,top: 10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(cardName,style: GoogleFonts.oxygen(fontSize: 18,color: kWhiteColor,fontWeight: FontWeight.w600, shadows: [Shadow(
-                  offset: const Offset(2.0, 5.0),blurRadius: 8.0,color: kBlackColor.withOpacity(0.5),),])),
-                  Text(text, style: const TextStyle(color: kLightGreyColor,fontSize: 14, fontWeight: FontWeight.w500),textAlign: TextAlign.center,)
-                ],
-              ),),
-          ),
-          Expanded(flex: 1,
-            child: Container(width:double.infinity,height: 30, padding: const EdgeInsets.only(left: 25,right: 15),
-            decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(3),), child:
-              Image.asset(iconPath, fit: BoxFit.fill,),),),
-        ],
+            Expanded(
+              flex: 2,
+              child: Container(padding: const EdgeInsets.only(left: 20,top: 10),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(cardName,style: GoogleFonts.oxygen(fontSize: 18,color: kWhiteColor,fontWeight: FontWeight.w600, shadows: [Shadow(
+                    offset: const Offset(2.0, 5.0),blurRadius: 8.0,color: kBlackColor.withOpacity(0.5),),])),
+                    Text(text, style: const TextStyle(color: kLightGreyColor,fontSize: 14, fontWeight: FontWeight.w500),textAlign: TextAlign.center,)
+                  ],
+                ),),
+            ),
+            Expanded(flex: 1,
+              child: Container(width:double.infinity,height: 30, padding: const EdgeInsets.only(left: 25,right: 15),
+              decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(3),), child:
+                Image.asset(iconPath, fit: BoxFit.fill,),),),
+          ],
+        ),
       ),
     );
   }

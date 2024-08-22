@@ -15,8 +15,8 @@ class CustomDashboardCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cardHeight = height ??Get.height * 0.18;
-    final cardWidth = width ??Get.height * 0.18;
+    final cardHeight = height ??Get.width * 0.38;
+    final cardWidth = width ??Get.width * 0.38;
     return GestureDetector(
       onTap: ()=>onTap(title),
       child: Container(

@@ -24,16 +24,21 @@ class AuctionRequestScreen extends GetView<AuctionRequestScreenController> {
     return Column(children: [
        Container(
         margin: const EdgeInsets.only(top: 20,bottom: 20),
-        child: const Text('Tag Winning Number', style: TextStyle(
+        child: const Text('Auction Request', style: TextStyle(
           fontSize: 24,
           fontWeight: FontWeight.bold,
           color:kTextColor,
         ),
         ),
       ),
-      const SizedBox(height: 20,),
+      const Text( "Please Enter Desired Characters or Numbers\nfor the Plate below",
+        style: TextStyle(color: kTextLightColor),
+        textAlign: TextAlign.center,
+      ),
+      const SizedBox(height: 40),
       GeneralTextField.withBorder(tfManager: controller.desiredNbrPlateTfManager),
-      GeneralButton(onPressed: (){Get.toNamed(kPlaceBidScreenRoute);},color: kBlackColor,)
+      const SizedBox(height: 12),
+      GeneralButton(onPressed: controller.onTapRequestAuction)
     ],);
   }
 }

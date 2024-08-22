@@ -10,12 +10,13 @@ import '../custom_widgets/general_text_field.dart';
 
 class PlaceBidScreen extends GetView<PlaceBidScreenController> {
   const PlaceBidScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
       scaffoldKey: controller.scaffoldKey,
       className: runtimeType.toString(),
-      screenName: ' ',
+      screenName: '',
       gestureDetectorOnTap: controller.removeFocus,
       onNotificationListener: (detail){
         if(detail is UserScrollNotification) {

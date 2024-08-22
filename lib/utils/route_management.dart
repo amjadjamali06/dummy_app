@@ -67,7 +67,7 @@ class RouteManagement {
         binding: ScreensBindings()
       ),
       GetPage(
-          name: kBidHistoryListScreenRoute,
+          name: kHistoryListScreenRoute,
           page: ()=> const BidRequestHistoryScreen(),
           binding: ScreensBindings()
       ),

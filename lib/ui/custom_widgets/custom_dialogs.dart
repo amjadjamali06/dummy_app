@@ -230,14 +230,16 @@ class CustomDialogs {
 
   void showAwesomeConfirmationDialog(String message, {Function? onOkBtnPressed}) {
     AwesomeDialog(
+      dialogBackgroundColor: kCardColor,
       dismissOnBackKeyPress: false,
       context: Get.context!,
-      dialogType: DialogType.warning,
+      dialogType: DialogType.noHeader,
       headerAnimationLoop: false,
       animType: AnimType.bottomSlide,
       btnOkColor: kPrimaryColor,
       dismissOnTouchOutside: false,
-      body: Align(
+      body: Container(
+        height: 80,
         alignment: Alignment.center,
         child: Text(
           message,
@@ -247,13 +249,13 @@ class CustomDialogs {
           ),
         ),
       ),
-      customHeader: Container(
+    /*customHeader: Container(
         margin: const EdgeInsets.all(6),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(50),
             child: Image.asset("assets/images/app_logo.png")
         ),
-      ),
+      )*/
       btnOkText: 'YES',
       btnOkOnPress: () {
         if (onOkBtnPressed != null) {

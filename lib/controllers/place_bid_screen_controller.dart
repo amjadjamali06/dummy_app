@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'package:excise_e_auction/models/auction_model.dart';
 import 'package:excise_e_auction/ui/custom_widgets/custom_progress_dialog.dart';
+import 'package:excise_e_auction/utils/constants.dart';
 import 'package:excise_e_auction/utils/date_time_manager.dart';
 import 'package:excise_e_auction/utils/string_utils.dart';
 import 'package:excise_e_auction/utils/text_filter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../utils/constants.dart';
 import '../utils/text_field_manager.dart';
 
 class PlaceBidScreenController extends GetxController{
@@ -50,6 +50,6 @@ class PlaceBidScreenController extends GetxController{
   }
 
   void placeBid() {
-    Get.toNamed(kBidHistoryListScreenRoute);
+    Get.offAllNamed(kHistoryListScreenRoute,predicate: (rout)=>rout.isFirst);
   }
 }

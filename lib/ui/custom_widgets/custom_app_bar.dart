@@ -35,15 +35,14 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
             borderRadius: BorderRadius.circular(50)
         ),
         child: Image.asset('assets/icons/user-icon.png', color: kPrimaryColor, width: 18, height: 18,),
-      ) : screenName.isNotEmpty ?
-         IconButton(onPressed:() {
+      ) : IconButton(onPressed:() {
            CustomBottomNavBarController.selectedIndex.value = 0;
            if (onBackButtonPress != null) {
              onBackButtonPress!();
            }else{
              Get.back();
            }
-         },icon: const Icon(Icons.arrow_back, color: kPrimaryColor, size: 25)):null,
+         },icon: const Icon(Icons.arrow_back, color: kPrimaryColor, size: 25)),
         actions: [
           GestureDetector(
             child: Container(
@@ -83,8 +82,8 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
         //     FocusScope.of(context).requestFocus(FocusNode());
         //   },
         // ):null,
-      title: Text(
-        screenName == "Dashboard Screen"? "Excise App" : screenName,
+      title:  Text(
+        screenName.isNotEmpty ? screenName : "Excise",
         style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500,  color: kWhiteColor),
       ),
       centerTitle: true,

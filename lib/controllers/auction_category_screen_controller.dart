@@ -5,10 +5,11 @@ import 'package:get/get.dart';
 class AuctionCategoryScreenController extends GetxController{
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
-  List<String> categories = ["silver", "platinum", "gold"];
+  List<String> categories = ["silver", "gold", "platinum"];
 
   RxInt selectedValue = 0.obs;
 
+  String routeTo = Get.arguments??"";
 
   void onCategorySelected(int index) {
     selectedValue.value = index;
@@ -22,6 +23,10 @@ class AuctionCategoryScreenController extends GetxController{
 
 
   void navigateToCategories() {
-    Get.toNamed(kAuctionsListScreenRoute, arguments: {"category":categories[selectedValue.value]});
+    if(routeTo == "Request"){
+      Get.toNamed(kAuctionRequestScreenRoute, arguments: categories[selectedValue.value]);
+    }else {
+      Get.toNamed(kAuctionsListScreenRoute, arguments: categories[selectedValue.value]);
+    }
   }
 }

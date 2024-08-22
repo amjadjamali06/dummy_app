@@ -1,3 +1,4 @@
+import 'package:excise_e_auction/utils/app_colors.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:excise_e_auction/utils/common_code.dart';
@@ -26,7 +27,7 @@ class ProgressDialog {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const CircularProgressIndicator(),
+              const CircularProgressIndicator(color: kPrimaryColor),
               const SizedBox(
                 width: 15,
               ),

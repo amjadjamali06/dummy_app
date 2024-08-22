@@ -14,13 +14,14 @@ class BidRequestHistoryScreenController extends GetxController {
   RxList<MyBidModel> bidHistory = RxList([]);
   RxList<BidRequestModel> myRequests = RxList([]);
 
-  RxInt selectedTabIndex = RxInt(1);
+  RxInt selectedTabIndex = RxInt(0);
 
 
 
   @override
   void onInit() {
     super.onInit();
+
     bidHistory.value = DummyData().myPlacedBids;
     myRequests.value = DummyData().myBidRequests;
   }
