@@ -26,31 +26,35 @@ class EAuctionScreen extends GetView<EAuctionScreenController> {
         children: [
           const SizedBox(height: 100),
           Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomDashboardCardWidget(
                   title: "Place A Bid",
                   iconPath: 'assets/icons/big.png',
-                  onTap: () {},
+                  onTap: controller.onTapItem,
                 ),
+                const SizedBox(width: 24),
                 CustomDashboardCardWidget(
                   title: "Request History",
                   iconPath: 'assets/icons/icon-5.png',
-                  onTap: () {},
+                  onTap: controller.onTapItem,
             ),
           ]),
-          const SizedBox(height: 10),
+          const SizedBox(height: 24),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CustomDashboardCardWidget(
-                  title: "Auction\n Request",
+                  title: "Auction\nRequest",
                   iconPath: 'assets/icons/online-payment 1.png',
-                  onTap: () {}),
+                onTap: controller.onTapItem,
+              ),
+              const SizedBox(width: 24),
               CustomDashboardCardWidget(
-                  title: "Tag Winning\n Number",
+                  title: "Tag Winning Number",
                   iconPath: 'assets/icons/winner-badge.png',
-                  onTap: () {}),
+                onTap: controller.onTapItem,
+              ),
             ],
           ),
           SizedBox(height: Get.height * 0.1),
@@ -103,12 +107,12 @@ class EAuctionScreen extends GetView<EAuctionScreenController> {
                 CustomDashboardCardWidget(
                   title: "Place A Bid",
                   iconPath: 'assets/icons/big.png',
-                  onTap: () {},
+                  onTap: controller.onTapItem,
                 ),
                 CustomDashboardCardWidget(
                   title: "Request History",
                   iconPath: 'assets/icons/icon-5.png',
-                  onTap: () {},
+                  onTap: controller.onTapItem,
                 ),
               ]),
           const SizedBox(height: 10),
@@ -118,11 +122,13 @@ class EAuctionScreen extends GetView<EAuctionScreenController> {
               CustomDashboardCardWidget(
                   title: "Auction\n Request",
                   iconPath: 'assets/icons/online-payment 1.png',
-                  onTap: () {}),
+                onTap: controller.onTapItem,
+              ),
               CustomDashboardCardWidget(
                   title: "Tag Winning\n Number",
                   iconPath: 'assets/icons/winner-badge.png',
-                  onTap: () {}),
+                onTap: controller.onTapItem,
+              ),
             ],
           ),
           SizedBox(height: Get.height * 0.1),

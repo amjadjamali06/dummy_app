@@ -61,7 +61,7 @@ class UserService{
       }else{
         response = responseModel.statusDescription;
       }
-    } on Exception catch (e) {}
+    } on Exception catch (_) {}
     return response;
   }
 }

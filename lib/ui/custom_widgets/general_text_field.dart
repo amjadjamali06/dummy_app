@@ -1,3 +1,5 @@
+import 'package:excise_e_auction/utils/text_filter.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:excise_e_auction/utils/app_colors.dart';
@@ -7,18 +9,17 @@ import 'package:excise_e_auction/utils/text_field_manager.dart';
 class GeneralTextField extends StatelessWidget {
 
   final TextFieldManager tfManager;
-  final IconData? suffixIcon;
-  final Function()? onSuffixIconPressed;
+  final IconData? prefixIcon;
   final Function(String)? callback;
   final int maxLines;
   final double paddingHorizontal;
   final bool readOnly;
-  final RxBool _withShadow=RxBool(false);
   final TextAlign textAlign;
+  final RxBool _obscure = false.obs;
 
-  GeneralTextField.withBorder({Key? key,required this.tfManager, this.callback, this.onSuffixIconPressed, this.suffixIcon, this.maxLines=1, this.paddingHorizontal=0, this.readOnly=false,this.textAlign = TextAlign.start}) : super(key: key);
+  GeneralTextField.withBorder({Key? key,required this.tfManager, this.callback, this.prefixIcon, this.maxLines=1, this.paddingHorizontal=0, this.readOnly=false,this.textAlign = TextAlign.start}) : super(key: key);
 
-  GeneralTextField.withShadow({Key? key,required this.tfManager, this.callback, this.onSuffixIconPressed, this.suffixIcon, this.maxLines=1, this.paddingHorizontal=4, this.readOnly=false,this.textAlign = TextAlign.start}) : super(key: key) {
+  GeneralTextField.withShadow({Key? key,required this.tfManager, this.callback, this.prefixIcon, this.maxLines=1, this.paddingHorizontal=4, this.readOnly=false,this.textAlign = TextAlign.start}) : super(key: key) {
     // _withShadow.value=true;
   }
 
@@ -29,6 +30,7 @@ class GeneralTextField extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          if(tfManager.fieldName.isNotEmpty)
           RichText(text: TextSpan(text: tfManager.fieldName,
             style: const TextStyle(color: kTextColor, fontSize: 12, fontWeight: FontWeight.w400),
             children: tfManager.mandatory ? [
@@ -39,15 +41,11 @@ class GeneralTextField extends StatelessWidget {
           Obx(()=> Container(
             width: Get.width,
             margin: const EdgeInsets.only(top: 4),
-            padding: EdgeInsets.only(left: _withShadow.isFalse ? 12 : 8, right: 2),
+            padding: const EdgeInsets.only(left: 8, right: 2),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(_withShadow.isTrue ? 4 : kFieldRadius),
-                  border: _withShadow.isTrue ? null : Border.all(color: /*tfManager.errorMessage.isNotEmpty ? kRequiredRedColor : */kFieldBorderColor ),
-                  color: /*readOnly ?*/ kFieldBGColor /*: _withShadow.isTrue ? kWhiteColor : kWhiteColor*/,
-                  boxShadow: _withShadow.isTrue ? [
-                    const BoxShadow(blurRadius: 3,spreadRadius: 1, color: kFieldShadowColor)
-                  ] : null
-
+                  borderRadius: BorderRadius.circular(kFieldRadius),
+                  border: Border.all(color: kFieldBorderColor),
+                  color: kFieldBGColor,
               ),
               child: SizedBox(
                 width: Get.width,
@@ -67,34 +65,38 @@ class GeneralTextField extends StatelessWidget {
                           focusNode: tfManager.focusNode,
                           textCapitalization: tfManager.textCapitalization,
                           textAlign: textAlign,
+                          obscureText: _obscure.value,
                           onChanged: (value) {
                             tfManager.validate();
                             if(value.isEmpty && tfManager.errorMessage.isEmpty){
                               callback?.call(value);
                             }
                           },
+                        cursorColor: kPrimaryColor,
                           textInputAction: maxLines == 1 ? TextInputAction.done : TextInputAction.newline,
                           inputFormatters: tfManager.formatters,
                           decoration: InputDecoration(
                             counterText: '',
-                            hintText: tfManager.hint??tfManager.fieldName,
-                            // contentPadding: const EdgeInsets.all(0),
+                            hintText: "Enter ${tfManager.hint??tfManager.fieldName}",
+                            contentPadding: const EdgeInsets.all(16),
                             border: InputBorder.none,
+                            prefixIcon: prefixIcon!=null ? Icon(prefixIcon, color: kTextHintColor,size: 32) : null,
                             hintStyle: const TextStyle(color: kTextHintColor),
+                            suffixIcon: tfManager.filter != TextFilter.password ? null :
+                            GestureDetector(
+                                onTap: ()=>_obscure.toggle(),
+                                child: Icon(
+                                  _obscure.isTrue ? CupertinoIcons.eye_fill : CupertinoIcons.eye_slash_fill,
+                                  color: kTextHintColor,
+                                  // size: 24,
+                                )
+                            ),
                           ),
                           style: TextStyle(
                               color: readOnly ? kTextHintColor : kTextColor,
-                              decorationColor: kPrimaryColor
+                              decorationColor: kPrimaryColor,
                           ),
                         ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 4, vertical: maxLines == 1 ? 11: 6),
-                      child: suffixIcon!=null && tfManager.errorMessage.isEmpty
-                          ? GestureDetector(onTap: onSuffixIconPressed, child: Icon(suffixIcon, color:readOnly ? kTextHintColor: kPrimaryColor))
-                          // : tfManager.errorMessage.isNotEmpty && _withShadow.isFalse
-                          // ? const Icon(Icons.info, color: kRequiredRedColor)
-                          : null,
                     ),
                   ],
                 ),

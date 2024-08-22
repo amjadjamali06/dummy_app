@@ -37,11 +37,6 @@ class TextFieldManager {
       _formatters=[FilteringTextInputFormatter.allow(RegExp(r'[A-Za-z ]'))];
       textCapitalization = TextCapitalization.words;
       _textInputType = TextInputType.name;
-    } else if(filter == TextFilter.iban){
-      _formatters=[FilteringTextInputFormatter.allow(RegExp(r'[A-Z0-9]'))];
-      textCapitalization = TextCapitalization.characters;
-      _textInputType = TextInputType.name;
-      customValidation = validateIBAN;
     } else if(filter == TextFilter.alphaNumeric){
       _formatters=[FilteringTextInputFormatter.allow(RegExp(r'[A-Za-z0-9 ]'))];
       textCapitalization = TextCapitalization.sentences;
@@ -67,7 +62,7 @@ class TextFieldManager {
       return customValidation!();
     }
     if(text.isEmpty){
-      errorMessage.value = mandatory ? "$fieldName is required" : '';
+      errorMessage.value = mandatory ? "${fieldName.isNotEmpty?fieldName:hint} is required" : '';
     } else {
       UserSession.isDataChanged.value = true;
       errorMessage.value = "";
@@ -82,27 +77,16 @@ class TextFieldManager {
 
   bool validateMobileNumber() {
     if(text.isEmpty) {
-      errorMessage.value = mandatory ? "Mobile No is required" : "";
+      errorMessage.value = mandatory ? "${fieldName.isNotEmpty?fieldName:hint} is required" : "";
     } else if(RegExp(r'^[0][3][0-5][0-9]{8}$').hasMatch(text)) {
       errorMessage.value = "";
     }else{
-      errorMessage.value = "Mobile No must follow '03XXXXXXXXX' format!";
+      errorMessage.value = "${fieldName.isNotEmpty?fieldName:hint} must follow '03XXXXXXXXX' format!";
     }
 
     return errorMessage.isEmpty;
   }
 
-  bool validateIBAN() {
-    if(text.isEmpty) {
-      errorMessage.value = mandatory ? "$fieldName is required" : "";
-    } else if(text.length==24) {
-      errorMessage.value = "";
-    }else{
-      errorMessage.value = "Invalid $fieldName";
-    }
-
-    return errorMessage.isEmpty;
-  }
 
   /*bool validatePhoneNumber(){
     if(text.isEmpty){
@@ -134,7 +118,7 @@ class TextFieldManager {
       controller.selection = TextSelection(baseOffset: text.length, extentOffset: text.length);
       errorMessage.value = "";
     } else {
-      errorMessage.value =  mandatory ? "$fieldName is required" : "";
+      errorMessage.value =  mandatory ? "${fieldName.isNotEmpty?fieldName:hint} is required" : "";
     }
     return errorMessage.isEmpty;
   }

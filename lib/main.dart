@@ -13,7 +13,7 @@ import 'package:excise_e_auction/utils/screen_bindings.dart';
 /*Modified By: Amjad Jamali on 02-Aug-2023*/
 void main() async {
   ErrorWidget.builder = (FlutterErrorDetails details) => Scaffold(
-    backgroundColor: Colors.white,
+    backgroundColor: kPrimaryDarkColor,
     body: Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -21,17 +21,15 @@ void main() async {
       children: [
         Text(
           details.summary.name??'',
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16,
-            color: kTextColor.withAlpha(200),
           ),
         ),
         const SizedBox(height: 16),
         Text(
           '${details.summary.value}',
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 14,
-            color: kTextColor.withAlpha(200),
           ),
         ),
       ],
@@ -71,6 +69,7 @@ class MyApp extends StatelessWidget {
         appBarTheme: CustomTheme.appBarTheme,
         textTheme: CustomTheme.darkTextTheme,
         buttonTheme: CustomTheme.darkButtonTheme,
+        primaryColor: kPrimaryColor,
       ),
       debugShowCheckedModeBanner: false,
     );

@@ -1,3 +1,4 @@
+import 'package:excise_e_auction/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,5 +9,11 @@ class AuctionCategoryScreenController extends GetxController{
     if(value!=null){
       selectedValue.value = value;
     }
+  }
+
+
+  void onTapItem(String category){
+
+    Get.toNamed(kAuctionsListScreenRoute, arguments: category);
   }
 }

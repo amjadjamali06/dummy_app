@@ -21,9 +21,14 @@ class DummyData {
  }
 
   static Future<String> registerUser(UserModel user) async{
+    DummyData.users = await UserSession().fetchUsersList();
+    for (var u in users) {
+      if(u.email == user.email){
+        return 'Email Address already Registered';
+      }
+    }
     users.add(user);
     UserSession().updateUsersList(usersList: DummyData.users);
-    DummyData.users = await UserSession().fetchUsersList();
     return "Success";
   }
 

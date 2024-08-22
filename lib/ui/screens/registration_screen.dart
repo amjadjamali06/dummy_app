@@ -6,6 +6,7 @@ import 'package:excise_e_auction/ui/custom_widgets/general_button.dart';
 import 'package:excise_e_auction/ui/custom_widgets/general_date_picker_field.dart';
 import 'package:excise_e_auction/ui/custom_widgets/general_text_field.dart';
 import 'package:excise_e_auction/utils/app_colors.dart';
+import 'package:excise_e_auction/utils/constants.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -48,7 +49,30 @@ class RegistrationScreen extends GetView<RegistrationScreenController> {
       GeneralTextField.withBorder(tfManager: controller.passwordTfManager,),
       GeneralTextField.withBorder(tfManager: controller.confirmPasswordTfManager,),
       GeneralButton(onPressed: (){controller.onRegister();},color: kBlackColor,text: 'Register',),
-      SizedBox(height:MediaQuery.of(context).viewInsets.bottom),
+      const SizedBox(height:30),
+      RichText(
+        textAlign: TextAlign.right,
+        text: TextSpan(
+          style: const TextStyle(
+            fontFamily: "PoppinsLight",
+            color: kTextLightColor,
+          ),
+          children: <TextSpan>[
+            const TextSpan(text: "Already have an account? "),
+            TextSpan(
+              text: "Login",
+              style: const TextStyle(
+                  height: 1.2,
+                  fontSize: 16,
+                  letterSpacing: 0.08,
+                  fontFamily: "PoppinsLight",
+                  color: kPrimaryColor,decoration: TextDecoration.underline),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {Get.toNamed(kLoginScreenRoute);},
+            ),
+          ],
+        ),
+      ),
     ],);
   }
 }

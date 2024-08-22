@@ -5,11 +5,9 @@ import 'package:excise_e_auction/utils/constants.dart';
 class DashboardScreenController extends GetxController{
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
-  Future<void> onDashboardCardTap(String title) async {
-    switch (title) {
-      case "Dashboard":
-        // Get.toNamed();
-        break;
+  void onTapItem(String title){
+    switch(title){
+      case "E-Auction": Get.toNamed(kEAuctionScreenRoute);break;
     }
   }
 } 

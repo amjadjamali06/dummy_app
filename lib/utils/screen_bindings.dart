@@ -42,8 +42,8 @@ class ScreensBindings extends Bindings {
     Get.lazyPut(() => AuctionsListScreenController());
     Get.lazyPut(() => PremiumNumberListScreenController());
     Get.lazyPut(() => BidRequestHistoryScreenController());
-    Get.lazyPut(()=>AuctionCategoryScreenController());
-    Get.lazyPut(()=>AuctionRequestCategoryScreenController());
+    Get.lazyPut(() => AuctionCategoryScreenController());
+    Get.lazyPut(() => AuctionRequestCategoryScreenController());
     Get.lazyPut(()=>CustomBottomNavBarController());
   }
 

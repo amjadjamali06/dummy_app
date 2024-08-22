@@ -14,29 +14,20 @@ class LoginScreenController extends GetxController{
 
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
-  TextFieldManager usernameTFMController = TextFieldManager('',hint:'Enter Email' ,filter: TextFilter.email );
-  TextFieldManager passwordTFMController = TextFieldManager('Password',hint: 'Enter Password');
-  RxBool rememberMe = false.obs,obscurePassword = true.obs;
-
-  @override
-  void onInit() async{
-    super.onInit();
-  }
+  TextFieldManager usernameTFMController = TextFieldManager('',hint:'Email Address' ,filter: TextFilter.email);
+  TextFieldManager passwordTFMController = TextFieldManager('',hint: 'Password', filter: TextFilter.password);
+  RxBool rememberMe = false.obs;
 
 
-  void onSignInPressed() async{
+  void onSignInPressed() async {
     if(usernameTFMController.validate() & passwordTFMController.validate()){
       ProgressDialog().showDialog();
       UserModel user = await UserService().loginUser(username: usernameTFMController.text, password: passwordTFMController.text);
       ProgressDialog().dismissDialog();
 
       if(user.responseMessage == 'Success'){
-        if(rememberMe.value){
-          user.isRemembered = true;await UserSession().createSession(user: user);
-        }else{
-          user.isRemembered = false;
-          await UserSession().createSession(user: user);
-        }
+        user.isRemembered = rememberMe.value;
+        await UserSession().createSession(user: user);
         Get.offAllNamed(kDashboardScreenRoute);
       } else {
         CustomDialogs().showDialog("Login Failed", user.responseMessage, DialogType.error);

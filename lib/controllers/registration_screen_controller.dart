@@ -8,6 +8,7 @@ import 'package:excise_e_auction/services/web_services/user_services.dart';
 import 'package:excise_e_auction/ui/custom_widgets/custom_dialogs.dart';
 import 'package:excise_e_auction/ui/custom_widgets/custom_progress_dialog.dart';
 import 'package:excise_e_auction/utils/app_colors.dart';
+import 'package:excise_e_auction/utils/constants.dart';
 import 'package:excise_e_auction/utils/dummy_data.dart';
 import 'package:excise_e_auction/utils/text_field_manager.dart';
 import 'package:excise_e_auction/utils/text_filter.dart';
@@ -26,27 +27,28 @@ class RegistrationScreenController extends GetxController{
 
 
   void onRegister() async {
-    ProgressDialog().showDialog();
     if (validateUser()) {
       UserModel userModel = UserModel.empty()
-          ..name= fullNameTfManager.controller.text
-          ..cnic= cnicTfManager.controller.text
-          ..email= emailTfManager.controller.text
-          ..phoneNumber= mobileNoTfManager.controller.text
-          ..password= passwordTfManager.controller.text;
+        ..id = DateTime.now().millisecondsSinceEpoch.toString()
+        ..name= fullNameTfManager.controller.text
+        ..cnic= cnicTfManager.controller.text
+        ..email= emailTfManager.controller.text
+        ..phoneNumber= mobileNoTfManager.controller.text
+        ..password= passwordTfManager.controller.text;
 
+      ProgressDialog().showDialog();
       String response = await UserService().registerUser(userModel: userModel);
       ProgressDialog().dismissDialog();
 
-      if(response=="success"){
-        CustomDialogs().showDialog("Success", "Registered Successfully.", DialogType.success);
+      if(response=="Success"){
+        CustomDialogs().showDialog("Success", "Registered Successfully.", DialogType.success,onOkBtnPressed: (){
+          Get.offAllNamed(kLoginScreenRoute);
+        });
       }else{
         CustomDialogs().showDialog("Alert", response, DialogType.error);
       }
-    }else{
-      CustomDialogs().showDialog("Alert", "Password and Confirm password should match", DialogType.error);
-      ProgressDialog().dismissDialog();
-
+    } else if(passwordTfManager.controller.text != confirmPasswordTfManager.controller.text){
+      CustomDialogs().showDialog("Alert", "Password and Confirm password Doesn't Match", DialogType.error);
     }
 
   }

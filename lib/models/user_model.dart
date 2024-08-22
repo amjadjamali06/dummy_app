@@ -79,6 +79,10 @@ class UserModel extends BaseModel{
     return id.isEmpty;
   }
 
+  bool get isNotEmpty {
+    return id.isNotEmpty;
+  }
+
 
   bool get isPublicUser => role == "public";
   bool get isAdmin => role == "admin";

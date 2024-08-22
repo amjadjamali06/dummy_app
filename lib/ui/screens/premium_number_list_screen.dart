@@ -25,7 +25,7 @@ class PremiumNumberListScreen extends GetView<PremiumNumberListScreenController>
           itemBuilder: (context, index) {
             final auction = controller.auctionsList[index];
             return PremiumNumberCard(
-              onTap:(){},
+              onTap:()=>controller.onTapItem(auction),
               numberPlat: auction.numberPlat,
               bidType: auction.bidType,
               date: auction.date,

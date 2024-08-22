@@ -34,7 +34,7 @@ class AuctionCategoryScreen extends GetView<AuctionCategoryScreenController> {
               const SizedBox(height: 20),
               auctionCategoryCardNew(cardName: "SILVER",text: "AAAAAAA", iconPath: 'assets/images/silver.png', onTap: (){}, groupValue: controller.selectedValue.value,value: 3, onChanged: (val) {controller.updateSelectedValue;},),
               const SizedBox(height: 30),
-              SizedBox(width: 353, child: GeneralButton(onPressed: (){},color: kBlackColor, text: "Continue",))
+              SizedBox(width: 353, child: GeneralButton(onPressed: ()=>controller.onTapItem("cardName"),color: kBlackColor, text: "Continue",))
             ],
           ),
         ),
@@ -122,7 +122,7 @@ class AuctionCategoryScreen extends GetView<AuctionCategoryScreenController> {
 
 /*Widget auctionCategoryCardOld({String cardName="",String text="", String iconPath='', required Function() onTap}){
    return GestureDetector(
-     onTap: () {},
+     onTap: ()=>controller.onTapItem(cardName),
      child:
      Container(
        width: 350,

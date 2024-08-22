@@ -6,7 +6,7 @@ import '../../utils/app_colors.dart';
 class CustomDashboardCardWidget extends StatelessWidget {
   final String title;
   final String iconPath;
-  final void Function() onTap;
+  final void Function(String) onTap;
   final double width;
   final double height;
   final double marginHorizontal;
@@ -16,11 +16,11 @@ class CustomDashboardCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: ()=>onTap(title),
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: marginHorizontal, vertical: marginVertical),
         padding: const EdgeInsets.only(top: 25),
-        width: /*Get.width * 0.45*/width,
+        width: width,
         height: height,
         decoration: BoxDecoration(
             color: kCardColor,

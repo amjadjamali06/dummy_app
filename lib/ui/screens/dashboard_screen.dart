@@ -1,6 +1,5 @@
 import 'package:excise_e_auction/ui/custom_widgets/custom_dashboard_card_widget.dart';
 import 'package:excise_e_auction/ui/custom_widgets/custom_scaffold.dart';
-import 'package:excise_e_auction/utils/constants.dart';
 import 'package:excise_e_auction/utils/user_session.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -51,24 +50,29 @@ Widget  _buildBodyNewTheme() {
                   ),
                   const SizedBox(height: 20),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CustomDashboardCardWidget(title: "Online\n Tax Payment", iconPath: 'assets/icons/online-tax-payment.png', onTap: () {}, ),
-                      CustomDashboardCardWidget(title: "Vehicle\n Verification",iconPath: 'assets/icons/vehicle-verification.png', onTap: (){},),
-                    ]
+                      CustomDashboardCardWidget(title: "Online\n Tax Payment", iconPath: 'assets/icons/online-tax-payment.png', onTap: controller.onTapItem, ),
+                      const SizedBox(width: 24),
+                      CustomDashboardCardWidget(title: "Vehicle\n Verification",iconPath: 'assets/icons/vehicle-verification.png', onTap: controller.onTapItem,),
+                    ],
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 24),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CustomDashboardCardWidget(title: "Tax\n Calculator",iconPath: 'assets/icons/tax-calculator.png', onTap: (){}),
-                      CustomDashboardCardWidget(title: "Search\n History",iconPath: 'assets/icons/search-history.png', onTap: (){}),],
+                      CustomDashboardCardWidget(title: "Tax\n Calculator",iconPath: 'assets/icons/tax-calculator.png', onTap: controller.onTapItem),
+                      const SizedBox(width: 24),
+                      CustomDashboardCardWidget(title: "Search\n History",iconPath: 'assets/icons/search-history.png', onTap: controller.onTapItem),
+                    ],
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 24),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(width: 5),
-                      CustomDashboardCardWidget(title: "E-Auction",iconPath: 'assets/icons/online-payment 2.png', onTap: (){Get.toNamed(kEAuctionScreenRoute);}),
+                      CustomDashboardCardWidget(title: "E-Auction",iconPath: 'assets/icons/online-payment 2.png', onTap: controller.onTapItem),
+                      const SizedBox(width: 24),
+                      const SizedBox(width: 150),
                     ],
                   ),
                   SizedBox(height: Get.height*0.1),
@@ -97,22 +101,23 @@ Widget  _buildBodyNewTheme() {
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      CustomDashboardCardWidget(title: "Online\n Tax Payment", iconPath: 'assets/icons/online-tax-payment.png', onTap: () {},),
-                      CustomDashboardCardWidget(title: "Vehicle\n Verification",iconPath: 'assets/icons/vehicle-verification.png', onTap: (){},),
+                      CustomDashboardCardWidget(title: "Online\n Tax Payment", iconPath: 'assets/icons/online-tax-payment.png', onTap: controller.onTapItem),
+                      CustomDashboardCardWidget(title: "Vehicle\n Verification",iconPath: 'assets/icons/vehicle-verification.png', onTap: controller.onTapItem,),
                     ]
                 ),
                 const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    CustomDashboardCardWidget(title: "Tax\n Calculator",iconPath: 'assets/icons/tax-calculator.png', onTap: (){}),
-                    CustomDashboardCardWidget(title: "Search\n History",iconPath: 'assets/icons/search-history.png', onTap: (){}),],
+                    CustomDashboardCardWidget(title: "Tax\n Calculator",iconPath: 'assets/icons/tax-calculator.png', onTap: controller.onTapItem),
+                    CustomDashboardCardWidget(title: "Search\n History",iconPath: 'assets/icons/search-history.png', onTap: controller.onTapItem),
+                  ],
                 ),
                 const SizedBox(height: 10),
                 Row(
                   children: [
                     const SizedBox(width: 10),
-                    CustomDashboardCardWidget(title: "E-Auction",iconPath: 'assets/icons/online-payment 2.png', onTap: (){Get.toNamed(kEAuctionScreenRoute);}),
+                    CustomDashboardCardWidget(title: "E-Auction",iconPath: 'assets/icons/online-payment 2.png', onTap: controller.onTapItem),
                   ],
                 ),
                 SizedBox(height: Get.height*0.1),

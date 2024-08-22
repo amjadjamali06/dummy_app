@@ -18,6 +18,14 @@ class PremiumNumberListScreenController extends GetxController {
     auctionsList.value = auctionCards;
   }
 
+  void onTapItem(PremiumNumberModel number){
+
+    Get.toNamed(kAuctionsListScreenRoute, arguments: number);
+  }
+
+
+
+
 
   List<PremiumNumberModel> auctionCards = [
     PremiumNumberModel(

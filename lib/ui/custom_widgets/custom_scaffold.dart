@@ -89,11 +89,11 @@ class _CustomScaffoldState extends State<CustomScaffold> {
               } else {
                 return false;
               }
-            } ,
+            },
             child: Scaffold(
               backgroundColor: kPrimaryDarkColor,
-              extendBody: true,
-              resizeToAvoidBottomInset: false,
+              // extendBody: true,
+              resizeToAvoidBottomInset: true,
               key: widget.scaffoldKey,
               appBar: CustomAppbar(screenName: widget.screenName, scaffoldKey: widget.scaffoldKey, appBarHeight: widget.appBarHeight, bottomSheet: widget.bottomSheet,onBackButtonPress: widget.onBackButtonPressed),
               body: Container(

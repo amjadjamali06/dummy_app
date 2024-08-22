@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:excise_e_auction/models/user_model.dart';
+import 'package:excise_e_auction/utils/user_session.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:excise_e_auction/utils/constants.dart';
@@ -26,8 +28,13 @@ class SplashScreenController extends GetxController {
   }
 
   void _screenNavigation() async {
-    Get.offAllNamed(kLoginScreenRoute);
-    // Get.offAllNamed(kAuctionsListScreenRoute);
+    bool isLoggedIn = await UserSession().isUserLoggedIn();
+
+    if(isLoggedIn){
+      Get.offAllNamed(kDashboardScreenRoute);
+    }else {
+      Get.offAllNamed(kLoginScreenRoute);
+    }
   }
 
   void onScreenTap() {
