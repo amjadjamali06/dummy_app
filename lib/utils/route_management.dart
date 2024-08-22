@@ -1,4 +1,5 @@
 import 'package:excise_e_auction/models/auction_model.dart';
+import 'package:excise_e_auction/ui/screens/bid_request_history_screen.dart';
 // import 'package:excise_e_auction/ui/screens/e_auction_screen.dart';
 import 'package:excise_e_auction/ui/screens/login_t_screen.dart';
 import 'package:excise_e_auction/ui/screens/premium_number_list_screen.dart';
@@ -61,8 +62,13 @@ class RouteManagement {
         binding: ScreensBindings()
       ),
       GetPage(
-          name: kPremiumNumberListScreenRoute,
-          page: ()=> const PremiumNumberListScreen(),
+        name: kPremiumNumberListScreenRoute,
+        page: ()=> const PremiumNumberListScreen(),
+        binding: ScreensBindings()
+      ),
+      GetPage(
+          name: kBidHistoryListScreenRoute,
+          page: ()=> const BidRequestHistoryScreen(),
           binding: ScreensBindings()
       ),
       GetPage(

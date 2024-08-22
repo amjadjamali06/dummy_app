@@ -14,6 +14,7 @@ const String kRegistrationScreenRoute = "/REGISTRATION_SCREEN";
 const String kSignInScreenRoute = "/SIGN_IN_SCREEN";
 const String kAuctionsListScreenRoute = "/AUCTION_LIST_SCREEN";
 const String kPremiumNumberListScreenRoute = "/PREMIUM_NUMBER_LIST_SCREEN";
+const String kBidHistoryListScreenRoute = "/BID_HISTORY_LIST_SCREEN";
 const String kTagWinningNbrScreenRoute = "/TAG_WINNING_NBR_SCREEN";
 const String kEAuctionScreenRoute = "/E_AUCTION_SCREEN";
 const String kAuctionRequestScreenRoute = "/AUCTION_REQUEST_SCREEN";

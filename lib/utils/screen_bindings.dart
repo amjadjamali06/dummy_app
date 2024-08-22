@@ -1,3 +1,4 @@
+import 'package:excise_e_auction/controllers/bid_request_history_screen_controller.dart';
 import 'package:excise_e_auction/controllers/login_t_screen_controller.dart';
 import 'package:excise_e_auction/controllers/premium_number_screen_controller.dart';
 import 'package:excise_e_auction/controllers/registration_screen_controller.dart';
@@ -39,6 +40,7 @@ class ScreensBindings extends Bindings {
     Get.lazyPut(() => EAuctionScreenController());
     Get.lazyPut(() => AuctionsListScreenController());
     Get.lazyPut(() => PremiumNumberListScreenController());
+    Get.lazyPut(() => BidRequestHistoryScreenController());
     Get.lazyPut(()=>AuctionCategoryScreenController());
     Get.lazyPut(()=>AuctionRequestCategoryScreenController());
   }
