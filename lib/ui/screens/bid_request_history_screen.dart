@@ -146,19 +146,16 @@ class BidHistoryCard extends StatelessWidget {
         child: Container(
           height: height * 0.10,
           margin: const EdgeInsets.symmetric(vertical: 8),
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+          padding: const EdgeInsets.symmetric(vertical: 10),
           decoration: BoxDecoration(
-            color: kCardColor,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(24),
-              bottomRight: Radius.circular(24),
-            ),
+            color: kWhiteColor,
+            borderRadius: BorderRadius.circular(12),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.shade500,
                 offset: const Offset(0, 1),
                 spreadRadius: 1,
-                blurRadius: 1,
+                blurRadius: 2,
               )
             ],
           ),
@@ -209,7 +206,7 @@ class BidHistoryCard extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       date,
-                      style: const TextStyle(fontSize: 11, color: kLightGreyColor,),
+                      style: const TextStyle(fontSize: 11, color: kGreyColor),
                     ),
                   ],
                 ),
@@ -222,7 +219,8 @@ class BidHistoryCard extends StatelessWidget {
                     Text(
                       amount.toAmount,
                       style: const TextStyle(
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
+                        color: kPrimaryDarkColor,
                         fontSize: 16,
                       ),
                     ),
@@ -231,7 +229,7 @@ class BidHistoryCard extends StatelessWidget {
                       "Bid Amount",
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
-                        color: kLightGreyColor,
+                        color: kGreyColor,
                         fontSize: 12,
                       ),
                     ),
@@ -284,19 +282,16 @@ class MyBidRequestCard extends StatelessWidget {
         child: Container(
           height: height * 0.10,
           margin: const EdgeInsets.symmetric(vertical: 8),
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+          padding: const EdgeInsets.symmetric(vertical: 10),
           decoration: BoxDecoration(
-            color: kCardColor,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(24),
-              bottomRight: Radius.circular(24),
-            ),
-            boxShadow: [
+            color: kWhiteColor,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: const [
               BoxShadow(
-                color: Colors.grey.shade500,
-                offset: const Offset(0, 1),
+                color: kCardShadowColor,
+                offset: Offset(0, 1),
                 spreadRadius: 1,
-                blurRadius: 1,
+                blurRadius: 2,
               )
             ],
           ),
@@ -333,6 +328,7 @@ class MyBidRequestCard extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               Expanded(
+                flex: 3,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -353,6 +349,7 @@ class MyBidRequestCard extends StatelessWidget {
                 ),
               ),
               Expanded(
+                flex: 2,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,

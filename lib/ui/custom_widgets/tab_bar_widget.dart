@@ -13,12 +13,12 @@ class TabBarCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.only(right: 4),
+        margin: const EdgeInsets.only(right: 4, bottom: 4),
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         decoration:isSelected? BoxDecoration(
             color: kPrimaryDarkColor,
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: kPrimaryColor),
+            border: Border.all(color: kWhiteColor),
             boxShadow: const [
               BoxShadow(
                 color: Colors.white60,
@@ -33,6 +33,7 @@ class TabBarCard extends StatelessWidget {
           textAlign: TextAlign.center,
           style: const TextStyle(
             fontSize: 14,
+            color: kWhiteColor,
             fontWeight: FontWeight.w600,
           ),
         ),

@@ -20,7 +20,7 @@ class SplashScreen extends GetView<SplashScreenController> {
           body: Column(children: <Widget>[
             Container(
               width: Get.width,
-              height: Get.height * 0.6,
+              height: Get.height * 0.62,
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Stack(
                 alignment: Alignment.center,

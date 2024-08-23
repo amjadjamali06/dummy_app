@@ -58,16 +58,16 @@ class DashboardScreen extends GetView<DashboardScreenController> {
                 ),
                 GestureDetector(
                   child:  Container(
-                    width: 35,
-                    height: 35,
+                    width: 38,
+                    height: 38,
                     margin: const EdgeInsets.only(right: 10, top: 20, left:5),
                     padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
-                        color: kWhiteColor,
+                        // color: kWhiteColor,
                         border: Border.all(color: kWhiteColor),
                         borderRadius: BorderRadius.circular(50)
                     ),
-                    child: Image.asset('assets/icons/menu-new.png', color: kGreyColor,),
+                    child: Image.asset('assets/icons/menu-new.png', color: kWhiteColor,),
                   ),
                   onTap: () {
                     controller.scaffoldKey.currentState!.openEndDrawer();

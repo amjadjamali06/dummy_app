@@ -18,10 +18,10 @@ class AuctionsListScreen extends GetView<AuctionsListScreenController> {
       screenName: "View Auctions",
       scaffoldKey: controller.scaffoldKey,
       // horizontalPadding: 12,
-      horizontalPadding: 0,
+      horizontalPadding: 12,
       body: Obx(
         () => ListView.builder(
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+          padding: const EdgeInsets.symmetric(vertical: 16),
           shrinkWrap: true,
           itemCount: controller.auctionsList.length,
           itemBuilder: (context, index) {
@@ -79,192 +79,199 @@ class AuctionCard extends StatelessWidget {
     return GestureDetector(
       onTap:onTap,
       child: Container(
-        height: Get.height * 0.17,
+        height: Get.height * 0.16,
         margin: const EdgeInsets.symmetric(vertical: 8),
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-        decoration: BoxDecoration(
-          color: kCardColor,
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(24),
-            bottomRight: Radius.circular(24),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.shade500,
-              offset: const Offset(0, 1),
-              spreadRadius: 1,
-              blurRadius: 2,
-            )
-          ],
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+        child: Stack(
+          alignment: Alignment.centerRight,
           children: [
-            SizedBox(
-              width: Get.width * 0.22,
-              height: Get.height * 0.16,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: Get.height * 0.05,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: numberPlatColor,
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(8),
-                        topRight: Radius.circular(8),
-                      ),
-                    ),
-                    child: Text(
-                      numberPlat,
-                      style: const TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: Get.height * 0.05,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(imageUrl),
-                        fit: BoxFit.fill,
-                      ),
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(8),
-                        bottomRight: Radius.circular(8),
-                      ),
-                    ),
-                    child: Center(
-                      child: Text(
-                        bidType.toUpperCase(),
-                        style: const TextStyle(
-                          letterSpacing: 0.01,
-                          color: kBlackColor,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ),
-                  ),
+            Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              decoration: BoxDecoration(
+                color: kWhiteColor,
+                borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.shade500,
+                    offset: const Offset(0, 1),
+                    spreadRadius: 1,
+                    blurRadius: 2,
+                  )
                 ],
               ),
+              margin: EdgeInsets.only(left: Get.width * 0.09),
+               child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const Expanded(
+                            flex:1,
+                            child: SizedBox(),
+                          ),
+                          Expanded(flex: 2,child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Bid Start Time',
+                                style: TextStyle(
+                                  letterSpacing: 0,
+                                  color: kGreyColor,
+                                  fontSize: 11,
+                                ),
+                              ),
+                              const SizedBox(height: 6),
+                              Text(
+                                startDate,
+                                style: const TextStyle(
+                                  fontSize: 12.0,
+                                  letterSpacing: 0,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
+                          ),),
+                          Expanded(flex: 2,child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Bid End Time',
+                                style: TextStyle(
+                                  letterSpacing: 0,
+                                  color: kGreyColor,
+                                  fontSize: 11,
+                                ),
+                              ),
+                              const SizedBox(height: 6),
+                              Text(
+                                endDate,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 12.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                          )
+                        ],
+                      ),
+                      const Divider(thickness: 0.4),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const Expanded(
+                            flex:1,
+                            child: SizedBox(),
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Starting Bid Amount',
+                                  style: TextStyle(
+                                    letterSpacing: 0,
+                                    color: kGreyColor,
+                                    fontSize: 11,
+                                  ),
+                                ),
+                                const SizedBox(height: 6),
+                                Text(
+                                  bidStartAmount.toAmount,
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    letterSpacing: 0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Current Highest Bid',
+                                  style: TextStyle(
+                                    letterSpacing: 0,
+                                    color: kGreyColor,
+                                    fontSize: 11,
+                                  ),
+                                ),
+                                const SizedBox(height: 6),
+                                Text(
+                                  bidEndAmount.toAmount,
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    letterSpacing: 0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
             ),
-            const SizedBox(width: 8),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'Bid Start Time',
-                              style: TextStyle(
-                                letterSpacing: 0,
-                                color: kLightGreyColor,
-                                fontSize: 11,
-                              ),
-                            ),
-                            const SizedBox(height: 6),
-                            Text(
-                              startDate,
-                              style: const TextStyle(
-                                fontSize: 12.0,
-                                letterSpacing: 0,
-                                fontWeight: FontWeight.w600,
-                                color: kWhiteColor,
-                              ),
-                            ),
-                          ],
+            Align(
+              alignment: Alignment.centerLeft,
+              child: SizedBox(
+                width: Get.width * 0.22,
+                height: Get.height * 0.14,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: Get.height * 0.05,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: numberPlatColor,
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(16),
+                          topRight: Radius.circular(16),
                         ),
                       ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'Bid End Time',
-                              style: TextStyle(
-                                letterSpacing: 0,
-                                color: kLightGreyColor,
-                                fontSize: 11,
-                              ),
-                            ),
-                            const SizedBox(height: 6),
-                            Text(
-                              endDate,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 12.0,
-                              ),
-                            ),
-                          ],
+                      child: Text(
+                        numberPlat,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: kWhiteColor
                         ),
                       ),
-                    ],
-                  ),
-                  const Divider(thickness: 0.4),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'Starting Bid Amount',
-                              style: TextStyle(
-                                letterSpacing: 0,
-                                color: kLightGreyColor,
-                                fontSize: 11,
-                              ),
-                            ),
-                            const SizedBox(height: 6),
-                            Text(
-                              bidStartAmount.toAmount,
-                              style: const TextStyle(
-                                fontSize: 18,
-                                letterSpacing: 0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
+                    ),
+                    Container(
+                      height: Get.height * 0.05,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(imageUrl),
+                          fit: BoxFit.fill,
+                        ),
+                        borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(16),
+                          bottomRight: Radius.circular(16),
                         ),
                       ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'Current Highest Bid',
-                              style: TextStyle(
-                                letterSpacing: 0,
-                                color: kLightGreyColor,
-                                fontSize: 11,
-                              ),
-                            ),
-                            const SizedBox(height: 6),
-                            Text(
-                              bidEndAmount.toAmount,
-                              style: const TextStyle(
-                                fontSize: 18,
-                                letterSpacing: 0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
+                      child: Center(
+                        child: Text(
+                          bidType.toUpperCase(),
+                          style: const TextStyle(
+                            letterSpacing: 0.01,
+                            color: kBlackColor,
+                            fontSize: 14,
+                          ),
                         ),
                       ),
-                    ],
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
