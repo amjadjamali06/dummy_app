@@ -34,7 +34,7 @@ class TagWinningNbrScreen extends GetView<TagWinningNbrScreenController> {
       GeneralTextField.withBorder(tfManager: controller.winningAuctionIdTfManager,readOnly: true,),
       GeneralTextField.withBorder(tfManager: controller.winningNbrPlateDetailsTfManager,readOnly: true,),
       GeneralTextField.withBorder(tfManager: controller.vehicleRegistrationNbrTfManager),
-      GeneralButton(onPressed: (){},text: 'Submit',color: kBlackColor,)
+      GeneralButton(onPressed:controller.onTapSubmit,text: 'Submit',color: kBlackColor,)
     ],);
   }
 }

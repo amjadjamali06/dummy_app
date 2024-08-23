@@ -37,6 +37,7 @@ class AuctionRequestScreenController extends GetxController{
   Future<void> onTapRequestAuction() async {
 
     if(validateAll()){
+      removeFocus();
       String result = "";
       ProgressDialog().showDialog();
       await Future.delayed(const Duration(seconds: 2), (){

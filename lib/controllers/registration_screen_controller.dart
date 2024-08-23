@@ -28,6 +28,7 @@ class RegistrationScreenController extends GetxController{
 
   void onRegister() async {
     if (validateUser()) {
+      removeFocus();
       UserModel userModel = UserModel.empty()
         ..id = DateTime.now().millisecondsSinceEpoch.toString()
         ..name= fullNameTfManager.controller.text
@@ -67,6 +68,21 @@ class RegistrationScreenController extends GetxController{
   void removeFocus(){
     if(passwordTfManager.focusNode.hasFocus){
       passwordTfManager.focusNode.unfocus();
+    }
+    if(emailTfManager.focusNode.hasFocus){
+      emailTfManager.focusNode.unfocus();
+    }
+    if(confirmPasswordTfManager.focusNode.hasFocus){
+      confirmPasswordTfManager.focusNode.unfocus();
+    }
+    if(mobileNoTfManager.focusNode.hasFocus){
+      mobileNoTfManager.focusNode.unfocus();
+    }
+    if(fullNameTfManager.focusNode.hasFocus){
+      fullNameTfManager.focusNode.unfocus();
+    }
+    if(cnicTfManager.focusNode.hasFocus){
+      cnicTfManager.focusNode.unfocus();
     }
   }
 }

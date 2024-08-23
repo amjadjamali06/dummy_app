@@ -54,6 +54,7 @@ class PlaceBidScreenController extends GetxController{
 
   void onPlaceBidPressed()async{
     if(bidAmountTfManager.validate()){
+      removeFocus();
       ProgressDialog().showDialog(title: 'Please wait...');
       AuctionBidModel bidModel = AuctionBidModel(
           id: DateTime.now().millisecondsSinceEpoch.toString(),

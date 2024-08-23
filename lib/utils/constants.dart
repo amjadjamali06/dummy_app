@@ -1,7 +1,7 @@
 /*Created By: Amjad Jamali on 05-Aug-2023
 * Last Modified by Afaque Ali on 21-Aug-2024*/
 
-const String kAppName = "PSPA Beta"; //PUNJAB SOCIAL PROTECTION AUTHORITY
+const String kAppName = "Excise Auction"; //PUNJAB SOCIAL PROTECTION AUTHORITY
 ///*********************  Route Names   *********************/
 const String kSplashScreenRoute = "/";
 const String kLoginScreenRoute = "/LOGIN_SCREEN";

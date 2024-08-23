@@ -53,6 +53,7 @@ class LoginScreenController extends GetxController{
 
   void onSignInPressed() async {
     if(usernameTFMController.validate() & passwordTFMController.validate()){
+      removeFocus();
       ProgressDialog().showDialog();
       UserModel user = await UserService().loginUser(username: usernameTFMController.text, password: passwordTFMController.text);
       ProgressDialog().dismissDialog();

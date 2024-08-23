@@ -18,7 +18,7 @@ class RegistrationScreen extends GetView<RegistrationScreenController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kWhiteColor,
-      // scaffoldKey: controller.scaffoldKey,
+      key: controller.scaffoldKey,
       // className: runtimeType.toString(),
       // screenName: '',
       // gestureDetectorOnTap: controller.removeFocus,
@@ -29,7 +29,9 @@ class RegistrationScreen extends GetView<RegistrationScreenController> {
       //   return true;
       // },
       // showBottomNavBar: false,
-      body: getBody(context),
+      body: GestureDetector(
+          onTap: controller.removeFocus,
+          child: getBody(context)),
     );
   }
 
