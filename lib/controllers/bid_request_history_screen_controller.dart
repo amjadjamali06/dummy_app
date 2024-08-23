@@ -21,7 +21,10 @@ class BidRequestHistoryScreenController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-
+    dynamic args= Get.arguments;
+    if(args!=null && args is int){
+      selectedTabIndex.value=args;
+    }
     bidHistory.value = DummyData().myPlacedBids;
     myRequests.value = DummyData().myBidRequests;
   }

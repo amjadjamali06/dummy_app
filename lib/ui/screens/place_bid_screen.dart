@@ -47,7 +47,7 @@ class PlaceBidScreen extends GetView<PlaceBidScreenController> {
       GeneralTextField.withBorder(tfManager: controller.currentHighestBidTfManager,readOnly: true,),
       GeneralTextField.withBorder(tfManager: controller.bidAmountTfManager),
       GeneralButton(onPressed: (){
-        controller.placeBid();
+        controller.onPlaceBidPressed();
       },color: kBlackColor,text: 'Place a Bid',),
       SizedBox(height:MediaQuery.of(context).viewInsets.bottom),
     ],);

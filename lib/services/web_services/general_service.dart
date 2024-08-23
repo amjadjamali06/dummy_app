@@ -1,7 +1,9 @@
+import 'package:excise_e_auction/models/auction_bid_model.dart';
 import 'package:excise_e_auction/models/version_check_model.dart';
 
 
 import '../../models/response_model.dart';
+import '../../utils/dummy_data.dart';
 import 'http_client.dart';
 import '../service_urls.dart';
 
@@ -25,6 +27,22 @@ class GeneralService {
     } else {
       return VersionCheckModel.empty();
     }
+  }
+
+  Future<String> addAuctionBidToHistory({required AuctionBidModel auctionBidModel})async{
+    String response = "";
+    Map<String, String> body = {};
+    try {
+      ResponseModel responseModel = await _httpClient.postRequest(url: kLoginURL, requestBody: body, requireToken: false);
+      if(responseModel.statusCode == 200 && responseModel.data != null && responseModel.data['token'] != null ){
+        response = responseModel.statusDescription;
+      }else if(DummyData.debugMode){
+        response = await DummyData.addAuctionBidHistoryData(auctionBidModel);
+      }else{
+        response = responseModel.statusDescription;
+      }
+    } on Exception catch (_) {}
+    return response;
   }
 
 }

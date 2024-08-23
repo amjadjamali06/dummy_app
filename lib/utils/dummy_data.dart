@@ -1,11 +1,12 @@
 import 'package:excise_e_auction/models/auction_model.dart';
 import 'package:excise_e_auction/models/item_model.dart';
 import 'package:excise_e_auction/models/my_bid_model.dart';
-import 'package:excise_e_auction/models/placeBidModel.dart';
 import 'package:excise_e_auction/models/user_model.dart';
 import 'package:excise_e_auction/utils/user_session.dart';
 
 import '../models/bid_request_model.dart';
+
+import '../models/auction_bid_model.dart';
 
 class DummyData {
   static bool debugMode = true;
@@ -238,5 +239,58 @@ class DummyData {
       },
 
     ];
+  }
+  static List<AuctionBidModel> bidsList = [
+    AuctionBidModel.fromJson({
+      "id": '1',
+      "name": 'John Doe',
+      "plateCategory": 'A',
+      "nbrPlate": '1234',
+      "bidDate": '22-08-2024 14:30',
+      "bidAmount": '5000',
+      "auctionId": '1001',
+    }),
+    AuctionBidModel.fromJson({
+      "id": '2',
+      "name": 'Jane Smith',
+      "plateCategory": 'B',
+      "nbrPlate": '5678',
+      "bidDate": '22-08-2024 15:00',
+      "bidAmount": '7500',
+      "auctionId": '1002',
+    }),
+    AuctionBidModel.fromJson({
+      "id": '3',
+      "name": 'Robert Johnson',
+      "plateCategory": 'C',
+      "nbrPlate": '9101',
+      "bidDate": '22-08-2024 15:30',
+      "bidAmount": '6000',
+      "auctionId": '1003',
+    }),
+    AuctionBidModel.fromJson({
+      "id": '4',
+      "name": 'Emily Davis',
+      "plateCategory": 'D',
+      "nbrPlate": '1121',
+      "bidDate": '22-08-2024 16:00',
+      "bidAmount": '8000',
+      "auctionId": '1004',
+    }),
+    AuctionBidModel.fromJson({
+      "id": '5',
+      "name": 'Michael Brown',
+      "plateCategory": 'E',
+      "nbrPlate": '3141',
+      "bidDate": '22-08-2024 16:30',
+      "bidAmount": '9000',
+      "auctionId": '1005',
+    }),
+  ];
+
+
+  static Future<String> addAuctionBidHistoryData(AuctionBidModel bidModel) async{
+    bidsList.add(bidModel);
+    return "Success";
   }
 }
