@@ -121,7 +121,48 @@ class DummyData {
     ),
   ];
 
-
+  static List<AuctionBidModel> bidsList = [
+    AuctionBidModel.fromJson({
+      "id": '1',
+      "plateCategory": 'Silver',
+      "nbrPlate": 'AXE-34',
+      "bidDate": '22-08-2024',
+      "bidAmount": '50000',
+      "auctionId": '1001',
+    }),
+    AuctionBidModel.fromJson({
+      "id": '2',
+      "plateCategory": 'Gold',
+      "nbrPlate": 'IOQ-78',
+      "bidDate": '22-08-2024',
+      "bidAmount": '75000',
+      "auctionId": '1002',
+    }),
+    AuctionBidModel.fromJson({
+      "id": '3',
+      "plateCategory": 'Platinum',
+      "nbrPlate": 'PZ-01',
+      "bidDate": '22-08-2024',
+      "bidAmount": '60000',
+      "auctionId": '1003',
+    }),
+    AuctionBidModel.fromJson({
+      "id": '4',
+      "plateCategory": 'Gold',
+      "nbrPlate": 'DY-21',
+      "bidDate": '22-08-2024',
+      "bidAmount": '80000',
+      "auctionId": '1004',
+    }),
+    AuctionBidModel.fromJson({
+      "id": '5',
+      "plateCategory": 'Silver',
+      "nbrPlate": 'AL-41',
+      "bidDate": '22-08-2024',
+      "bidAmount": '90000',
+      "auctionId": '1005',
+    }),
+  ];
 
   List<AuctionModel> getAuctionCategoryWiseList(String category) {
     if(category.isEmpty) return [];
@@ -240,57 +281,9 @@ class DummyData {
 
     ];
   }
-  static List<AuctionBidModel> bidsList = [
-    AuctionBidModel.fromJson({
-      "id": '1',
-      "name": 'John Doe',
-      "plateCategory": 'A',
-      "nbrPlate": '1234',
-      "bidDate": '22-08-2024 14:30',
-      "bidAmount": '5000',
-      "auctionId": '1001',
-    }),
-    AuctionBidModel.fromJson({
-      "id": '2',
-      "name": 'Jane Smith',
-      "plateCategory": 'B',
-      "nbrPlate": '5678',
-      "bidDate": '22-08-2024 15:00',
-      "bidAmount": '7500',
-      "auctionId": '1002',
-    }),
-    AuctionBidModel.fromJson({
-      "id": '3',
-      "name": 'Robert Johnson',
-      "plateCategory": 'C',
-      "nbrPlate": '9101',
-      "bidDate": '22-08-2024 15:30',
-      "bidAmount": '6000',
-      "auctionId": '1003',
-    }),
-    AuctionBidModel.fromJson({
-      "id": '4',
-      "name": 'Emily Davis',
-      "plateCategory": 'D',
-      "nbrPlate": '1121',
-      "bidDate": '22-08-2024 16:00',
-      "bidAmount": '8000',
-      "auctionId": '1004',
-    }),
-    AuctionBidModel.fromJson({
-      "id": '5',
-      "name": 'Michael Brown',
-      "plateCategory": 'E',
-      "nbrPlate": '3141',
-      "bidDate": '22-08-2024 16:30',
-      "bidAmount": '9000',
-      "auctionId": '1005',
-    }),
-  ];
-
 
   static Future<String> addAuctionBidHistoryData(AuctionBidModel bidModel) async{
-    bidsList.add(bidModel);
+    bidsList.insert(0,bidModel);
     return "Success";
   }
 }

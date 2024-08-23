@@ -8,7 +8,6 @@ import 'package:excise_e_auction/utils/constants.dart';
 import 'package:excise_e_auction/utils/date_time_manager.dart';
 import 'package:excise_e_auction/utils/string_utils.dart';
 import 'package:excise_e_auction/utils/text_filter.dart';
-import 'package:excise_e_auction/utils/user_session.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../ui/custom_widgets/custom_dialogs.dart';
@@ -22,35 +21,31 @@ class PlaceBidScreenController extends GetxController{
   DateTimeManager bidEndDateManager = DateTimeManager('Bid End Date and Time');
   TextFieldManager startingBidAmountTfManager = TextFieldManager('Starting Bid Amount');
   TextFieldManager currentHighestBidTfManager = TextFieldManager('Current Highest Bid');
-  TextFieldManager bidAmountTfManager = TextFieldManager('Bid Amount',mandatory: true,filter: TextFilter.number, length: 12);
-  AuctionModel auctionModel = AuctionModel.empty();
-  // AuctionModel? args;
+  TextFieldManager bidAmountTfManager = TextFieldManager('Bid Amount',mandatory: true,filter: TextFilter.number);
+  AuctionModel auctionArgsData = AuctionModel.empty();
+  AuctionModel? args;
 
   @override
   void onReady() {
     super.onReady();
-    var args= Get.arguments;
+    args= Get.arguments;
     if(args != null) {
-      auctionModel= args!;
-      fetchData().then((_){});
-      populateData();
+      auctionArgsData= args!;
+      fetchData();
     }
   }
 
-  Future<void> fetchData() async {
-    ProgressDialog().showDialog();
-    await Future.delayed(const Duration(seconds: 2));
-    ProgressDialog().dismissDialog();
-  }
-  populateData() {
-    if(auctionModel.id.isNotEmpty) {
-      plateCategoryTfManager.controller.text = auctionModel.bidType;
-      desiredNbrPlateTfManager.controller.text = auctionModel.numberPlat;
-      bidStartDateManager.formattedDateTime.value = auctionModel.startDate.formatDate;
-      bidEndDateManager.formattedDateTime.value = auctionModel.endDate.formatDate;
-      startingBidAmountTfManager.controller.text = auctionModel.bidStartAmount;
-      currentHighestBidTfManager.controller.text = auctionModel.bidEndAmount;
-    }
+  void fetchData() {
+      ProgressDialog().showDialog(title: 'Please wait..');
+      Timer(const Duration(seconds: 2), () {
+        plateCategoryTfManager.controller.text = args!.bidType;
+        desiredNbrPlateTfManager.controller.text = args!.numberPlat;
+        bidStartDateManager.formattedDateTime.value = args!.startDate.formatDate;
+        bidEndDateManager.formattedDateTime.value = args!.endDate.formatDate;
+        startingBidAmountTfManager.controller.text = args!.bidStartAmount;
+        currentHighestBidTfManager.controller.text = args!.bidEndAmount;
+        ProgressDialog().dismissDialog();
+      });
   }
   void removeFocus(){
     if(bidAmountTfManager.focusNode.hasFocus){
@@ -62,14 +57,12 @@ class PlaceBidScreenController extends GetxController{
     if(bidAmountTfManager.validate()){
       ProgressDialog().showDialog(title: 'Please wait...');
       AuctionBidModel bidModel = AuctionBidModel(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
-        plateCategory: plateCategoryTfManager.controller.text,
-        nbrPlate: desiredNbrPlateTfManager.controller.text,
-        name: UserSession.userModel.value.name ,
-        bidDate: bidEndDateManager.formattedDateTime.value,
-        bidAmount: bidAmountTfManager.controller.text,
-        auctionId: auctionModel.id,
-      );
+          id: DateTime.now().millisecondsSinceEpoch.toString(),
+          plateCategory: plateCategoryTfManager.controller.text,
+          nbrPlate: desiredNbrPlateTfManager.controller.text,
+          bidDate: bidEndDateManager.formattedDateTime.value,
+          bidAmount: bidAmountTfManager.controller.text,
+          auctionId: args!.id);
       ProgressDialog().showDialog();
       String response = await GeneralService().addAuctionBidToHistory(auctionBidModel: bidModel);
       ProgressDialog().dismissDialog();

@@ -1,5 +1,6 @@
 import 'package:excise_e_auction/controllers/bid_request_history_screen_controller.dart';
 import 'package:excise_e_auction/models/my_bid_model.dart';
+import 'package:excise_e_auction/models/auction_bid_model.dart';
 import 'package:excise_e_auction/ui/custom_widgets/custom_scaffold.dart';
 import 'package:excise_e_auction/utils/app_colors.dart';
 import 'package:flutter/cupertino.dart';
@@ -65,25 +66,27 @@ class BidRequestHistoryScreen extends GetView<BidRequestHistoryScreenController>
 }
 
 class MyBidsWidget extends StatelessWidget {
-  final List<MyBidModel> bidHistory;
+  final List<AuctionBidModel> bidHistory;
   const MyBidsWidget({super.key, required this.bidHistory});
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
-      shrinkWrap: true,
-      itemCount: bidHistory.length,
-      itemBuilder: (context, index) {
-        final auction = bidHistory[index];
-        return BidHistoryCard(
-          onTap:(){},
-          bidderName: auction.bidderName,
-          bidType: auction.bidType,
-          date: auction.date,
-          amount: auction.amount,
-        );
-      },
+    return Obx(()=> ListView.builder(
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+        shrinkWrap: true,
+        physics: const ScrollPhysics(),
+        itemCount: bidHistory.length,
+        itemBuilder: (context, index) {
+          final auction = bidHistory[index];
+          return BidHistoryCard(
+            onTap:(){},
+            bidderName: auction.nbrPlate,
+            bidType: auction.plateCategory,
+            date: auction.bidDate,
+            amount: auction.bidAmount,
+          );
+        },
+      ),
     );
   }
 }
