@@ -53,7 +53,6 @@ class AuctionCategoryScreen extends GetView<AuctionCategoryScreenController> {
       onTap: onTap,
       child: SizedBox(
         width: Get.width,
-        height: 70,
 
         child:  Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
