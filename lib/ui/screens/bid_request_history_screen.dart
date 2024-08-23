@@ -104,7 +104,7 @@ class MyRequestsWidget extends StatelessWidget {
         itemCount: bidHistory.length,
         itemBuilder: (context, index) {
           final auction = bidHistory[index];
-          return MyBidRequestCard(
+          return AuctionRequestCard(
             onTap:(){},
             bidderName: auction.numberPlate,
             bidType: auction.bidType,
@@ -149,11 +149,11 @@ class BidHistoryCard extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 10),
           decoration: BoxDecoration(
             color: kWhiteColor,
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: [
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: const [
               BoxShadow(
-                color: Colors.grey.shade500,
-                offset: const Offset(0, 1),
+                color: kCardShadowColor,
+                offset: Offset(0, 1),
                 spreadRadius: 1,
                 blurRadius: 2,
               )
@@ -243,13 +243,13 @@ class BidHistoryCard extends StatelessWidget {
   }
 }
 
-class MyBidRequestCard extends StatelessWidget {
+class AuctionRequestCard extends StatelessWidget {
   final String bidderName;
   final String bidType;
   final String date;
   final String status;
   final void Function() onTap;
-  const MyBidRequestCard({
+  const AuctionRequestCard({
     super.key,
     required this.bidderName,
     required this.bidType,
@@ -268,10 +268,10 @@ class MyBidRequestCard extends StatelessWidget {
         ? "assets/images/silver.png"
         : "assets/images/platinum.png";
     final statusColor = status == "approved"
-        ? Colors.green
+        ? kApprovedColor
         : status == "pending"
-        ? Colors.yellow
-        : Colors.red;
+        ? kPendingColor
+        : kRejectedColor;
     IconData statusIcon = status == "approved"
         ? Icons.check_circle_outline
         : status == "pending"
@@ -285,7 +285,7 @@ class MyBidRequestCard extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 10),
           decoration: BoxDecoration(
             color: kWhiteColor,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(10),
             boxShadow: const [
               BoxShadow(
                 color: kCardShadowColor,

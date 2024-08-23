@@ -20,37 +20,6 @@ class EAuctionScreen extends GetView<EAuctionScreenController> {
     );
   }
 
-  Widget _buildBodyNewTheme() {
-    return IntrinsicGridView.vertical(
-      columnCount: 2,
-      horizontalSpace: 20,
-      verticalSpace: 20,
-      margin: const EdgeInsets.only(top: 100),
-      children: [
-        CustomDashboardCardWidget(
-          title: "Place A Bid",
-          iconPath: 'assets/icons/big.png',
-          onTap: controller.onTapItem,
-        ),
-        CustomDashboardCardWidget(
-          title: "Request History",
-          iconPath: 'assets/icons/icon-5.png',
-          onTap: controller.onTapItem,
-        ),
-        CustomDashboardCardWidget(
-          title: "Auction\nRequest",
-          iconPath: 'assets/icons/online-payment 1.png',
-          onTap: controller.onTapItem,
-        ),
-        // const SizedBox(width: 24),
-        CustomDashboardCardWidget(
-          title: "Tag Winning Number",
-          iconPath: 'assets/icons/winner-badge.png',
-          onTap: controller.onTapItem,
-        ),
-      ],);
-  }
-
   Widget _buildBodyOldTheme() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -65,8 +34,7 @@ class EAuctionScreen extends GetView<EAuctionScreenController> {
             columnCount: 2,
             horizontalSpace: 20,
             verticalSpace: 20,
-            margin: const EdgeInsets.only(top: 30),
-            // mainAxisAlignment: MainAxisAlignment.spaceAround,
+            margin: const EdgeInsets.only(left: 20, top: 30, right: 20),
             children: [
               CustomDashboardCardWidget(
                 title: "Place\nBid",
@@ -78,23 +46,18 @@ class EAuctionScreen extends GetView<EAuctionScreenController> {
                 iconPath: 'assets/icons/icon-5.png',
                 onTap: controller.onTapItem,
               ),
-            ]),
-        const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            CustomDashboardCardWidget(
+              CustomDashboardCardWidget(
                 title: "Auction\n Request",
                 iconPath: 'assets/icons/online-payment 1.png',
-              onTap: controller.onTapItem,
-            ),
-            CustomDashboardCardWidget(
+                onTap: controller.onTapItem,
+              ),
+              CustomDashboardCardWidget(
                 title: "Tag Winning\n Number",
                 iconPath: 'assets/icons/winner-badge.png',
-              onTap: controller.onTapItem,
-            ),
-          ],
-        ),
+                onTap: controller.onTapItem,
+              ),
+            ]),
+
         SizedBox(height: Get.height * 0.1),
       ],
     );

@@ -31,16 +31,16 @@ class PlaceBidScreen extends GetView<PlaceBidScreenController> {
     return Column(
       children: [
       const SizedBox(height: 60),
-      GeneralTextField.withBorder(tfManager: controller.plateCategoryTfManager,readOnly: true,),
-      GeneralTextField.withBorder(tfManager: controller.desiredNbrPlateTfManager,readOnly: true,),
-      GeneralTextField.withBorder(tfManager: controller.bidStartDateManager,readOnly: true,),
-      GeneralTextField.withBorder(tfManager: controller.bidEndDateManager,readOnly: true,),
-      GeneralTextField.withBorder(tfManager: controller.startingBidAmountTfManager,readOnly: true,),
-      GeneralTextField.withBorder(tfManager: controller.currentHighestBidTfManager,readOnly: true,),
-      GeneralTextField.withBorder(tfManager: controller.bidAmountTfManager),
+      GeneralTextField(tfManager: controller.plateCategoryTfManager,readOnly: true,),
+      GeneralTextField(tfManager: controller.desiredNbrPlateTfManager,readOnly: true,),
+      GeneralTextField(tfManager: controller.bidStartDateManager,readOnly: true,),
+      GeneralTextField(tfManager: controller.bidEndDateManager,readOnly: true,),
+      GeneralTextField(tfManager: controller.startingBidAmountTfManager,readOnly: true,),
+      GeneralTextField(tfManager: controller.currentHighestBidTfManager,readOnly: true,),
+      GeneralTextField(tfManager: controller.bidAmountTfManager),
       GeneralButton(onPressed: (){
         controller.onPlaceBidPressed();
-      },color: kBlackColor,text: 'Place a Bid',),
+      }),
       SizedBox(height:MediaQuery.of(context).viewInsets.bottom),
     ],);
   }

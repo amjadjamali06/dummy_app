@@ -21,6 +21,7 @@ class ProgressDialog {
     Get.defaultDialog(
         title: "",
         titleStyle: const TextStyle(height: 0.0),
+        backgroundColor: kCardColor,
         content: Container(
           margin: const EdgeInsets.only(left: 12, right: 12),
           child: Row(

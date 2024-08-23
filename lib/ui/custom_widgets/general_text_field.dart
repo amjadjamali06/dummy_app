@@ -18,11 +18,7 @@ class GeneralTextField extends StatelessWidget {
   final TextAlign textAlign;
   final RxBool _obscure = false.obs;
 
-  GeneralTextField.withBorder({Key? key,required this.tfManager, this.callback, this.prefixIcon, this.maxLines=1, this.paddingHorizontal=0, this.readOnly=false,this.textAlign = TextAlign.start, this.onChange}) : super(key: key);
-
-  GeneralTextField.withShadow({Key? key,required this.tfManager, this.callback, this.prefixIcon, this.maxLines=1, this.paddingHorizontal=4, this.readOnly=false,this.textAlign = TextAlign.start, this.onChange}) : super(key: key) {
-    // _withShadow.value=true;
-  }
+  GeneralTextField({super.key,required this.tfManager, this.callback, this.prefixIcon, this.maxLines=1, this.paddingHorizontal=0, this.readOnly=false,this.textAlign = TextAlign.start, this.onChange});
 
   @override
   Widget build(BuildContext context) {
@@ -95,9 +91,9 @@ class GeneralTextField extends StatelessWidget {
                             borderRadius: BorderRadius.all(Radius.circular(kFieldRadius)),
                             borderSide: BorderSide(color:  kPrimaryColor, width: 1.5),
                           ),
-                          enabledBorder:  const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(kFieldRadius)),
-                            borderSide: BorderSide(color: kFieldBorderColor, width: 1.5),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(Radius.circular(kFieldRadius)),
+                            borderSide: BorderSide(color: readOnly ? kPrimaryColor : kFieldBorderColor, width: 1),
                           ),
                           // hintText: "Enter ${tfManager.hint??tfManager.fieldName}",
                           contentPadding: const EdgeInsets.all(16),
@@ -110,7 +106,6 @@ class GeneralTextField extends StatelessWidget {
                               child: Icon(
                                 _obscure.isTrue ? CupertinoIcons.eye_fill : CupertinoIcons.eye_slash_fill,
                                 color: kTextHintColor,
-                                // size: 24,
                               )
                           ),
                         ),

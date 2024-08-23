@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:excise_e_auction/models/auction_model.dart';
 import 'package:excise_e_auction/models/user_model.dart';
 import 'package:excise_e_auction/utils/user_session.dart';
@@ -124,6 +126,7 @@ class DummyData {
   static Future<UserModel> loginUser(String username, String password) async{
     DummyData.users = await UserSession().fetchUsersList();
     for (UserModel user in users) {
+      log('${user.email} ${user.password}');
       if(username==user.email && password == user.password){
         return user;
       }

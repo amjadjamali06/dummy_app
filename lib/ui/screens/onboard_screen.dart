@@ -58,7 +58,7 @@ class OnBoardScreen extends GetView<OnBoardScreenController> {
           ),
         ),
         const SizedBox(height: 20),
-        GeneralButton(onPressed:() => Get.offAllNamed(kLoginScreenRoute), text: 'Create an Account', margin: 20),
+        GeneralButton(onPressed:() => Get.offAllNamed(kRegistrationScreenRoute), text: 'Create an Account', margin: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -79,7 +79,7 @@ class OnBoardScreen extends GetView<OnBoardScreenController> {
             )
           ],
         ),
-        const SizedBox(height: 40)
+        const SizedBox(height: 40),
       ],
     );
   }

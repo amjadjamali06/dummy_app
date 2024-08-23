@@ -56,34 +56,28 @@ class PremiumNumberCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final numberPlatColor = bidType == "gold"
-        ? const Color(0xff653d00)
-        : bidType == "silver"
-            ? const Color(0xff3b3b3b)
-            : const Color(0xff478321);
+    final height = Get.height;
+    final width = Get.width;
     String imageUrl = bidType == "gold"
         ? "assets/images/gold.png"
         : bidType == "silver"
-            ? "assets/images/silver.png"
-            : "assets/images/platinum.png";
+        ? "assets/images/silver.png"
+        : "assets/images/platinum.png";
     return GestureDetector(
         onTap:onTap,
         child: Container(
-          height: Get.height * 0.12,
+          height: height * 0.10,
           margin: const EdgeInsets.symmetric(vertical: 8),
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+          padding: const EdgeInsets.symmetric(vertical: 10),
           decoration: BoxDecoration(
-            color: kCardColor,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(24),
-              bottomRight: Radius.circular(24),
-            ),
-            boxShadow: [
+            color: kWhiteColor,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: const [
               BoxShadow(
-                color: Colors.grey.shade500,
-                offset: const Offset(0, 1),
+                color: kCardShadowColor,
+                offset: Offset(0, 1),
                 spreadRadius: 1,
-                blurRadius: 1,
+                blurRadius: 2,
               )
             ],
           ),
@@ -91,51 +85,28 @@ class PremiumNumberCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                width: Get.width * 0.22,
-                height: Get.height * 0.10,
+                width: width * 0.24,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      height: Get.height * 0.04,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: numberPlatColor,
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(8),
-                          topRight: Radius.circular(8),
-                        ),
-                      ),
-                      child: Text(
-                        numberPlat,
-                        style: const TextStyle(
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: Get.height * 0.04,
+                      height: height * 0.024,
+                      width: width * 0.18,
+                      margin: const EdgeInsets.only(bottom: 2),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(imageUrl),
                           fit: BoxFit.fill,
                         ),
-                        borderRadius: const BorderRadius.only(
-                          bottomLeft: Radius.circular(8),
-                          bottomRight: Radius.circular(8),
-                        ),
+                        borderRadius: BorderRadius.circular(1),
                       ),
-                      child: Center(
-                        child: Text(
-                          bidType.toUpperCase(),
-                          style: const TextStyle(
-                            letterSpacing: 0.01,
-                            color: kBlackColor,
-                            fontSize: 14,
-                          ),
-                        ),
+                    ),
+                    Text(
+                      bidType.toUpperCase(),
+                      style: const TextStyle(
+                        fontSize: 14,
                       ),
                     ),
                   ],
@@ -144,59 +115,45 @@ class PremiumNumberCard extends StatelessWidget {
               const SizedBox(width: 8),
               Expanded(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Purchase Price',
-                                style: TextStyle(
-                                  letterSpacing: 0,
-                                  fontSize: 11,
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                purchasePrice.toAmount,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  letterSpacing: 0,
-                                  fontWeight: FontWeight.w600,
-                                  color: kWhiteColor,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Date',
-                                style: TextStyle(
-                                  letterSpacing: 0,
-                                  fontSize: 11,
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                date,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                    Text(
+                      numberPlat,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      date,
+                      style: const TextStyle(fontSize: 11, color: kGreyColor),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      purchasePrice.toAmount,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: kPrimaryDarkColor,
+                        fontSize: 16,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    const Text(
+                      "Bid Amount",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        color: kGreyColor,
+                        fontSize: 12,
+                      ),
                     ),
                   ],
                 ),

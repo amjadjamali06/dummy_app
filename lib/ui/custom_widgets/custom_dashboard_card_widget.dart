@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../utils/app_colors.dart';
 
 class CustomDashboardCardWidget extends StatelessWidget {
@@ -19,15 +20,17 @@ class CustomDashboardCardWidget extends StatelessWidget {
         children: [
           Container(
             margin: EdgeInsets.symmetric(horizontal: marginHorizontal, vertical: marginVertical),
-            width: width,
-            height: height,
+            width: Get.width*0.38,
+            height: 120,
             decoration: BoxDecoration(
                 color: kCardColor,
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(22),
                 boxShadow: const [
                   BoxShadow(
-                      blurRadius: 0.5, color: kLightGreyColor,
-                      offset: Offset(1, 1)
+                      blurRadius: 5,
+                      // spreadRadius: 1,
+                      color: kCardShadowColor,
+                      offset: Offset(2, 2)
                   )
                 ]
             ),

@@ -38,9 +38,12 @@ class RegistrationScreen extends GetView<RegistrationScreenController> {
   Widget getBody(BuildContext context){
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-      child: Column(children: [
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
         Container(
-          margin: const EdgeInsets.only(top: 30,bottom: 20),
+          margin: EdgeInsets.only(top: Get.height*0.1,bottom: 20),
           child: const Text('Create Account', style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
@@ -48,14 +51,14 @@ class RegistrationScreen extends GetView<RegistrationScreenController> {
           ),
           ),
         ),
-        GeneralTextField.withBorder(tfManager: controller.fullNameTfManager,),
-        GeneralTextField.withBorder(tfManager: controller.cnicTfManager,),
-        GeneralTextField.withBorder(tfManager: controller.emailTfManager,),
-        GeneralTextField.withBorder(tfManager: controller.mobileNoTfManager,),
-        GeneralTextField.withBorder(tfManager: controller.passwordTfManager,),
-        GeneralTextField.withBorder(tfManager: controller.confirmPasswordTfManager,),
+        GeneralTextField(tfManager: controller.fullNameTfManager,),
+        GeneralTextField(tfManager: controller.cnicTfManager,),
+        GeneralTextField(tfManager: controller.emailTfManager,),
+        GeneralTextField(tfManager: controller.mobileNoTfManager,),
+        GeneralTextField(tfManager: controller.passwordTfManager,),
+        GeneralTextField(tfManager: controller.confirmPasswordTfManager,),
         const SizedBox(height: 8),
-        GeneralButton(onPressed: (){controller.onRegister();},color: kBlackColor,textColor: kWhiteColor,text: 'Register',height: 54,),
+        GeneralButton(onPressed: (){controller.onRegister();},text: 'Register',),
         const SizedBox(height:30),
         RichText(
           textAlign: TextAlign.right,

@@ -236,7 +236,7 @@ class CustomDialogs {
       dialogType: DialogType.noHeader,
       headerAnimationLoop: false,
       animType: AnimType.bottomSlide,
-      btnOkColor: kPrimaryColor,
+      btnOkColor: kApprovedColor,
       dismissOnTouchOutside: false,
       body: Container(
         height: 80,

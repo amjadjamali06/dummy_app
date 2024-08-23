@@ -15,7 +15,7 @@ import '../utils/text_field_manager.dart';
 
 class AuctionRequestScreenController extends GetxController{
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  TextFieldManager desiredNbrPlateTfManager = TextFieldManager('Numbers for Plate',hint: 'AAAAAAA');
+  TextFieldManager desiredNbrPlateTfManager = TextFieldManager('',hint: 'AAAAAAA');
 
   String category = "${Get.arguments}".toLowerCase();
 
@@ -24,7 +24,7 @@ class AuctionRequestScreenController extends GetxController{
   @override
   void onInit() {
     desiredNbrPlateTfManager.length = category=="silver"?7:category=="gold"?5:3;
-    desiredNbrPlateTfManager.hint = "'${"AAAAAAAAAAA".substring(0,desiredNbrPlateTfManager.length)}'";
+    desiredNbrPlateTfManager.hint = "Numbers for Plate '${"AAAAAAAAAAA".substring(0,desiredNbrPlateTfManager.length)}'";
     super.onInit();
   }
 

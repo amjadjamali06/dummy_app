@@ -21,7 +21,7 @@ class GeneralDatePickerField extends StatelessWidget {
     // _withShadow=true;
   }
 
-  const GeneralDatePickerField.withBorder({super.key,
+  const GeneralDatePickerField({super.key,
     required this.dateManager,
     this.paddingHorizontal=0,
     this.readOnly=false,

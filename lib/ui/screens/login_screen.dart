@@ -1,11 +1,9 @@
 
-import 'dart:developer';
 
 import 'package:excise_e_auction/ui/custom_widgets/general_text_field.dart';
 import 'package:excise_e_auction/utils/constants.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:excise_e_auction/controllers/login_screen_controller.dart';
 import 'package:excise_e_auction/ui/custom_widgets/general_button.dart';
@@ -87,9 +85,9 @@ class LoginScreen extends GetView<LoginScreenController> {
           ),
           SizedBox(height: height*0.04),
 
-          GeneralTextField.withBorder(tfManager: controller.usernameTFMController, paddingHorizontal: width * 0.05,),
+          GeneralTextField(tfManager: controller.usernameTFMController, paddingHorizontal: width * 0.05,),
           const SizedBox(height: 12),
-          GeneralTextField.withBorder(tfManager: controller.passwordTFMController, paddingHorizontal: width * 0.05,),
+          GeneralTextField(tfManager: controller.passwordTFMController, paddingHorizontal: width * 0.05,),
 
           //captcha code
 
@@ -167,7 +165,7 @@ class LoginScreen extends GetView<LoginScreenController> {
                 ),
               ),),
 
-          GeneralTextField.withBorder(
+          GeneralTextField(
             tfManager: controller.captchaTFMController,
             paddingHorizontal: width * 0.05,
             onChange: (value) {
@@ -215,24 +213,24 @@ class LoginScreen extends GetView<LoginScreenController> {
             height: 40,
           ),
 
-          // const SizedBox(height: 16),
-          // Padding(
-          //   padding: EdgeInsets.symmetric(horizontal: width * 0.07),
-          //   child: Row(
-          //     children: [
-          //       const Text('Remember Me',style: TextStyle(fontSize: 14,color: kLightGreyColor,fontWeight: FontWeight.w600),),
-          //       const SizedBox(width: 4),
-          //       Obx(()=> Switch(
-          //         activeColor: kPrimaryColor,
-          //         inactiveThumbColor: kGreyColor,
-          //         value: controller.rememberMe.value,
-          //         onChanged: (_) => controller.rememberMe.toggle(),
-          //       )),
-          //       const Spacer(),
-          //       const Text('Forgot Password?',style: TextStyle(fontSize: 14,color: kLightGreyColor, letterSpacing:0, decoration: TextDecoration.underline,decorationColor: kLightGreyColor)),
-          //     ],
-          //   ),
-          // ),
+          const SizedBox(height: 16),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: width * 0.07),
+            child: Row(
+              children: [
+                const Text('Remember Me',style: TextStyle(fontSize: 14,color: kLightGreyColor,fontWeight: FontWeight.w600),),
+                const SizedBox(width: 4),
+                Obx(()=> Switch(
+                  activeColor: kPrimaryColor,
+                  inactiveThumbColor: kGreyColor,
+                  value: controller.rememberMe.value,
+                  onChanged: (_) => controller.rememberMe.toggle(),
+                )),
+                const Spacer(),
+                const Text('Forgot Password?',style: TextStyle(fontSize: 14,color: kLightGreyColor, letterSpacing:0, decoration: TextDecoration.underline,decorationColor: kLightGreyColor)),
+              ],
+            ),
+          ),
 
           Container(
             alignment: Alignment.center,
@@ -262,7 +260,7 @@ class LoginScreen extends GetView<LoginScreenController> {
               ),
             ),
           ),
-          // const SizedBox(height: 40),
+          const SizedBox(height: 40),
 
         ],
       ),

@@ -105,7 +105,7 @@ class DashboardScreen extends GetView<DashboardScreenController> {
                 columnCount: 2,
                 horizontalSpace: 20,
                 verticalSpace: 20,
-                margin: const EdgeInsets.only(top: 20),
+                margin: const EdgeInsets.only(left: 20, top: 30, right: 20),
                 children: [
                   CustomDashboardCardWidget(title: "Online\n Tax Payment", iconPath: 'assets/icons/online-tax-payment.png', onTap: controller.onTapItem),
                   CustomDashboardCardWidget(title: "Vehicle\n Verification",iconPath: 'assets/icons/vehicle-verification.png', onTap: controller.onTapItem,),

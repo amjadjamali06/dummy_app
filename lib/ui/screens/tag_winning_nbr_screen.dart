@@ -15,25 +15,29 @@ class TagWinningNbrScreen extends GetView<TagWinningNbrScreenController> {
     return CustomScaffold(
       scaffoldKey: controller.scaffoldKey,
       className: runtimeType.toString(),
-      screenName: '',
+      screenName: 'Tag Winning Number',
       gestureDetectorOnTap: controller.removeFocus,
       body: getBody(),
     );
   }
   Widget getBody(){
     return Column(children: [
-       Container(
-        margin: const EdgeInsets.only(top: 20,bottom: 20),
-        child: const Text("Tag Winning Number", style: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-          color:kTextColor ,
-        ),
-        ),
-      ),
-      GeneralTextField.withBorder(tfManager: controller.winningAuctionIdTfManager,readOnly: true,),
-      GeneralTextField.withBorder(tfManager: controller.winningNbrPlateDetailsTfManager,readOnly: true,),
-      GeneralTextField.withBorder(tfManager: controller.vehicleRegistrationNbrTfManager),
+      //  Container(
+      //   margin: const EdgeInsets.only(top: 20,bottom: 20),
+      //   child: const Text("Tag Winning Number", style: TextStyle(
+      //     fontSize: 24,
+      //     fontWeight: FontWeight.bold,
+      //     color:kTextColor ,
+      //   ),
+      //   ),
+      // ),
+      const SizedBox(height: 50),
+      GeneralTextField(tfManager: controller.winningAuctionIdTfManager,readOnly: true,),
+      const SizedBox(height: 8),
+      GeneralTextField(tfManager: controller.winningNbrPlateDetailsTfManager,readOnly: true,),
+      const SizedBox(height: 8),
+      GeneralTextField(tfManager: controller.vehicleRegistrationNbrTfManager),
+      const SizedBox(height: 8),
       GeneralButton(onPressed:controller.onTapSubmit,text: 'Submit',color: kBlackColor,)
     ],);
   }

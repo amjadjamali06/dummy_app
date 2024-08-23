@@ -9,9 +9,9 @@ import 'package:get/get.dart';
 
 class TagWinningNbrScreenController extends GetxController{
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  TextFieldManager winningAuctionIdTfManager = TextFieldManager('Winning Auction Id',mandatory: false);
-  TextFieldManager vehicleRegistrationNbrTfManager = TextFieldManager('Vehicle Registration Number');
-  TextFieldManager winningNbrPlateDetailsTfManager = TextFieldManager('Winning Number Plate Details',mandatory: false);
+  TextFieldManager winningAuctionIdTfManager = TextFieldManager('',hint:'Winning Auction Id',mandatory: false);
+  TextFieldManager vehicleRegistrationNbrTfManager = TextFieldManager('',hint:'Vehicle Registration Number');
+  TextFieldManager winningNbrPlateDetailsTfManager = TextFieldManager('',hint:'Winning Number Plate Details',mandatory: false);
 
   PremiumNumberModel number = PremiumNumberModel.fromJson({});
 

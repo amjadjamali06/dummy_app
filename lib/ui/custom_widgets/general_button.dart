@@ -16,7 +16,7 @@ class GeneralButton extends StatelessWidget {
   final double height;
   final BorderSide borderSide;
 
-  const GeneralButton({super.key,this.borderSide=BorderSide.none, required this.onPressed, this.text='Submit',this.textColor=kPrimaryDarkColor, this.margin=0, this.color=kButtonColor, this.fontSize = 18.0, this.radius = kFieldRadius, this.width = 500, this.height = 54});
+  const GeneralButton({super.key,this.borderSide=BorderSide.none, required this.onPressed, this.text='Submit',this.textColor=kWhiteColor, this.margin=0, this.color=kButtonColor, this.fontSize = 18.0, this.radius = kFieldRadius, this.width = 500, this.height = 54});
 
   @override
   Widget build(BuildContext context) {
@@ -48,32 +48,4 @@ class GeneralButton extends StatelessWidget {
     );
   }
 
-  Widget _buildBodyGradient(){
-    return Container(
-      width: width,
-      height: height,
-      decoration: BoxDecoration(
-          gradient: LinearGradient(colors: [kPrimaryColor,kPrimaryLightColor.withAlpha(220)]),
-          borderRadius: BorderRadius.circular(radius)
-      ),
-      margin: EdgeInsets.symmetric(horizontal: margin, vertical: 10),
-      child: ElevatedButton(
-          onPressed: onPressed,
-          style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.transparent,
-              shape: RoundedRectangleBorder(
-                  side:borderSide,
-                  borderRadius: BorderRadius.circular(radius)
-              )
-          ),
-          child: Text(text,
-            style: TextStyle(
-                fontSize: fontSize,
-                color:textColor,
-                fontWeight: FontWeight.w400
-            ),
-          )
-      ),
-    );
-  }
 }

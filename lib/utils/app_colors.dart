@@ -12,22 +12,22 @@ const Color kTextColor=Color(0xff1c1c1c);
 const Color kTextLightColor = Color(0xaa1c1c1c);
 const Color kTextHintColor = Color(0xAA1c1c1c);
 
-const Color kCardColor=Color(0xFFECECEC);
-const Color kCardShadowColor=Color(0x55000000);
+const Color kCardColor=Color(0xFFFFFFFF);
+const Color kCardShadowColor=Color(0x44000000);
 
 const Color kFieldBGColor= Color(0xff394646);
 const Color kFieldBorderColor= Color(0xff576565);
 const Color kFieldShadowColor= Color(0xFF0f1d1c);
 
-const Color kButtonColor = kPrimaryColor;
+const Color kButtonColor = Color(0xFF0E0E0E);
 
 const Color kWhiteColor = Color(0xFFFFFFFF);
 const Color kBlackColor = Color(0xFF000000);
 
 
-const Color kPendingColor=Color(0xffF9A51D);
-const Color kRejectedColor=Color(0xffc21515);
-const Color kApprovedColor=Color(0xff10ab44);
+const Color kPendingColor=Color(0xffffcf34);
+const Color kRejectedColor=Color(0xffEE404C);
+const Color kApprovedColor=Color(0xff23A832);
 
 
 

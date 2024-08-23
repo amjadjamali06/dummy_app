@@ -14,7 +14,7 @@ class AuctionRequestScreen extends GetView<AuctionRequestScreenController> {
     return CustomScaffold(
       scaffoldKey: controller.scaffoldKey,
       className: runtimeType.toString(),
-      screenName: '',
+      screenName: 'Auction Request',
       gestureDetectorOnTap: controller.removeFocus,
       body: getBody(),
     );
@@ -35,7 +35,7 @@ class AuctionRequestScreen extends GetView<AuctionRequestScreenController> {
         textAlign: TextAlign.center,
       ),
       const SizedBox(height: 40),
-      GeneralTextField.withBorder(tfManager: controller.desiredNbrPlateTfManager),
+      GeneralTextField(tfManager: controller.desiredNbrPlateTfManager),
       const SizedBox(height: 12),
       GeneralButton(onPressed: controller.onTapRequestAuction)
     ],);

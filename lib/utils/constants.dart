@@ -6,7 +6,6 @@ const String kAppName = "Excise Auction"; //PUNJAB SOCIAL PROTECTION AUTHORITY
 const String kSplashScreenRoute = "/";
 const String kLoginScreenRoute = "/LOGIN_SCREEN";
 const String kLoginTScreenRoute = "/LOGIN_T_SCREEN";
-const String kRegistrationScreenController = "/REGISTRATION_SCREEN_CONTROLLER";
 const String kAuctionDetailScreenRoute = "/AUCTION_DETAIL_SCREEN";
 const String kDashboardScreenRoute = "/DASHBOARD_SCREEN";
 const String kSettingScreenRoute = "/SETTING_SCREEN";
