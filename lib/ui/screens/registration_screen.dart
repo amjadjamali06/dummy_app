@@ -17,6 +17,7 @@ class RegistrationScreen extends GetView<RegistrationScreenController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kWhiteColor,
       // scaffoldKey: controller.scaffoldKey,
       // className: runtimeType.toString(),
       // screenName: '',
@@ -52,7 +53,7 @@ class RegistrationScreen extends GetView<RegistrationScreenController> {
         GeneralTextField.withBorder(tfManager: controller.passwordTfManager,),
         GeneralTextField.withBorder(tfManager: controller.confirmPasswordTfManager,),
         const SizedBox(height: 8),
-        GeneralButton(onPressed: (){controller.onRegister();},color: kBlackColor,text: 'Register',height: 54,),
+        GeneralButton(onPressed: (){controller.onRegister();},color: kBlackColor,textColor: kWhiteColor,text: 'Register',height: 54,),
         const SizedBox(height:30),
         RichText(
           textAlign: TextAlign.right,
@@ -64,14 +65,14 @@ class RegistrationScreen extends GetView<RegistrationScreenController> {
             children: <TextSpan>[
               const TextSpan(text: "Already have an account? "),
               TextSpan(
-                text: "Login",
+                text: "Sign In",
                 style: const TextStyle(
                     height: 1.2,
                     fontSize: 16,
                     letterSpacing: 0.08,
                     fontFamily: "PoppinsLight",
                     fontWeight: FontWeight.w600,
-                    color: kPrimaryColor,decoration: TextDecoration.underline),
+                    color: kTextFieldBlueColor),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {Get.toNamed(kLoginScreenRoute);},
               ),

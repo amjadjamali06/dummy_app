@@ -18,12 +18,12 @@ import 'package:get/get.dart';
 
 class RegistrationScreenController extends GetxController{
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  TextFieldManager fullNameTfManager = TextFieldManager('Full Name',hint: "Full Name",mandatory: true);
-  TextFieldManager cnicTfManager = TextFieldManager('CNIC',hint: 'CNIC Number',mandatory: true,filter: TextFilter.cnic);
-  TextFieldManager emailTfManager = TextFieldManager('Email',hint: "Email Address",mandatory: true,filter: TextFilter.email);
-  TextFieldManager mobileNoTfManager = TextFieldManager('Mobile No',hint: "Mobile No.",mandatory: true,filter: TextFilter.mobile);
-  TextFieldManager passwordTfManager = TextFieldManager('Password',mandatory: true,filter: TextFilter.password);
-  TextFieldManager confirmPasswordTfManager = TextFieldManager('Confirm Password',mandatory: true,filter: TextFilter.password);
+  TextFieldManager fullNameTfManager = TextFieldManager('',hint: "Full Name",mandatory: true);
+  TextFieldManager cnicTfManager = TextFieldManager('',hint: 'CNIC Number',mandatory: true,filter: TextFilter.cnic);
+  TextFieldManager emailTfManager = TextFieldManager('',hint: "Email Address",mandatory: true,filter: TextFilter.email);
+  TextFieldManager mobileNoTfManager = TextFieldManager('',hint: "Mobile No.",mandatory: true,filter: TextFilter.mobile);
+  TextFieldManager passwordTfManager = TextFieldManager('',hint: "Password",mandatory: true,filter: TextFilter.password);
+  TextFieldManager confirmPasswordTfManager = TextFieldManager('',hint: "Confirm Password",mandatory: true,filter: TextFilter.password);
 
 
   void onRegister() async {

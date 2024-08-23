@@ -31,7 +31,7 @@ class GeneralButton extends StatelessWidget {
       child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
-              backgroundColor: kPrimaryColor,
+              backgroundColor: color,
               shape: RoundedRectangleBorder(
                   side:borderSide,
                   borderRadius: BorderRadius.circular(radius)
