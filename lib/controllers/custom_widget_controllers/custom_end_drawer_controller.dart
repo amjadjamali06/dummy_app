@@ -13,8 +13,8 @@ class CustomEndDrawerController extends GetxController{
         await UserSession().logout();
         Get.offAllNamed(kAuctionDetailScreenRoute);
       });
-    } else if(title=='Settings' && Get.currentRoute != kSplashScreenRoute){
-      Get.offAllNamed(kSettingScreenRoute, predicate: (r)=>r.isFirst);
+    } else if(title=='Auction' && Get.currentRoute != kEAuctionScreenRoute){
+      Get.offAllNamed(kEAuctionScreenRoute, predicate: (r)=>r.isFirst);
     }
   }
 }

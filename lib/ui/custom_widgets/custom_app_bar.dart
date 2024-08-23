@@ -23,73 +23,93 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      toolbarHeight: 65,
-      automaticallyImplyLeading: GeneralPlatform.isWeb,
-      leadingWidth: 65,
-      leading: (screenName == "Dashboard Screen")?
-      Container(
-        margin: const EdgeInsets.all(16),
-        padding: const EdgeInsets.all(5),
-        decoration: BoxDecoration(
-            border: Border.all(color: kPrimaryColor),
-            borderRadius: BorderRadius.circular(50)
-        ),
-        child: Image.asset('assets/icons/user-icon.png', color: kPrimaryColor, width: 18, height: 18,),
-      ) : IconButton(onPressed:() {
-           CustomBottomNavBarController.selectedIndex.value = 0;
-           if (onBackButtonPress != null) {
-             onBackButtonPress!();
-           }else{
-             Get.back();
-           }
-         },icon: const Icon(Icons.arrow_back, color: kPrimaryColor, size: 25)),
+        toolbarHeight: 65,
+        automaticallyImplyLeading: GeneralPlatform.isWeb,
+        leadingWidth: 65,
+        leading: screenName.isNotEmpty
+            ? GestureDetector(
+          onTap: () {
+            CustomBottomNavBarController.selectedIndex.value = 0;
+            if (onBackButtonPress != null) {
+              onBackButtonPress!();
+            } else {
+              Get.back();
+            }
+          },
+          child: Container(
+            alignment: Alignment.center,
+            margin: const EdgeInsets.all(13),
+            padding: const EdgeInsets.only(left: 10),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: kWhiteColor),
+            child: const Icon(Icons.arrow_back_ios, color: kBlackColor),
+          ),
+        )
+            : null,
         actions: [
           GestureDetector(
-            child: Container(
-              margin: const EdgeInsets.only(right: 12, top: 8),
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: kPrimaryDarkColor,
-                boxShadow: const [
-                  BoxShadow(
-                    blurStyle: BlurStyle.inner,
-                    color: Colors.black12,
-                    offset: Offset(0,1),
-                    blurRadius: 1,
-                    spreadRadius: 0.5
-                  )
-                ]
-              ),
-              child: Image.asset('assets/icons/menu-icon.png',color: kPrimaryColor, width: 32,),
+            child: Stack(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: kWhiteColor),
+                      borderRadius: BorderRadius.circular(50)),
+                  child: const Icon(Icons.notifications),
+                ),
+                Positioned(
+                  right: 2,
+                  top: 0,
+                  child: Container(
+                    height: 10,
+                    width: 5,
+                    decoration: const BoxDecoration(
+                        color: kRejectedColor, shape: BoxShape.circle),
+                  ),
+                )
+              ],
             ),
-          )
+            onTap: () {},
+          ),
+          GestureDetector(
+            child: Container(
+              width: 35,
+              height: 35,
+              margin: const EdgeInsets.only(right: 10, top: 0, left: 10),
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                  border: Border.all(color: kWhiteColor),
+                  borderRadius: BorderRadius.circular(50)),
+              child: Image.asset(
+                'assets/icons/menu-new.png',
+                color: kWhiteColor,
+              ),
+            ),
+            onTap: () {
+              scaffoldKey.currentState!.openEndDrawer();
+              FocusScope.of(context).requestFocus(FocusNode());
+            },
+          ),
         ],
-        // GestureDetector(
-        //   child:  Padding(
-        //     padding: const EdgeInsets.only(left: 12,top: 12),
-        //     child: Column(
-        //       crossAxisAlignment: CrossAxisAlignment.start,
-        //       children: [
-        //         Image.asset('assets/icons/menu_icon.png', height: 26, width: 34),
-        //         const SizedBox(height: 2),
-        //         const Text('Menu',style: TextStyle(fontSize: 10,fontWeight: FontWeight.w400))
-        //       ],
-        //     ),
-        //   ),
-        //   onTap: () {
-        //     scaffoldKey.currentState!.openDrawer();
-        //     FocusScope.of(context).requestFocus(FocusNode());
-        //   },
-        // ):null,
-      title:  Text(
-        screenName.isNotEmpty ? screenName : "Excise",
-        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500,  color: kWhiteColor),
-      ),
-      centerTitle: true,
-      actionsIconTheme: const IconThemeData(),
-      bottom: bottomSheet,
-    );
+        titleSpacing: 0.0,
+        title: Text(
+          screenName,
+          style: const TextStyle(
+              fontSize: 20, fontWeight: FontWeight.w500, color: kWhiteColor),
+        ),
+        centerTitle: false,
+        actionsIconTheme: const IconThemeData(),
+        bottom: bottomSheet,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [kPrimaryDarkColor, kPrimaryLightColor],
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+            ),
+          ),
+        ));
   }
 
   @override

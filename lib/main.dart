@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
         primaryColorLight: kPrimaryColor,
         primaryColorDark: kPrimaryDarkColor,
         fontFamily: 'Roboto',
-        scaffoldBackgroundColor: kPrimaryDarkColor,
+        scaffoldBackgroundColor: kWhiteColor,
         dialogBackgroundColor: kPrimaryDarkColor,
         shadowColor: kPrimaryDarkColor,
         appBarTheme: CustomTheme.appBarTheme,

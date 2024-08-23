@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:excise_e_auction/controllers/custom_widget_controllers/custom_bottom_nav_bar_controller.dart';
 import 'package:excise_e_auction/ui/custom_widgets/custom_bottom_nav_bar.dart';
+import 'package:excise_e_auction/ui/custom_widgets/custom_end_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:excise_e_auction/ui/custom_widgets/custom_app_bar.dart';
@@ -25,6 +26,7 @@ class CustomScaffold extends StatefulWidget {
   final double appBarHeight;
   final PreferredSize? bottomSheet;
   final bool showBottomNavBar;
+  final bool showNavDrawer;
 
 
   const CustomScaffold({super.key,
@@ -44,6 +46,7 @@ class CustomScaffold extends StatefulWidget {
     this.appBarHeight = 80,
     this.bottomSheet,
     this.showBottomNavBar = true,
+    this.showNavDrawer = true,
   });
 
   @override
@@ -93,7 +96,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
               }
             },
             child: Scaffold(
-              backgroundColor: kPrimaryDarkColor,
+              backgroundColor: kWhiteColor,
               // extendBody: true,
               resizeToAvoidBottomInset: true,
               key: widget.scaffoldKey,
@@ -102,7 +105,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                 height: Get.height,
                 width: Get.width,
                 decoration: const BoxDecoration(
-                  color: kPrimaryDarkColor,
+                  color: kWhiteColor,
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
                 ),
                 child: Stack(
@@ -136,6 +139,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                 child: const Icon(Icons.add,color: kWhiteColor, size: 32),
               ),
               bottomNavigationBar: widget.showBottomNavBar? const CustomBottomNavBar():null,
+              endDrawer: widget.showNavDrawer? const CustomEndDrawer() : null,
               // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
             ) ,
           ),
