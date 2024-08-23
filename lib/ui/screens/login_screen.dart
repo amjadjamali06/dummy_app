@@ -36,9 +36,8 @@ class LoginScreen extends GetView<LoginScreenController> {
             children: [
               Image.asset(
                 'assets/images/login_header_image_2.png',
-                // height: Get.height * 0.24,
-                // width: Get.width,
-                fit: BoxFit.cover,
+                fit: BoxFit.fitWidth,
+                width: Get.width,
               ),
               Container(
                 padding: EdgeInsets.only(left: width*0.07,top: height*0.1),
@@ -53,14 +52,14 @@ class LoginScreen extends GetView<LoginScreenController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Excise, Taxation and Narcotics Control Department",
+                            "Excise, Taxation and Narcotics\nControl Department",
                             style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600
                                 , color: kWhiteColor),
                           ),
                           Text(
                             "Government of Sindh",
                             style:
-                                TextStyle(fontSize: 15,fontWeight: FontWeight.w500, color: kTextLightColor),
+                                TextStyle(fontSize: 15,fontWeight: FontWeight.w500, color: Color(0xAAFFFFFF)),
                           ),
                         ],
                       ),
@@ -76,7 +75,6 @@ class LoginScreen extends GetView<LoginScreenController> {
             child: const Text('Welcome,',
               style: TextStyle(
                 fontSize: 40,
-                fontWeight: FontWeight.bold,
                 color:kBlackColor,
               ),
             ),
@@ -84,7 +82,7 @@ class LoginScreen extends GetView<LoginScreenController> {
           Padding(
             padding: EdgeInsets.only(left: width*0.07),
             child: const Text('Sign in to continue!',
-              style: TextStyle(color:kLightGreyColor),
+              style: TextStyle(color:kTextLightColor, fontSize: 16),
             ),
           ),
           SizedBox(height: height*0.04),
@@ -185,18 +183,17 @@ class LoginScreen extends GetView<LoginScreenController> {
                     text: TextSpan(
                         style: const TextStyle(
                             color: Colors.black,
-                            fontSize: 12,
                             fontFamily: "PoppinsLight"),
                         children: <TextSpan>[
                           const TextSpan(
                               text:
-                              'can\'t read the image? click '),
+                              'Can\'t read the image? click '),
                           TextSpan(
                               text: 'here',
-                              style: TextStyle(
-                                color: Colors.blue[900],
-                                decoration:
-                                TextDecoration.underline,
+                              style: const TextStyle(
+                                color: kPrimaryColor,
+                                decoration: TextDecoration.underline,
+                                fontSize: 16,
                               ),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
@@ -210,37 +207,36 @@ class LoginScreen extends GetView<LoginScreenController> {
           //captcha code
           const SizedBox(height: 16),
           GeneralButton(
-              onPressed: () {
-                controller.onSignInPressed();
-              },
-              text: 'Login',
-              textColor: kWhiteColor,
-              color: kBlackColor,
-              margin: width * 0.07,
-              height: 40),
-
-          const SizedBox(height: 16),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: width * 0.07),
-            child: Row(
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text('Remember Me',style: TextStyle(fontSize: 14,color: kLightGreyColor,fontWeight: FontWeight.w600),),
-                const SizedBox(width: 4),
-                Obx(()=> Switch(
-                  activeColor: kPrimaryColor,
-                  inactiveThumbColor: kGreyColor,
-                  value: controller.rememberMe.value,
-                  onChanged: (_) => controller.rememberMe.toggle(),
-                )),
-                const Spacer(),
-                const Text('Forgot Password?',style: TextStyle(fontSize: 14,color: kLightGreyColor, letterSpacing:0, decoration: TextDecoration.underline,decorationColor: kLightGreyColor)),
-              ],
-            ),
+            onPressed: controller.onSignInPressed,
+            text: 'Login',
+            textColor: kWhiteColor,
+            color: kBlackColor,
+            margin: width * 0.07,
+            height: 40,
           ),
 
-          Padding(
-            padding: EdgeInsets.only(top: height*0.02,left: width*0.07),
+          // const SizedBox(height: 16),
+          // Padding(
+          //   padding: EdgeInsets.symmetric(horizontal: width * 0.07),
+          //   child: Row(
+          //     children: [
+          //       const Text('Remember Me',style: TextStyle(fontSize: 14,color: kLightGreyColor,fontWeight: FontWeight.w600),),
+          //       const SizedBox(width: 4),
+          //       Obx(()=> Switch(
+          //         activeColor: kPrimaryColor,
+          //         inactiveThumbColor: kGreyColor,
+          //         value: controller.rememberMe.value,
+          //         onChanged: (_) => controller.rememberMe.toggle(),
+          //       )),
+          //       const Spacer(),
+          //       const Text('Forgot Password?',style: TextStyle(fontSize: 14,color: kLightGreyColor, letterSpacing:0, decoration: TextDecoration.underline,decorationColor: kLightGreyColor)),
+          //     ],
+          //   ),
+          // ),
+
+          Container(
+            alignment: Alignment.center,
+            padding: EdgeInsets.only(top: height*0.02),
             child: RichText(
               textAlign: TextAlign.right,
               text: TextSpan(
@@ -258,7 +254,7 @@ class LoginScreen extends GetView<LoginScreenController> {
                       letterSpacing: 0.08,
                       fontWeight: FontWeight.w600,
                       fontFamily: "PoppinsLight",
-                      color: kTextFieldBlueColor,),
+                      color: kPrimaryColor),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {Get.toNamed(kRegistrationScreenRoute);},
                 ),
@@ -266,7 +262,7 @@ class LoginScreen extends GetView<LoginScreenController> {
               ),
             ),
           ),
-          const SizedBox(height: 40),
+          // const SizedBox(height: 40),
 
         ],
       ),

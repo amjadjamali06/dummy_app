@@ -8,11 +8,11 @@ const Color kPrimaryColor = Color(0xff0b5dab);
 const Color kPrimaryLightColor = Color(0xff0b5dab);
 const Color kPrimaryDarkColor = Color(0xff1a3e74);
 
-const Color kTextColor=Color(0xFFf5f9fc);
-const Color kTextLightColor = Color(0xAAf5f9fc);
-const Color kTextHintColor = Color(0xAAf5f9fc);
+const Color kTextColor=Color(0xff1c1c1c);
+const Color kTextLightColor = Color(0xaa1c1c1c);
+const Color kTextHintColor = Color(0xAA1c1c1c);
 
-const Color kCardColor=Color(0xFF394646);
+const Color kCardColor=Color(0xFFECECEC);
 
 const Color kFieldBGColor= Color(0xff394646);
 const Color kFieldBorderColor= Color(0xff576565);
