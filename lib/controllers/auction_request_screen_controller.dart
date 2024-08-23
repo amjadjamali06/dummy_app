@@ -1,8 +1,14 @@
+import 'dart:math';
+
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:excise_e_auction/models/bid_request_model.dart';
 import 'package:excise_e_auction/ui/custom_widgets/custom_dialogs.dart';
 import 'package:excise_e_auction/utils/constants.dart';
+import 'package:excise_e_auction/utils/dummy_data.dart';
+import 'package:excise_e_auction/utils/user_session.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../ui/custom_widgets/custom_progress_dialog.dart';
 import '../utils/text_field_manager.dart';
@@ -34,6 +40,18 @@ class AuctionRequestScreenController extends GetxController{
       String result = "";
       ProgressDialog().showDialog();
       await Future.delayed(const Duration(seconds: 2), (){
+        int randomNo =  Random().nextInt(1000);
+        final DateFormat formatter = DateFormat('dd/MM/yyyy');
+        final auctionRequestModel = BidRequestModel(
+          id: "ID-$randomNo",
+          bidderId: UserSession.userModel.value.id,
+          bidderName: UserSession.userModel.value.name,
+          bidType: category,
+          status: "pending",
+          date: formatter.format(DateTime.now()),
+        );
+        DummyData.myBidRequests.addNonNull(auctionRequestModel);
+        DummyData.myBidRequests.refresh();
         result = "Success";
       });
       ProgressDialog().dismissDialog();

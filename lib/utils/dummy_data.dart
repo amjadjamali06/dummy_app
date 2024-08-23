@@ -3,6 +3,7 @@ import 'package:excise_e_auction/models/item_model.dart';
 import 'package:excise_e_auction/models/my_bid_model.dart';
 import 'package:excise_e_auction/models/user_model.dart';
 import 'package:excise_e_auction/utils/user_session.dart';
+import 'package:get/get.dart';
 
 import '../models/bid_request_model.dart';
 
@@ -67,7 +68,7 @@ class DummyData {
       bidEndAmount: "250000",
     ),
   ];
-  List<BidRequestModel> myBidRequests = [
+  static RxList<BidRequestModel> myBidRequests = [
     BidRequestModel(
       id: "1",
       bidderId: 'ALI-01',
@@ -92,7 +93,7 @@ class DummyData {
       status: "approved",
       date: '20/08/2024',
     ),
-  ];
+  ].obs;
 
   List<MyBidModel> myPlacedBids = [
     MyBidModel(

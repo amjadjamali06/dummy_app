@@ -5,6 +5,7 @@ import 'package:excise_e_auction/ui/custom_widgets/custom_progress_dialog.dart';
 import 'package:excise_e_auction/utils/dummy_data.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class BidRequestHistoryScreenController extends GetxController {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -23,15 +24,24 @@ class BidRequestHistoryScreenController extends GetxController {
   }
   @override
   void onReady() {
-  fetchData();
+    fetchData();
   }
 
   void fetchData(){
-    ProgressDialog().showDialog(title: 'Please wait...');
+    ProgressDialog().showDialog();
     super.onReady();
     Timer(const Duration(seconds: 2),() {
       bidHistory.value = DummyData.bidsList;
-      myRequests.value = DummyData().myBidRequests;
+      myRequests.value = DummyData.myBidRequests;
+      try {
+        myRequests.sort((a,b){
+          if(DateFormat('dd/MM/yyyy').parse(a.date).isBefore(DateFormat('dd/MM/yyyy').parse(b.date))) {
+            return 1;
+          } else {
+            return 0;
+          }
+        });
+      } catch (_) {}
       ProgressDialog().dismissDialog();
     },);
   }
