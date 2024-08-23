@@ -11,7 +11,7 @@ class CustomBottomNavBar extends GetView<CustomBottomNavBarController> {
     return Obx(
           () => SafeArea(
         child: BottomNavigationBar(
-          backgroundColor: kWhiteColor,
+          backgroundColor: const Color(0xffEFEFEF),
           currentIndex: CustomBottomNavBarController.selectedIndex.value,
           showSelectedLabels: true,
           showUnselectedLabels: true,

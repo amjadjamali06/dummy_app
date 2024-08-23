@@ -1,6 +1,5 @@
 import 'package:excise_e_auction/controllers/place_bid_screen_controller.dart';
 import 'package:excise_e_auction/ui/custom_widgets/general_date_picker_field.dart';
-import 'package:excise_e_auction/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../utils/app_colors.dart';
@@ -16,7 +15,7 @@ class PlaceBidScreen extends GetView<PlaceBidScreenController> {
     return CustomScaffold(
       scaffoldKey: controller.scaffoldKey,
       className: runtimeType.toString(),
-      screenName: '',
+      screenName: 'Place Bid',
       gestureDetectorOnTap: controller.removeFocus,
       onNotificationListener: (detail){
         if(detail is UserScrollNotification) {
@@ -29,20 +28,13 @@ class PlaceBidScreen extends GetView<PlaceBidScreenController> {
   }
 
   Widget getBody(BuildContext context){
-    return Column(children: [
-      Container(
-        margin: const EdgeInsets.only(top: 20,bottom: 20),
-        child: const Text('Place a Bid', style: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-          color:kTextColor,
-        ),
-        ),
-      ),
+    return Column(
+      children: [
+      const SizedBox(height: 60),
       GeneralTextField.withBorder(tfManager: controller.plateCategoryTfManager,readOnly: true,),
       GeneralTextField.withBorder(tfManager: controller.desiredNbrPlateTfManager,readOnly: true,),
-      GeneralDatePickerField.withBorder(dateManager: controller.bidStartDateManager,readOnly: true,),
-      GeneralDatePickerField.withBorder(dateManager: controller.bidEndDateManager,readOnly: true,),
+      GeneralTextField.withBorder(tfManager: controller.bidStartDateManager,readOnly: true,),
+      GeneralTextField.withBorder(tfManager: controller.bidEndDateManager,readOnly: true,),
       GeneralTextField.withBorder(tfManager: controller.startingBidAmountTfManager,readOnly: true,),
       GeneralTextField.withBorder(tfManager: controller.currentHighestBidTfManager,readOnly: true,),
       GeneralTextField.withBorder(tfManager: controller.bidAmountTfManager),

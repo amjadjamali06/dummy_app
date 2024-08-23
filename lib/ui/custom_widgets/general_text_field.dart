@@ -79,8 +79,26 @@ class GeneralTextField extends StatelessWidget {
                         inputFormatters: tfManager.formatters,
                         decoration: InputDecoration(
                           labelText: tfManager.hint??tfManager.fieldName,
+                          filled: readOnly,
+                          fillColor: readOnly ? kPrimaryColor.withOpacity(0.1) : Colors.transparent,
+                          labelStyle: TextStyle(
+                              color: readOnly ? kPrimaryColor : kFieldBorderColor,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400
+                          ),
                           counterText: '',
-                          border: const OutlineInputBorder(),
+                          border: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(kFieldRadius)),
+                            borderSide: BorderSide(color: kFieldBorderColor,width: 1.5),
+                          ),
+                          focusedBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(kFieldRadius)),
+                            borderSide: BorderSide(color:  kPrimaryColor, width: 1.5),
+                          ),
+                          enabledBorder:  const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(kFieldRadius)),
+                            borderSide: BorderSide(color: kFieldBorderColor, width: 1.5),
+                          ),
                           // hintText: "Enter ${tfManager.hint??tfManager.fieldName}",
                           contentPadding: const EdgeInsets.all(16),
                           // border: InputBorder.none,

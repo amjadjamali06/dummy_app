@@ -5,7 +5,6 @@ import 'package:excise_e_auction/models/auction_bid_model.dart';
 import 'package:excise_e_auction/services/web_services/general_service.dart';
 import 'package:excise_e_auction/ui/custom_widgets/custom_progress_dialog.dart';
 import 'package:excise_e_auction/utils/constants.dart';
-import 'package:excise_e_auction/utils/date_time_manager.dart';
 import 'package:excise_e_auction/utils/string_utils.dart';
 import 'package:excise_e_auction/utils/text_filter.dart';
 import 'package:flutter/material.dart';
@@ -15,13 +14,13 @@ import '../utils/text_field_manager.dart';
 
 class PlaceBidScreenController extends GetxController{
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  TextFieldManager plateCategoryTfManager = TextFieldManager('Plate Category',mandatory: false);
-  TextFieldManager desiredNbrPlateTfManager = TextFieldManager('Desired Characters or Numbers for the Plate',hint: 'Ahmed-07');
-  DateTimeManager bidStartDateManager = DateTimeManager('Bid Start Date and Time');
-  DateTimeManager bidEndDateManager = DateTimeManager('Bid End Date and Time');
-  TextFieldManager startingBidAmountTfManager = TextFieldManager('Starting Bid Amount');
-  TextFieldManager currentHighestBidTfManager = TextFieldManager('Current Highest Bid');
-  TextFieldManager bidAmountTfManager = TextFieldManager('Bid Amount',mandatory: true,filter: TextFilter.number);
+  TextFieldManager plateCategoryTfManager = TextFieldManager('',mandatory: false, hint: 'Plate Category');
+  TextFieldManager desiredNbrPlateTfManager = TextFieldManager('',hint: 'Desired Characters or Numbers for the Plate',);
+  TextFieldManager bidStartDateManager = TextFieldManager('',mandatory: false, hint: 'Bid Start Date and Time',);
+  TextFieldManager bidEndDateManager = TextFieldManager('',mandatory: false, hint: 'Bid End Date and Time');
+  TextFieldManager startingBidAmountTfManager = TextFieldManager('' ,mandatory: false, hint: 'Starting Bid Amount');
+  TextFieldManager currentHighestBidTfManager = TextFieldManager('',mandatory: false, hint: 'Current Highest Bid');
+  TextFieldManager bidAmountTfManager = TextFieldManager('',mandatory: true,filter: TextFilter.number, hint: 'Bid Amount');
   AuctionModel auctionModel = AuctionModel.empty();
 
   @override
@@ -40,8 +39,8 @@ class PlaceBidScreenController extends GetxController{
 
     plateCategoryTfManager.controller.text = auctionModel.bidType;
     desiredNbrPlateTfManager.controller.text = auctionModel.numberPlat;
-    bidStartDateManager.formattedDateTime.value = auctionModel.startDate.formatDate;
-    bidEndDateManager.formattedDateTime.value = auctionModel.endDate.formatDate;
+    bidStartDateManager.controller.text = auctionModel.startDate.formatDate;
+    bidEndDateManager.controller.text = auctionModel.endDate.formatDate;
     startingBidAmountTfManager.controller.text = auctionModel.bidStartAmount.toAmount;
     currentHighestBidTfManager.controller.text = auctionModel.bidEndAmount.toAmount;
   }
@@ -60,7 +59,7 @@ class PlaceBidScreenController extends GetxController{
           id: DateTime.now().millisecondsSinceEpoch.toString(),
           plateCategory: plateCategoryTfManager.controller.text,
           nbrPlate: desiredNbrPlateTfManager.controller.text,
-          bidDate: bidEndDateManager.formattedDateTime.value,
+          bidDate: bidEndDateManager.controller.text,
           bidAmount: bidAmountTfManager.controller.text,
           auctionId: auctionModel.id);
       ProgressDialog().showDialog();
