@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:excise_e_auction/models/auction_bid_model.dart';
-import 'package:excise_e_auction/models/bid_request_model.dart';
+import 'package:excise_e_auction/models/auction_request_model.dart';
 import 'package:excise_e_auction/ui/custom_widgets/custom_progress_dialog.dart';
 import 'package:excise_e_auction/utils/dummy_data.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,7 @@ class BidRequestHistoryScreenController extends GetxController {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   RxList<AuctionBidModel> bidHistory = RxList([]);
-  RxList<BidRequestModel> myRequests = RxList([]);
+  RxList<AuctionRequestModel> myRequests = RxList([]);
   RxInt selectedTabIndex = RxInt(0);
 
   @override
@@ -32,7 +32,7 @@ class BidRequestHistoryScreenController extends GetxController {
     super.onReady();
     Timer(const Duration(seconds: 2),() {
       bidHistory.value = DummyData.bidsList;
-      myRequests.value = DummyData.myBidRequests;
+      myRequests.value = DummyData.auctionRequestList;
       try {
         myRequests.sort((a,b){
           if(DateFormat('dd/MM/yyyy').parse(a.date).isBefore(DateFormat('dd/MM/yyyy').parse(b.date))) {

@@ -14,7 +14,7 @@ class AuctionsListScreenController extends GetxController {
   void onInit() {
     super.onInit();
     String category = Get.arguments??"";
-    auctionsList.value = DummyData().getAuctionCategoryWiseList(category);
+    auctionsList.value = DummyData().getAuctionsByCategory(category);
 
   }
 

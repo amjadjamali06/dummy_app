@@ -1,26 +1,23 @@
-class BidRequestModel {
+class AuctionRequestModel {
   final String id;
   final String bidType;
-  final String bidderId;
-  final String bidderName;
+  final String numberPlate;
   final String status;
   final String date;
 
-  BidRequestModel({
+  AuctionRequestModel({
     required this.id,
-    required this.bidderId,
-    required this.bidderName,
+    required this.numberPlate,
     required this.bidType,
     required this.status,
     required this.date,
   });
 
-  factory BidRequestModel.fromJson(Map<String, dynamic> json) {
-    return BidRequestModel(
+  factory AuctionRequestModel.fromJson(Map<String, dynamic> json) {
+    return AuctionRequestModel(
       id: json['id']??"",
       bidType: json['bidType']??"",
-      bidderName: json['bidderName']??"",
-      bidderId: json['bidderId']??"",
+      numberPlate: json['numberPlate']??"",
       status: "${json['status']??0}",
       date: json['date']??"",
     );
@@ -29,8 +26,7 @@ class BidRequestModel {
   Map<String, dynamic> toJson() {
     return {
       'bidType': bidType,
-      'bidderId': bidderId,
-      'bidderName': bidderName,
+      'numberPlate': numberPlate,
       'status': status,
       'date': date,
     };

@@ -3,6 +3,7 @@
 import 'package:excise_e_auction/models/auction_model.dart';
 import 'package:excise_e_auction/ui/custom_widgets/general_button.dart';
 import 'package:excise_e_auction/utils/constants.dart';
+import 'package:excise_e_auction/utils/string_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:excise_e_auction/controllers/auction_detail_screen_controller.dart';
@@ -107,13 +108,13 @@ class AuctionDetailScreen extends GetView<AuctionDetailScreenController> {
                auctionDetailCard(
                 onTap: () {},
                 title: "Starting bid amount",
-                subTitle: auctionModel.bidStartAmount,
+                subTitle: auctionModel.bidStartAmount.toAmount,
                 iconPath: "assets/icons/price.png",
               ),
                auctionDetailCard(
                 onTap: () {},
                 title: "Current highest bid",
-                subTitle: auctionModel.bidEndAmount,
+                subTitle: auctionModel.bidEndAmount.toAmount,
                 iconPath: "assets/icons/auction.png",
               )
             ],

@@ -2,9 +2,12 @@ import 'package:excise_e_auction/controllers/auctions_list_screen_controller.dar
 import 'package:excise_e_auction/ui/custom_widgets/custom_scaffold.dart';
 import 'package:excise_e_auction/utils/app_colors.dart';
 import 'package:excise_e_auction/utils/constants.dart';
+import 'package:excise_e_auction/utils/string_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+
+import '../../models/auction_model.dart';
 class AuctionsListScreen extends GetView<AuctionsListScreenController> {
   const AuctionsListScreen({super.key});
 
@@ -31,6 +34,7 @@ class AuctionsListScreen extends GetView<AuctionsListScreenController> {
               endDate: auction.endDate,
               bidStartAmount: auction.bidStartAmount,
               bidEndAmount: auction.bidEndAmount,
+              auction: auction,
             );
           },
         ),
@@ -46,6 +50,7 @@ class AuctionCard extends StatelessWidget {
   final String endDate;
   final String bidStartAmount;
   final String bidEndAmount;
+  final AuctionModel auction;
   final void Function() onTap;
   const AuctionCard({
     super.key,
@@ -55,6 +60,7 @@ class AuctionCard extends StatelessWidget {
     required this.endDate,
     required this.bidStartAmount,
     required this.bidEndAmount,
+    required this.auction,
     required this.onTap
   });
 
@@ -222,7 +228,7 @@ class AuctionCard extends StatelessWidget {
                             ),
                             const SizedBox(height: 6),
                             Text(
-                              "Rs.$bidStartAmount",
+                              bidStartAmount.toAmount,
                               style: const TextStyle(
                                 fontSize: 18,
                                 letterSpacing: 0,
@@ -246,7 +252,7 @@ class AuctionCard extends StatelessWidget {
                             ),
                             const SizedBox(height: 6),
                             Text(
-                              "Rs.$bidEndAmount",
+                              bidEndAmount.toAmount,
                               style: const TextStyle(
                                 fontSize: 18,
                                 letterSpacing: 0,

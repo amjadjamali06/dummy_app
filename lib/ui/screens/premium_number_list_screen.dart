@@ -2,6 +2,7 @@ import 'package:excise_e_auction/controllers/auctions_list_screen_controller.dar
 import 'package:excise_e_auction/controllers/premium_number_screen_controller.dart';
 import 'package:excise_e_auction/ui/custom_widgets/custom_scaffold.dart';
 import 'package:excise_e_auction/utils/app_colors.dart';
+import 'package:excise_e_auction/utils/string_utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -162,7 +163,7 @@ class PremiumNumberCard extends StatelessWidget {
                               ),
                               const SizedBox(height: 4),
                               Text(
-                                "Rs. ${purchasePrice}",
+                                purchasePrice.toAmount,
                                 style: const TextStyle(
                                   fontSize: 14,
                                   letterSpacing: 0,

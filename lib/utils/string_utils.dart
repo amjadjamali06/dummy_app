@@ -11,7 +11,7 @@ extension StringUtils on String {
   double get toDouble => double.tryParse(this)??0.0;
 
   /// Created By: Amjad Jamali on 02-Oct-2023
-  String get inRupee{
+  String get toRupee{
     final chars = split('');
     String newString = '';
     for (int i = chars.length - 1; i >= 0; i--) {
@@ -21,6 +21,19 @@ extension StringUtils on String {
       newString = chars[i] + newString;
     }
     return "Rs. $newString";
+  }
+
+  /// Created By: Amjad Jamali on 02-Oct-2023
+  String get toAmount{
+    final chars = split('');
+    String newString = '';
+    for (int i = chars.length - 1; i >= 0; i--) {
+      if ((chars.length - 1 - i) % 3 == 0 && i != chars.length - 1) {
+        newString = ",$newString";
+      }
+      newString = chars[i] + newString;
+    }
+    return newString;
   }
 
   /// Created By: Amjad Jamali on 09-Oct-2023

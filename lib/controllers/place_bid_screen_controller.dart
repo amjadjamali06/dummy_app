@@ -22,31 +22,30 @@ class PlaceBidScreenController extends GetxController{
   TextFieldManager startingBidAmountTfManager = TextFieldManager('Starting Bid Amount');
   TextFieldManager currentHighestBidTfManager = TextFieldManager('Current Highest Bid');
   TextFieldManager bidAmountTfManager = TextFieldManager('Bid Amount',mandatory: true,filter: TextFilter.number);
-  AuctionModel auctionArgsData = AuctionModel.empty();
-  AuctionModel? args;
+  AuctionModel auctionModel = AuctionModel.empty();
 
   @override
   void onReady() {
     super.onReady();
-    args= Get.arguments;
-    if(args != null) {
-      auctionArgsData= args!;
-      fetchData();
+    if(Get.arguments != null && Get.arguments is AuctionModel) {
+      auctionModel= Get.arguments;
+      populateData();
     }
   }
 
-  void fetchData() {
-      ProgressDialog().showDialog(title: 'Please wait..');
-      Timer(const Duration(seconds: 2), () {
-        plateCategoryTfManager.controller.text = args!.bidType;
-        desiredNbrPlateTfManager.controller.text = args!.numberPlat;
-        bidStartDateManager.formattedDateTime.value = args!.startDate.formatDate;
-        bidEndDateManager.formattedDateTime.value = args!.endDate.formatDate;
-        startingBidAmountTfManager.controller.text = args!.bidStartAmount;
-        currentHighestBidTfManager.controller.text = args!.bidEndAmount;
-        ProgressDialog().dismissDialog();
-      });
+  Future<void> populateData() async {
+    ProgressDialog().showDialog(title: 'Please wait..');
+    await Future.delayed(const Duration(seconds: 1));
+    ProgressDialog().dismissDialog();
+
+    plateCategoryTfManager.controller.text = auctionModel.bidType;
+    desiredNbrPlateTfManager.controller.text = auctionModel.numberPlat;
+    bidStartDateManager.formattedDateTime.value = auctionModel.startDate.formatDate;
+    bidEndDateManager.formattedDateTime.value = auctionModel.endDate.formatDate;
+    startingBidAmountTfManager.controller.text = auctionModel.bidStartAmount.toAmount;
+    currentHighestBidTfManager.controller.text = auctionModel.bidEndAmount.toAmount;
   }
+
   void removeFocus(){
     if(bidAmountTfManager.focusNode.hasFocus){
       bidAmountTfManager.focusNode.unfocus();
@@ -62,7 +61,7 @@ class PlaceBidScreenController extends GetxController{
           nbrPlate: desiredNbrPlateTfManager.controller.text,
           bidDate: bidEndDateManager.formattedDateTime.value,
           bidAmount: bidAmountTfManager.controller.text,
-          auctionId: args!.id);
+          auctionId: auctionModel.id);
       ProgressDialog().showDialog();
       String response = await GeneralService().addAuctionBidToHistory(auctionBidModel: bidModel);
       ProgressDialog().dismissDialog();

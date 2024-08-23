@@ -1,13 +1,13 @@
 import 'package:excise_e_auction/controllers/bid_request_history_screen_controller.dart';
-import 'package:excise_e_auction/models/my_bid_model.dart';
 import 'package:excise_e_auction/models/auction_bid_model.dart';
 import 'package:excise_e_auction/ui/custom_widgets/custom_scaffold.dart';
 import 'package:excise_e_auction/utils/app_colors.dart';
+import 'package:excise_e_auction/utils/string_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../models/bid_request_model.dart';
+import '../../models/auction_request_model.dart';
 import '../custom_widgets/tab_bar_widget.dart';
 enum BidStatus {
   pending,
@@ -93,7 +93,7 @@ class MyBidsWidget extends StatelessWidget {
 }
 
 class MyRequestsWidget extends StatelessWidget {
-  final List<BidRequestModel> bidHistory;
+  final List<AuctionRequestModel> bidHistory;
   const MyRequestsWidget({super.key, required this.bidHistory});
 
   @override
@@ -106,7 +106,7 @@ class MyRequestsWidget extends StatelessWidget {
           final auction = bidHistory[index];
           return MyBidRequestCard(
             onTap:(){},
-            bidderName: auction.bidderName,
+            bidderName: auction.numberPlate,
             bidType: auction.bidType,
             date: auction.date,
             status: auction.status,
@@ -220,7 +220,7 @@ class BidHistoryCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      "Rs. ${amount}",
+                      amount.toAmount,
                       style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 16,

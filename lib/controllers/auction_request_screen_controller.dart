@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:excise_e_auction/models/bid_request_model.dart';
+import 'package:excise_e_auction/models/auction_request_model.dart';
 import 'package:excise_e_auction/ui/custom_widgets/custom_dialogs.dart';
 import 'package:excise_e_auction/utils/constants.dart';
 import 'package:excise_e_auction/utils/dummy_data.dart';
@@ -42,16 +42,15 @@ class AuctionRequestScreenController extends GetxController{
       await Future.delayed(const Duration(seconds: 2), (){
         int randomNo =  Random().nextInt(1000);
         final DateFormat formatter = DateFormat('dd/MM/yyyy');
-        final auctionRequestModel = BidRequestModel(
+        final auctionRequestModel = AuctionRequestModel(
           id: "ID-$randomNo",
-          bidderId: UserSession.userModel.value.id,
-          bidderName: UserSession.userModel.value.name,
+          numberPlate: desiredNbrPlateTfManager.text,
           bidType: category,
           status: "pending",
           date: formatter.format(DateTime.now()),
         );
-        DummyData.myBidRequests.addNonNull(auctionRequestModel);
-        DummyData.myBidRequests.refresh();
+        DummyData.auctionRequestList.addNonNull(auctionRequestModel);
+        DummyData.auctionRequestList.refresh();
         result = "Success";
       });
       ProgressDialog().dismissDialog();
