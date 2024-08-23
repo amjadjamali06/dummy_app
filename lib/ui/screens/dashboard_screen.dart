@@ -10,8 +10,8 @@ import '../custom_widgets/custom_dashboard_card_widget.dart';
 import '../custom_widgets/custom_dialogs.dart';
 import '../custom_widgets/custom_end_drawer.dart';
 
-class DashboardScreenNew extends GetView<DashboardScreenController> {
-  const DashboardScreenNew({super.key});
+class DashboardScreen extends GetView<DashboardScreenController> {
+  const DashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -14,11 +14,11 @@ import 'package:excise_e_auction/ui/screens/setting_screen.dart';
 import 'package:excise_e_auction/ui/screens/splash_screen.dart';
 import 'package:excise_e_auction/ui/screens/tag_winning_nbr_screen.dart';
 import 'package:get/get.dart';
-import 'package:excise_e_auction/ui/screens/dashboard_screen.dart';
 import 'package:excise_e_auction/ui/screens/auction_detail_screen.dart';
 import 'package:excise_e_auction/ui/screens/login_screen.dart';
 import 'package:excise_e_auction/utils/constants.dart';
 import 'package:excise_e_auction/utils/screen_bindings.dart';
+import '../ui/screens/dashboard_screen.dart';
 import '../ui/screens/e_auction_screen.dart';
 
 /*Created By: Amjad Jamali on 03-Aug-2023
