@@ -1,7 +1,10 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:excise_e_auction/ui/custom_widgets/custom_dialogs.dart';
 import 'package:excise_e_auction/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../ui/custom_widgets/custom_progress_dialog.dart';
 import '../utils/text_field_manager.dart';
 
 class AuctionRequestScreenController extends GetxController{
@@ -25,10 +28,36 @@ class AuctionRequestScreenController extends GetxController{
     }
   }
 
-  void onTapRequestAuction(){
+  Future<void> onTapRequestAuction() async {
 
     if(validateAll()){
-      Get.offAllNamed(kHistoryListScreenRoute, predicate: (rout)=>rout.isFirst);
+      String result = "";
+      ProgressDialog().showDialog();
+      await Future.delayed(const Duration(seconds: 2), (){
+        result = "Success";
+      });
+      ProgressDialog().dismissDialog();
+      if(result == "Success") {
+        CustomDialogs().showDialog(
+          "Success",
+          "Request has been submitted successfully!",
+          DialogType.success,
+          onOkBtnPressed: (){
+            Get.offAllNamed(kHistoryListScreenRoute, predicate: (rout)=>rout.isFirst);
+          },
+        );
+      } else {
+        result = "Cannot submit request";
+        CustomDialogs().showDialog(
+          "Error",
+          result,
+          DialogType.error,
+          onOkBtnPressed: (){
+            return;
+          },
+        );
+      }
+
     }
 
   }

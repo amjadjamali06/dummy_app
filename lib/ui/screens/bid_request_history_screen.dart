@@ -1,15 +1,9 @@
-import 'dart:developer';
-
-import 'package:excise_e_auction/controllers/auctions_list_screen_controller.dart';
 import 'package:excise_e_auction/controllers/bid_request_history_screen_controller.dart';
-import 'package:excise_e_auction/controllers/premium_number_screen_controller.dart';
 import 'package:excise_e_auction/models/my_bid_model.dart';
 import 'package:excise_e_auction/ui/custom_widgets/custom_scaffold.dart';
 import 'package:excise_e_auction/utils/app_colors.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import '../../models/bid_request_model.dart';

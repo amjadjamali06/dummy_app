@@ -81,7 +81,7 @@ class AuctionDetailScreen extends GetView<AuctionDetailScreenController> {
               auctionDetailCard(
                 onTap: () {},
                 title: "Plate Category",
-                subTitle: auctionModel.bidType,
+                subTitle: auctionModel.bidType.capitalizeFirst.toString(),
                 iconPath: "assets/icons/plate-1.png",
               ),
                auctionDetailCard(
