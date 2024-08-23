@@ -41,7 +41,7 @@ class DashboardScreen extends GetView<DashboardScreenController> {
                             border: Border.all(color: kWhiteColor),
                             borderRadius: BorderRadius.circular(50)
                         ),
-                        child: const Icon(Icons.notifications),
+                        child: const Icon(Icons.notifications, color: kWhiteColor,),
                       ),
                       Positioned(
                         right:2,top: 20,
@@ -138,13 +138,15 @@ class DashboardScreen extends GetView<DashboardScreenController> {
                 children: [
                   const Text("Hello,", style:  TextStyle(
                       fontSize: 20,
-                      fontWeight: FontWeight.w300
+                      fontWeight: FontWeight.w300,
+                    color: kWhiteColor
                   ),),
                   Row(
                     children: [
                       Text(UserSession.userModel.value.name, style: const TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.w900
+                          fontWeight: FontWeight.w900,
+                        color: kWhiteColor
                       ),),
                       Image.asset('assets/icons/waving-hand.png', width: 30,)
                     ],

@@ -56,7 +56,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
                   decoration: BoxDecoration(
                       border: Border.all(color: kWhiteColor),
                       borderRadius: BorderRadius.circular(50)),
-                  child: const Icon(Icons.notifications),
+                  child: const Icon(Icons.notifications, color: kWhiteColor,),
                 ),
                 Positioned(
                   right: 2,

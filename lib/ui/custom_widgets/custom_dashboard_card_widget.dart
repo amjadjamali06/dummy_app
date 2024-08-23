@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 import '../../utils/app_colors.dart';
 
 class CustomDashboardCardWidget extends StatelessWidget {
@@ -24,7 +22,7 @@ class CustomDashboardCardWidget extends StatelessWidget {
             width: width,
             height: height,
             decoration: BoxDecoration(
-                color: kWhiteColor,
+                color: kCardColor,
                 borderRadius: BorderRadius.circular(15),
                 boxShadow: const [
                   BoxShadow(
@@ -50,8 +48,8 @@ class CustomDashboardCardWidget extends StatelessWidget {
             title.toUpperCase(),
             textAlign: TextAlign.center,
             style: const TextStyle(
-                fontSize: 17,
-                color: kBlackColor
+                fontSize: 15,
+                color: kTextColor
             ),
             overflow: TextOverflow.clip,
           ),

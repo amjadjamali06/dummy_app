@@ -52,7 +52,8 @@ class CustomEndDrawer extends GetView<CustomEndDrawerController> {
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 20
+                      fontSize: 20,
+                      color: kWhiteColor
                     ),
                   ),),
                 ],
@@ -115,7 +116,7 @@ class CustomEndDrawer extends GetView<CustomEndDrawerController> {
                 title.toUpperCase(),
                 textAlign: TextAlign.left,
                 style: const TextStyle(
-                  color: kBlackColor,
+                  color: kTextColor,
                   fontSize: 16,
                   fontWeight: FontWeight.bold
                 ),
