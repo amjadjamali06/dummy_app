@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:excise_e_auction/models/user_model.dart';
+import 'package:excise_e_auction/ui/screens/onboard_screen.dart';
 import 'package:excise_e_auction/utils/user_session.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,7 +33,7 @@ class SplashScreenController extends GetxController {
     if(isLoggedIn){
       Get.offAllNamed(kDashboardScreenRoute);
     }else {
-      Get.offAllNamed(kLoginScreenRoute);
+      Get.offAll(()=>const OnBoardScreen());
     }
   }
 

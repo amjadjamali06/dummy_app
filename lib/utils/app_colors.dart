@@ -13,6 +13,7 @@ const Color kTextLightColor = Color(0xaa1c1c1c);
 const Color kTextHintColor = Color(0xAA1c1c1c);
 
 const Color kCardColor=Color(0xFFECECEC);
+const Color kCardShadowColor=Color(0x55000000);
 
 const Color kFieldBGColor= Color(0xff394646);
 const Color kFieldBorderColor= Color(0xff576565);

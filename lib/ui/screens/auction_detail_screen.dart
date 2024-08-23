@@ -19,6 +19,7 @@ class AuctionDetailScreen extends GetView<AuctionDetailScreenController> {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(()=>AuctionDetailScreenController());
     return CustomScaffold(
       className: runtimeType.toString(),
       screenName: "Auction Details",
@@ -30,88 +31,55 @@ class AuctionDetailScreen extends GetView<AuctionDetailScreenController> {
 
   Widget get buildBody {
     return Padding(
-      padding: EdgeInsets.only(top: Get.height * 0.05),
+      padding: const EdgeInsets.only(top: 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            width: Get.width * 0.4,
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                    colors: [kPrimaryDarkColor, kPrimaryColor],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter),
-                boxShadow: const [
-                  BoxShadow(
-                      blurRadius: 0.5,
-                      color: kLightGreyColor,
-                      offset: Offset(1, -1))
-                ],
-                borderRadius: BorderRadius.circular(10)),
-            child: Center(
-                child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Auction ID",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white.withOpacity(0.6)),
-                ),
-                Text(
-                  auctionModel.id,
-                  style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white),
-                ),
-              ],
-            )),
-          ),
-          SizedBox(height: Get.height * 0.05),
-          GridView(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 1.4,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 16),
+          auctionIDCard2(),
+          const SizedBox(height: 12),
+          Column(
+            // shrinkWrap: true,
+            // physics: const NeverScrollableScrollPhysics(),
+            // gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            //     crossAxisCount: 2,
+            //     childAspectRatio: 1.4,
+            //     crossAxisSpacing: 16,
+            //     mainAxisSpacing: 16),
             children: [
-              auctionDetailCard(
+              auctionDetailTile(
                 onTap: () {},
                 title: "Plate Category",
                 subTitle: auctionModel.bidType.capitalizeFirst.toString(),
                 iconPath: "assets/icons/plate-1.png",
+                size: 50,
               ),
-               auctionDetailCard(
+              auctionDetailTile(
                 onTap: () {},
                 title: "Desired Charachters",
                 subTitle: auctionModel.numberPlat,
                 iconPath: "assets/icons/plate-2.png",
               ),
-              auctionDetailCard(
+              auctionDetailTile(
                 onTap: () {},
                 title: "Bid Start Date and Time",
                 subTitle: auctionModel.startDate,
                 iconPath: "assets/icons/calander.png",
-                size: 25,
+                size: 33,
               ),
-               auctionDetailCard(
+              auctionDetailTile(
                 onTap: () {},
                 title: "Bid End Date and Time",
                 subTitle: auctionModel.endDate,
                 iconPath: "assets/icons/calander.png",
-                size: 25,
+                size: 33,
               ),
-               auctionDetailCard(
+              auctionDetailTile(
                 onTap: () {},
                 title: "Starting bid amount",
                 subTitle: auctionModel.bidStartAmount.toAmount,
                 iconPath: "assets/icons/price.png",
               ),
-               auctionDetailCard(
+              auctionDetailTile(
                 onTap: () {},
                 title: "Current highest bid",
                 subTitle: auctionModel.bidEndAmount.toAmount,
@@ -119,10 +87,66 @@ class AuctionDetailScreen extends GetView<AuctionDetailScreenController> {
               )
             ],
           ),
-          SizedBox(height: Get.height * 0.05),
-          GeneralButton(onPressed: () {Get.toNamed(kPlaceBidScreenRoute,arguments: auctionModel);}, text: "Place a Bid")
+          const SizedBox(height: 13),
+          GeneralButton(
+              onPressed: () {
+                Get.toNamed(kPlaceBidScreenRoute, arguments: auctionModel);
+              },
+              text: "Place a Bid")
         ],
       ),
+    );
+  }
+
+  Container auctionIDCard() {
+    return Container(
+      width: Get.width * 0.4,
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+          gradient: const LinearGradient(
+              colors: [kPrimaryDarkColor, kPrimaryColor],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter),
+          boxShadow: const [
+            BoxShadow(
+                blurRadius: 0.5, color: kLightGreyColor, offset: Offset(1, -1))
+          ],
+          borderRadius: BorderRadius.circular(10)),
+      child: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            "Auction ID",
+            style: TextStyle(
+                fontWeight: FontWeight.w500,
+                color: Colors.white.withOpacity(0.6)),
+          ),
+          Text(
+            auctionModel.id,
+            style: const TextStyle(
+                fontSize: 18, fontWeight: FontWeight.w700, color: Colors.white),
+          ),
+        ],
+      )),
+    );
+  }
+
+  Widget auctionIDCard2() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.asset('assets/icons/auction_id.png', height: 50, width: 60),
+        Text(
+          auctionModel.id,
+          style: const TextStyle(
+              fontSize: 18, fontWeight: FontWeight.w700, color: kPrimaryColor),
+        ),
+        const Text(
+          "Auction ID",
+          style: TextStyle(fontWeight: FontWeight.w500, color: kGreyColor),
+        ),
+      ],
     );
   }
 
@@ -179,6 +203,57 @@ class AuctionDetailScreen extends GetView<AuctionDetailScreenController> {
                     fontWeight: FontWeight.w500,
                     color: kTextColor))
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget auctionDetailTile({
+    required String title,
+    required String subTitle,
+    required String iconPath,
+    double size = 50,
+    required Function() onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: Get.width,
+        margin: const EdgeInsets.only(bottom: 12),
+        decoration: BoxDecoration(
+            color: kWhiteColor,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: const [
+              BoxShadow(
+                color: kCardShadowColor,
+                offset: Offset(0, 1),
+                spreadRadius: 0,
+                blurRadius: 7,
+              )
+            ]),
+        child: ListTile(
+          leading: SizedBox(
+            width: 50,
+            child: Image.asset(
+              iconPath,
+              height: size,
+              width: size,
+              fit: BoxFit.contain,
+              color: kBlackColor,
+            ),
+          ),
+          title: Text(
+            title,
+            style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: kBlackColor),
+          ),
+          subtitle: Text(
+            subTitle,
+            style:  const TextStyle(
+                fontSize: 13, fontWeight: FontWeight.w400, color: kTextLightColor),
+          ),
         ),
       ),
     );
