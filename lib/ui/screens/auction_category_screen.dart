@@ -18,15 +18,18 @@ class AuctionCategoryScreen extends GetView<AuctionCategoryScreenController> {
       horizontalPadding: 24,
       body: Column(
         children: [
+          Padding(
+            padding:  EdgeInsets.only(top: Get.height*0.07),
+            child: Text("Select One",style: GoogleFonts.roboto(fontSize: 20,color: kBlackColor,fontWeight: FontWeight.w500),),
+          ),
           ListView.separated(
-            padding: EdgeInsets.only(top: Get.height * 0.16, bottom: Get.height * 0.1, left: 2, right: 2),
+            padding: EdgeInsets.only(top: Get.height * 0.05, bottom: Get.height * 0.1, left: 2, right: 2),
             shrinkWrap: true,
-            // physics: const NeverScrollableScrollPhysics(),
             itemCount: controller.categories.length,
             itemBuilder: (context, index) {
               return Obx(()=> auctionCategoryCardNew(
                 cardName: controller.categories[index].capitalize.toString(),
-                text: controller.categories[index] == "platinum"? 'AAA':controller.categories[index] =="silver"?'AAAAAAA':'AAAAA',
+                text: controller.categories[index] == "platinum"? 'Choose Any 3 Character (AAA)':controller.categories[index] =="silver"?'Choose Any 7 Character (AAAAAAA)':'Choose Any 5 Character (AAAAA)',
                 iconPath:controller.categories[index] == "platinum"? 'assets/images/platinum.png':controller.categories[index] =="silver"?'assets/images/silver.png':'assets/images/gold.png',
                 onTap: (){
                   controller.onCategorySelected(index);
@@ -35,7 +38,7 @@ class AuctionCategoryScreen extends GetView<AuctionCategoryScreenController> {
               ));
             }, separatorBuilder: (_, int index)=>const SizedBox(height: 24),
           ),
-          GeneralButton(onPressed: ()=>controller.navigateToCategories(),color: kBlackColor, text: "Continue",)
+          GeneralButton(onPressed: ()=>controller.navigateToCategories(), text: "Continue",)
         ],
       ),
     );
@@ -48,24 +51,10 @@ class AuctionCategoryScreen extends GetView<AuctionCategoryScreenController> {
   }){
     return GestureDetector(
       onTap: onTap,
-      child: Container(
+      child: SizedBox(
         width: Get.width,
         height: 70,
-        decoration: const BoxDecoration(
-          color: kCardColor,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(24),
-            bottomRight: Radius.circular(24),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: kTextLightColor,
-              offset: Offset(0, 1),
-              spreadRadius: 1,
-              blurRadius: 1,
-            )
-          ],
-        ),
+
         child:  Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -74,15 +63,15 @@ class AuctionCategoryScreen extends GetView<AuctionCategoryScreenController> {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: isSelected ? kLightGreyColor : kLightGreyColor, // Active or Inactive color
+                  color: isSelected ? kPrimaryColor : kPrimaryColor, // Active or Inactive color
                   width: 2.0,
                 ),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: Container(
-                  width: 16.0,
-                  height: 16.0,
+                  width: 20.0,
+                  height: 20.0,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: isSelected ? kPrimaryColor : Colors.transparent,
@@ -93,14 +82,13 @@ class AuctionCategoryScreen extends GetView<AuctionCategoryScreenController> {
 
             Expanded(
               flex: 2,
-              child: Container(padding: const EdgeInsets.only(left: 20,top: 10),
+              child: Container(padding: const EdgeInsets.only(left: 10,top: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(cardName,style: GoogleFonts.oxygen(fontSize: 18,color: kWhiteColor,fontWeight: FontWeight.w600, shadows: [Shadow(
-                    offset: const Offset(2.0, 5.0),blurRadius: 8.0,color: kBlackColor.withOpacity(0.5),),])),
-                    Text(text, style: const TextStyle(color: kLightGreyColor,fontSize: 14, fontWeight: FontWeight.w500),textAlign: TextAlign.center,)
+                    Text(cardName,style: GoogleFonts.roboto(fontSize: 19,color: kBlackColor,fontWeight: FontWeight.w800,)),
+                    Text(text, style: GoogleFonts.roboto(color: kGreyColor,fontSize: 13,fontWeight: FontWeight.normal),textAlign: TextAlign.left,)
                   ],
                 ),),
             ),
@@ -115,32 +103,4 @@ class AuctionCategoryScreen extends GetView<AuctionCategoryScreenController> {
     );
   }
 
-
-/*Widget auctionCategoryCardOld({String cardName="",String text="", String iconPath='', required Function() onTap}){
-   return GestureDetector(
-     onTap: ()=>controller.onTapItem(cardName),
-     child:
-     Container(
-       width: 350,
-       height: 70,
-       decoration: BoxDecoration(image: DecorationImage(image: AssetImage(iconPath)),borderRadius: BorderRadius.circular(2)),
-       child:  Row(
-         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-         children: [
-           Expanded(
-             flex: 2,
-             child: Container(padding: const EdgeInsets.only(left: 30),child: Text(cardName,style: GoogleFonts.oxygen(fontSize: 19,color: kWhiteColor,fontWeight: FontWeight.w800, shadows: [Shadow(
-               offset: const Offset(2.0, 5.0),blurRadius: 8.0,color: kBlackColor.withOpacity(0.5),),])),),
-           ),
-           Expanded(flex: 1,child: Container(width: double.infinity,height: 33,padding: const EdgeInsets.only(top: 5), decoration: BoxDecoration(
-             borderRadius: BorderRadius.circular(3),
-             color: cardName== "GOLD"? kCategoryOrangeBoxColor: kCategoryDarkGreyBoxColor,
-           ), child: Text(text, style: const TextStyle(color: kWhiteColor,fontSize: 15, fontWeight: FontWeight.bold),textAlign: TextAlign.center,),),),
-           Expanded(child: Container(padding: const EdgeInsets.only(right: 5, ),child: const Icon(Icons.arrow_forward, color: kWhiteColor, size: 33,)))
-
-         ],
-       ),
-     ),
-   );
-  }*/
 }

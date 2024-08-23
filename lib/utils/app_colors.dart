@@ -4,7 +4,7 @@ import 'dart:ui';
 /* Created By: Amjad Jamali on 02-Aug-2023
 * Last Modified by Afaque Ali on 21-Aug-2024 */
 
-const Color kPrimaryColor = Color(0xff1cbc9c);
+const Color kPrimaryColor = Color(0xff0b5dab);
 const Color kPrimaryLightColor = Color(0xff0b5dab);
 const Color kPrimaryDarkColor = Color(0xff1a3e74);
 

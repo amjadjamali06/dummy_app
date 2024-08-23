@@ -60,7 +60,7 @@ class LoginScreen extends GetView<LoginScreenController> {
                           Text(
                             "Government of Sindh",
                             style:
-                                TextStyle(fontSize: 15,fontWeight: FontWeight.w500, color: kTextLightBlueColor),
+                                TextStyle(fontSize: 15,fontWeight: FontWeight.w500, color: kTextLightColor),
                           ),
                         ],
                       ),
