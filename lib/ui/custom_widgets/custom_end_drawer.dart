@@ -87,6 +87,8 @@ class CustomEndDrawer extends GetView<CustomEndDrawerController> {
                         title: "Auction", icon: 'assets/icons/online-payment 2.png', color: kGreyColor),
                     const Divider(indent: 54),
                     const Spacer(),
+                    const Divider(thickness: 1,),
+                    _getDrawerNavItem(title: "Logout", icon: 'assets/icons/logout.png', color: kRejectedColor),
                   ],),
               ),
             ),
@@ -107,7 +109,7 @@ class CustomEndDrawer extends GetView<CustomEndDrawerController> {
         },
         child: Row(
           children: [
-            Image.asset(icon, width: 50,),
+            Image.asset(icon, width: title == "Logout" ?30 : 50 ,),
             const SizedBox(
               width: 10,
             ),
@@ -115,9 +117,9 @@ class CustomEndDrawer extends GetView<CustomEndDrawerController> {
               child: Text(
                 title.toUpperCase(),
                 textAlign: TextAlign.left,
-                style: const TextStyle(
+                style: TextStyle(
                   color: kTextColor,
-                  fontSize: 16,
+                  fontSize: title == "Logout" ? 14 : 16,
                   fontWeight: FontWeight.bold
                 ),
               ),

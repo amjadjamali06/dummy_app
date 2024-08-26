@@ -28,6 +28,7 @@ class DashboardScreen extends GetView<DashboardScreenController> {
           appBar: AppBar(
               backgroundColor: kPrimaryColor,
               elevation: 0,
+              scrolledUnderElevation: 0,
               toolbarHeight: 60,
               automaticallyImplyLeading: false,
               actions: [
