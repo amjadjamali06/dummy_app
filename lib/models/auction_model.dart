@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'package:get/get.dart';
+
 class AuctionModel {
    String id='';
    String numberPlat='';
@@ -6,6 +9,9 @@ class AuctionModel {
    String endDate='';
    String bidStartAmount='';
    String bidEndAmount='';
+   Duration? expiryDuration;
+   Timer? timer;
+   RxString expiryTime=''.obs;
 
   AuctionModel.empty();
 
